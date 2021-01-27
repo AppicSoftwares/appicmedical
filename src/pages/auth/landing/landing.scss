@@ -1,0 +1,67 @@
+
+page-landing {
+    
+    .content{
+    background-image: url(../assets/imgs/medidelivery/landing_page_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-position: top center;
+ }
+ .button-outline{
+    border-right-width : 1;
+    border-left-width: 1;
+    color: #ffffff;
+ }
+ .login{
+     background: #ffffff;
+     color: #000000;
+ }
+
+ .logo-image{
+    width: 58%;
+    margin: 0 auto;
+    margin-top: 22%;
+    margin-bottom: 15%;
+   /* position: absolute;
+    left: 25%;*/
+    z-index: 1;
+    text-align: center;
+    .image{
+        width: 100%;
+        text-align: center;
+        img{
+/*                width: 63%;*/
+        }
+    }
+
+    .tag-line{
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1.8rem;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.button-full.button-outline{
+    border-width: 1px !important;
+}
+.landing-cont-outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.button {
+    height: 4.4rem;
+    font-size: 1.5rem;
+    font-weight: normal;
+    border-radius: 3px !important;
+}
+.login.button:hover {
+    background: #fff;
+}
+
+}

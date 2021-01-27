@@ -1,0 +1,35 @@
+<ion-menu [content]="content" persistent="true" [swipeEnabled]="false">
+
+  <ion-header class="menu-header top_pad12">
+    <ion-toolbar>
+      <ion-row>
+        <ion-col col-12 padding>
+            <div class="menu-logo-cont">
+              <img src="././././assets/imgs/logo-tagline-blue.png" alt="logo" />
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list no-lines id="menu-cont" margin-top class="top_pad13">
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+      <button ion-item *ngIf="userloggedin" (click)="onLogout()">
+        Logout
+      </button>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-row>
+      <ion-col col-12 text-center padding>
+        Version 1.3
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

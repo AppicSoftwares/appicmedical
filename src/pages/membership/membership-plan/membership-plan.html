@@ -1,0 +1,113 @@
+<!--
+  Generated template for the MembershipPlanPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+  <ion-navbar>
+    <ion-title>Membership</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form [formGroup]="planDataForm">
+		<div class="plan-row">
+	<!--		<ion-row  *ngIf="currmembershipStatus == 'premiumactive' || currmembershipStatus == 'premiumexpired' || currmembershipStatus == 'free' && 1 !== 1">
+				<ion-col col-12>
+					<mbsc-page [options]="pageSettings">
+					    <mbsc-note color="info" *ngIf="currmembershipStatus == 'premiumactive'">You're already a premium member.</mbsc-note>
+					    <mbsc-note color="warning" *ngIf="currmembershipStatus == 'premiumexpired'">You're membership been expired, please renew.</mbsc-note>
+					    <mbsc-note color="info" *ngIf="currmembershipStatus == 'free'">You're a free member, please upgrade.</mbsc-note>
+					</mbsc-page>
+				</ion-col>
+			</ion-row>  -->
+			<ion-row>
+				<ion-col col-12>
+					<div class="plan-cont free" text-center>
+						<div class="plan-name">
+							Basic
+						</div>
+						<div class="plan-price">
+							<span class="normal">Free</span>
+						</div>
+						<div class="plan-highlight">
+							&nbsp;
+						</div>
+					</div>
+					<div class="plan-detail-cont free shadow" text-center padding-top>
+						<div class="min-height" padding-bottom>
+							<!--<div class="normal">
+									<ion-icon name="arrow-dropright"></ion-icon>&nbsp;Save up to
+							</div>
+							<div class="plan-price">
+								<span class="normal">80%</span>
+							</div>
+							<div class="normal">
+								on prescriptions
+							</div>-->
+							<div class="normal">
+									<ion-icon name="arrow-dropright"></ion-icon>&nbsp;Save up to <span class="plan-price normal">80%</span> on prescriptions
+							</div>
+							
+							<div class="normal" style="padding:5px;">
+									<ion-icon name="arrow-dropright"></ion-icon>&nbsp;Same Day MediDelivery
+								</div>
+								<div class="normal">
+									<ion-icon name="arrow-dropright"></ion-icon>&nbsp; Request Rx Online
+								</div>
+						</div>
+						<div class="radiobox-cont" padding>
+							<input type="radio" value="free" name="type" formControlName="type">
+						</div>
+					</div>
+				</ion-col>
+				<ion-col col-6 *ngIf="1 !== 1">
+					<div class="plan-cont paid" text-center>
+						<div class="plan-name">
+							Premium
+						</div>
+						<div class="plan-price">
+							<span class="superscript">$</span>
+							<span class="normal">5</span>
+							<span class="subscript">/ mo</span>
+						</div>
+						<div class="plan-highlight">
+							Down from $10 User / Mo
+						</div>
+					</div>
+					<div class="plan-detail-cont paid shadow" text-center padding-top>
+						<div class="min-height">
+							<div class="normal">
+								<ion-icon name="arrow-dropright"></ion-icon>&nbsp;Save up to
+							</div>
+							<div class="plan-price">
+								<span class="normal">90%</span>
+							</div>
+							<div class="normal">
+								<ion-icon name="arrow-dropright"></ion-icon>&nbsp;Request Rx
+							</div>
+							<div class="normal">
+								<ion-icon name="arrow-dropright"></ion-icon>&nbsp;Tele Consult
+							</div>
+						</div>
+						<div class="radiobox-cont" padding>
+							<input type="radio" value="premium" name="type" formControlName="type">
+						</div>
+					</div>
+				</ion-col>
+			</ion-row>
+		</div>
+		<div class="membership-card" text-center (click)="takeToMemberCard()">
+			<img src="././././assets/imgs/medidelivery/pharmacy-savings-card-front.png" alt="membership-card" />
+		</div>
+	</form>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col col-12 no-padding>
+            <button ion-button class="custom" full (click) = "continuenext()" *ngIf="currmembershipStatus != 'premiumactive'">Next</button>
+            <button ion-button class="custom" full (click) = "druginfo()" *ngIf="currmembershipStatus == 'premiumactive'">Cart info</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,292 @@
+<!--
+  Generated template for the SearchMedicinesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header padding-left padding-right padding-bottom class="bg1">
+  <ion-toolbar>
+
+    <ion-title>MediPocket</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only color="royal" (click)="goto('druginfo')">
+        <span><img src="assets/imgs/search_card.png" class="cart" style="position: relative;left: 30px;"></span>
+
+      </button>
+      <button ion-button icon-only color="royal" (click)="shareMpCard()">
+        <!-- <span><img src="assets/imgs/cart.png" class="cart" style="position: relative;left: 30px;"></span> -->
+        <span><img src="assets/imgs/share_card.png" class="cart"></span>
+      </button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+  <form [formGroup]="searchDataForm">
+    <div class="searchbar-cont posRelative">
+      <span class="spinner-cont" *ngIf="showspinner">
+        <ion-spinner name="dots"></ion-spinner>
+      </span>
+      <ion-searchbar no-padding id="autocompleteInp" (click)="searchbarClick()" [showCancelButton]="shouldShowCancel"
+        (ionChange)="ajaxMedicine($event)" (ionClear)="onClearMedicineSearch($event)"
+        (ionCancel)="onCancelMedicineSearch($event)" [disabled] #autosearch autocorrect="off"
+        placeholder="Search For A Drugs" formControlName="term">
+      </ion-searchbar>
+    </div>
+    <div class="search-result-cont" *ngIf="autoCompleteResultShow || autoCompleteNoResultShow">
+      <ion-row>
+        <ion-col col-12 no-padding padding-left padding-right>
+          <ion-list *ngIf="autocomplete.length && autoCompleteResultShow" class="autocomplete_results">
+
+            <button type="button" ion-item *ngFor="let item of autocomplete;  let in = index; "
+              (click)="updateAC(item)">
+
+              <span class="ac-label">{{item.text}}
+                <span class="pill pill-default pill-min-width" *ngIf="item.DrugTypes == 'B'" float-right
+                  text-center>Brand</span>
+                <span class="pill pill-default pill-min-width" *ngIf="item.DrugTypes == 'G'" float-right
+                  text-center>Generic</span>
+              </span>
+              <span class="ac-label-sub" *ngIf="item.brand_text"><small>({{item.brand_text}})</small></span>
+            </button>
+          </ion-list>
+          <ion-list *ngIf="autoCompleteNoResultShow" class="autocomplete_results no-result">
+            <ion-item>
+              No drug found!
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </div>
+  </form>
+</ion-header>
+
+<ion-content no-padding>
+  <div class="mbsc-lv-loading mbsc-show-lv-loading" *ngIf="addingInProgress"><span class="mbsc-ic mbsc-ic-loop2"></span>
+  </div>
+
+  <div *ngIf="medicationsList">
+    <div class="pharmacy-cont" padding *ngIf="medications.length > 0">
+      <div class="pharmacy shadow" padding margin-bottom
+        *ngFor="let medication of medications; let in = index; let isOdd=odd; let isEven=even; let isLast=last"
+        [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst">
+        <ion-row>
+          <ion-col col-10 no-padding>
+            <div class="name text-captalize">
+              {{medication.BN}}&nbsp;{{medication.Strength}}&nbsp;{{medication.DosageForm}}
+            </div>
+            <div class="retail-price">
+              <i>{{medication.QtySelected.qty}}&nbsp;{{medication.PackageUnit}}&nbsp;{{medication.PackageDesc}}</i>
+              &nbsp;
+              <span class="pill pill-default pill-min-width" *ngIf="medication.DrugType == 'B'" text-center>Brand</span>
+              <span class="pill pill-default pill-min-width" *ngIf="medication.DrugType == 'G'"
+                text-center>Generic</span>
+            </div>
+
+          </ion-col>
+          <ion-col col-2 no-padding class="price-coll">
+            <div class="order">
+              <!-- <button ion-button class="custom mini selected" (click)="removeMedication(in)">
+                <ion-icon name="ios-trash"></ion-icon>
+              </button> -->
+              <button ion-button no-margin icon-only clear (click)="removeMedication(in)">
+                <img src="/assets/imgs/delete-sweep.png"  alt="" srcset="" />
+                </button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div class="no-pharmacy" *ngIf="!pharmacies.length">
+        {{pharmaciesError}}
+      </div>
+    </div>
+  </div>
+  <div class="pharmacy-cont" padding *ngIf="drugSelected.text">
+    <div class="pharmacy shadow" padding margin-bottom
+      *ngFor="let pharmacy of filterPharmacies(pharmacies); let in = index; let isOdd=odd; let isEven=even; let isLast=last"
+      [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst">
+      <ion-row>
+        <ion-col col-8 no-padding>
+          <div class="name">
+            {{pharmacy.pharmacy_name}}
+          </div>
+          <div class="retail-price">
+            Retl: ${{pharmacy.retail_price}}
+          </div>
+          <div class="member-price">
+            Member: ${{pharmacy.membership_price}}
+          </div>
+        </ion-col>
+        <ion-col col-4 no-padding class="price-coll">
+          <div class="distance">
+            0.5 miles
+          </div>
+          <div class="order">
+            <button ion-button class="custom mini" [disabled]="addingInProgress" (click)="addDrug(pharmacy, in)"
+              *ngIf="!pharmacy.selected">Add to Cart</button>
+            <button ion-button class="custom mini selected" [disabled]="addingInProgress"
+              (click)="removeDrug(pharmacy, in)" *ngIf="pharmacy.selected">
+              <ion-icon name="checkmark"></ion-icon>&nbsp;Add to Cart
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="no-pharmacy" *ngIf="!pharmacies.length">
+      {{pharmaciesError}}
+    </div>
+  </div>
+
+
+ 
+  <ion-fab bottom center *ngIf="showAddDrugFab" class="add-fab-button">
+    <button ion-fab mini class="custom" (tap)="focusSearch()">
+      <ion-icon name="ios-add"></ion-icon>
+    </button>
+    <span class="fab-label">
+      Add more drugs
+    </span>
+  </ion-fab>
+
+  <!--  page -->
+  <div class="selected_drug" *ngIf="drugSelected.BN">
+    <div class="heading">
+      <h2>CONFIGURE PRESCRIPTION</h2>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12>
+          <div class="form-group">
+            <label class="control-label col-sm-2">{{drugSelected.BN}}</label>
+            <div class="col-sm-10">
+              <div type="text" class="form-control" (click)="variations.instance.show();" id="showVariations">
+                <div (click)="variations.instance.show();" id="showVariations">{{ drugSelected.BN }}
+                  &nbsp;{{ drugSelected.Strength }} &nbsp;{{ drugSelected.DosageForm }}</div>
+              </div>
+              <span class="down_arrow_drug">
+                <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+              </span>
+            </div>
+          </div> &nbsp;
+          <ion-row style="border-bottom: 1px solid #bfeae4;border-top: 1px solid #bfeae4;">
+            <ion-col col-5>
+              <div class="form-group" style="border-right:1px solid #30cbb2; color: #928d8d; height: 50px;">
+                <p class="dosage-name">{{drugSelected.Strength}}&nbsp;{{drugSelected.DosageForm}}</p>
+                <h2>Dosage</h2>
+              </div>
+            </ion-col>
+            <ion-col col-7>
+              <div class="form-group">
+                <div style=" color: #928d8d;">
+                  <div type="text" *ngIf="QuantityDropdown" style="border-color:#f9f9f9;" class="form-control"
+                    (click)="container.instance.show()" id="showContainer">
+                    <div (click)="container.instance.show()" id="showContainer">
+                      {{drugSelected.QtySelected.qty}}&nbsp;{{drugSelected.PackageUnit}}&nbsp;{{drugSelected.PackageDesc}}
+                    </div>
+                    <span class="down_arrow">
+                      <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+                    </span>
+                  </div>
+                  <h2>Quantity</h2>
+                  <input type="number" class="cst-quantity-input" placeholder="Enter custom quantity" />
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <div class="checkbox__text">
+            <ion-checkbox color="primary" checked='true'></ion-checkbox> <span class="edit" (click)="checked()"> Confirm to add above med
+            </span>
+          </div>
+
+          <!-- <div class="add_icon__text">
+              <button ion-button (click)="addToMedications()" ><ion-icon ios="ios-add" md="md-add" class="add" ></ion-icon>Add more meds</button>
+          </div> -->
+          <div class="form-group">
+            <label class="control-label col-sm-2">Zip code / Address</label>
+            <!-- <button ion-button (click)="clearLocation()">
+              <ion-icon ios="ios-close" md="md-close" class="icon"></ion-icon>
+            </button> -->
+            <div class="col-sm-10 locationItem">
+              <ion-item (click)="changeLocation()">
+                {{currentLocation}}
+              </ion-item>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div mbsc-card *ngIf="searchName">
+    <div class="mbsc-card-content pharmacy_sent_header">
+      <div class="mbsc-card-title" style="color: #3b8e84; text-align: center;">
+        Please input some drug names in search bar!!
+      </div>
+    </div>
+  </div>
+  <!--  page  -->
+
+
+
+</ion-content>
+<ion-footer>
+  <!-- <ion-row (click)="changeLocation()">
+    <ion-col col-12 no-padding class="delivery-to">
+      <ion-icon name="ios-pin-outline"></ion-icon>&nbsp;{{currentLocation || "Tap here to add address"}}
+      <br>
+      <span *ngIf="currentLocation">
+        <ion-icon name="ios-refresh-circle">&nbsp;</ion-icon> Tap here to change address
+      </span>
+
+    </ion-col>
+  </ion-row> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button class="custom"
+          [disabled]="!medications.length || !myLocationObj.latitude || currentLocation === ''" full
+          (click)="openPharmacyModel()">Find the lowest price</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+<mbsc-popup [options]="drugSpecSettings" #drugspec="mobiscroll">
+  <mbsc-form>
+    <mbsc-form-group inset>
+      <div class="popup-input-cont posRelative">
+        <span class="fixed-label">mg</span>
+        <mbsc-input [(ngModel)]="drugmg" type="text" name="drugmg" placeholder="Mg"></mbsc-input>
+      </div>
+      <div class="popup-input-cont posRelative">
+        <span class="fixed-label">tablet</span>
+        <mbsc-input [(ngModel)]="drugcount" type="text" name="drugcount" placeholder="Tablet Count"></mbsc-input>
+      </div>
+    </mbsc-form-group>
+  </mbsc-form>
+</mbsc-popup>
+
+<mbsc-popup [options]="containerSettings" #container="mobiscroll">
+  <mbsc-listview [options]="lvSettings">
+    <mbsc-listview-item *ngFor="let item of drugSelected.QtyPrediction"
+      (click)="drugSelected.QtySelected = item;container.instance.hide();">
+      {{ item.qty }} &nbsp; {{drugSelected.PackageUnit}} &nbsp; {{drugSelected.PackageDesc}}
+    </mbsc-listview-item>
+  </mbsc-listview>
+</mbsc-popup>
+
+<mbsc-popup [options]="variationsSettings" #variations="mobiscroll">
+  <mbsc-listview [options]="lvSettings">
+    <mbsc-listview-item text-capitalize *ngFor="let item of predictions"
+      (click)="updateDrugSelection(item);variations.instance.hide();">
+      {{ item.BN }} &nbsp;{{ item.Strength }} &nbsp;{{ item.DosageForm }} &nbsp;
+
+      <span class="pill pill-default pill-min-width clear-both" float-right *ngIf="item.DrugType == 'B'"
+        text-center>Brand</span>
+      <span class="pill pill-default pill-min-width clear-both" float-right *ngIf="item.DrugType == 'G'"
+        text-center>Generic</span>
+
+    </mbsc-listview-item>
+  </mbsc-listview>
+</mbsc-popup>

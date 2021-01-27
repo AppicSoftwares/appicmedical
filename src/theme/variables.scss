@@ -1,0 +1,366 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+@import "ionic.globals";
+@import "./flex-layout.scss";
+@import "./icons.scss";
+
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (primary: #488aff,
+  secondary: #32db64,
+  danger: #f53d3d,
+  light: #f4f4f4,
+  dark: #222,
+  themeColor: #00d6ba,
+  pink: #f42072,
+  black:black,
+  gray:#787878);
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+// App Material Design Variables
+$text-input-md-highlight-color-invalid: transparent;
+$text-input-md-highlight-color-valid: transparent;
+$text-input-md-show-invalid-highlight: transparent;
+$text-input-md-highlight-color: transparent;
+$text-input-md-show-valid-highlight: transparent;
+
+$tabs-md-tab-icon-color-active: #f42072;
+$tabs-ios-tab-icon-color-active: #f42072;
+$toolbar-md-active-color: #fff;
+
+$tabs-md-tab-text-color-active:#f42072;
+$tabs-ios-tab-text-color-active:#f42072;
+
+// $segment-button-md-border-color-activated:#00d6ba;
+// $segment-button-md-text-color-activated:#00d6ba;
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+.show-quentity-list {
+  .mbsc-wdg-c {
+    // overflow: hidden;
+    // overflow-y: auto;
+    // height: 230px;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+button.default-btn {
+  background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+  box-shadow: none !important;
+  height: 5rem !important;
+  font-weight: 300;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  letter-spacing: 0.8px;
+}
+
+.-popover .popover-content {
+  top: initial !important;
+  right: 20px !important;
+  bottom: 65px !important;
+  left: initial !important;
+  width: 150px;
+  height: 94px;
+  padding: 1rem 0 1rem 1rem;
+}
+
+.logo-col {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  .img-container {
+    height: 20rem;
+    width: 13rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.red {
+  color: #f53d3d;
+}
+
+.font-bold {
+  font-weight: 500;
+}
+
+.mb-large {
+  margin-bottom: 3rem;
+}
+
+.mb-2-big {
+  margin-bottom: 2.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.font-bold-3 {
+  font-weight: 300;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.small-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.btn-radius {
+  border-radius: 50% !important;
+  height: 4rem !important;
+  width: 4rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.mb-4rem {
+  margin-bottom: 4rem;
+}
+
+.pt-5 {
+  padding-top: 2rem;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.white-bg {
+  background: #fff;
+}
+
+.description {
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.small-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.theme-color {
+  color: #00d6ba;
+}
+
+.theme-bg {
+  background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.white-color {
+  color: #fff;
+}
+
+.p-2rem {
+  padding: 2rem;
+}
+
+.gray-color {
+  color: gray;
+}
+
+.font-weight-300 {
+  font-weight: 300;
+}
+
+.box-shadow-normal {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.mb-3 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mr-3 {
+  margin-right: 0.5rem;
+}
+
+.darkGray {
+  color: #5e5e5e;
+}
+
+.pt-4-big {
+  padding-top: 1.5rem;
+}
+
+.pb-4-big {
+  padding-bottom: 1.5rem;
+}
+
+.mb-4-big {
+  margin-bottom: 1.5rem !important;
+}
+
+.font-1rem-big {
+  font-size: 1.5rem !important;
+}
+
+.mb-2rem {
+  margin-bottom: 2rem !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.font-18 {
+  font-size: 1.2rem;
+}
+
+.pt-3 {
+  padding-top: 1rem !important;
+}
+
+.pb-3 {
+  padding-bottom: 1rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.font-15 {
+  font-size: 15px;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.mb-3-rem {
+  margin-bottom: 3rem !important;
+}
+
+.z-index-3 {
+  z-index: 3;
+}
+
+.mt-2rem {
+  margin-top: 2rem;
+}
+
+.pb-2rem {
+  padding-bottom: 2rem;
+}
+
+ion-loading.custom-loader {
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .custom-spinner-box {
+    animation: rotation 8s infinite linear;
+  }
+}
+
+.mt-4 {
+  margin-top: 2rem !important;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.m-2rem{
+  margin: 2rem;
+}
+.h-45{
+  height: 45px !important;
+}

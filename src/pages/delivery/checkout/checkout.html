@@ -1,0 +1,263 @@
+<!--
+  Generated template for the CheckoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+	<ion-navbar class="top_mar_pat">
+		<!-- <button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button> -->
+		<ion-title>Checkout</ion-title>
+		<ion-buttons right>
+			<button ion-button icon-only color="royal" (click)="goto('druginfo')">
+				<ion-icon name="cart">
+					<span class="cartcount" *ngIf="cartcount()">
+						{{cartcount()}}
+					</span>
+				</ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form [formGroup]="checkoutFormData">
+		<ion-row radio-group formControlName="deliveryoption" class="delivery-option" *ngIf="!hideDelveryOption">
+			<ion-col col-12 no-padding class="posRelative">
+				<div class="custom-label">Delivery option</div>
+			    <ion-item no-lines no-padding margin-right>
+					<ion-radio (click)="calculateCartTotal(true)" value="delivery"></ion-radio>
+					<ion-label  >Delivery</ion-label>
+			    </ion-item>
+			    <ion-item no-lines no-padding>
+					<ion-radio (click)="calculateCartTotal(false)" value="pickup"></ion-radio>
+					<ion-label>Pickup</ion-label>
+			    </ion-item>
+			</ion-col>
+		</ion-row>
+		
+		<mbsc-card class="dlivery_slot" *ngIf = "checkoutFormData.value.deliveryoption == 'delivery' && (!hideDelveryOption)">
+			<mbsc-card-content>
+				<mbsc-card-title>Delivery Slot:
+				<span class="" float-right id="showVertical" (click)="vertical.instance.show()">
+					{{selectedDeliverySlot || "Pick delivery slot"}}
+						<ion-icon ios="ios-create" md="md-create" class="mp-text-green"></ion-icon>
+
+				</span>
+			</mbsc-card-title>
+			</mbsc-card-content>
+			<mbsc-card-footer>
+				Order placed before 5PM PST, will be eligible for the same day delivery within available slots.
+			</mbsc-card-footer>
+		</mbsc-card>
+
+				
+
+	 <div  class="shadow"  margin-top no-padding padding-bottom class="delivery-address">
+		<ion-row *ngIf = "checkoutFormData.value.deliveryoption == 'delivery' && (!hideDelveryOption)">
+			<ion-col col-12 no-padding>
+				<div class="custom-label">Delivery Address</div>
+			</ion-col>
+			<ion-col col-9 no-padding class="posRelative">
+				<div class="delivery-address">
+					{{checkoutFormData.value.deliveryaddress}}
+				</div>
+			</ion-col>
+			<ion-col col-3 no-padding text-right>
+		<!--		<button ion-button class="custom mini" (click) = "deliveryAddr.instance.show()" >Edit</button>-->
+					<ion-icon ios="ios-create" md="md-create" class="mp-text-green" (click) = "changeLocation()"></ion-icon>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-12 no-padding>
+				<div class="custom-label">Notes</div>
+			</ion-col>
+			<ion-col col-9 no-padding class="posRelative">
+				<div class="delivery-address">
+					{{deliveryNotesModel || "Delivery notes if any"}}
+				</div>
+			</ion-col>
+			<ion-col col-3 no-padding text-right>
+				<!--<button ion-button class="custom mini" (click) = "deliveryNotes.instance.show()" >Edit</button>-->
+					<ion-icon ios="ios-create" md="md-create" class="mp-text-green" (click) = "deliveryNotes.instance.show()"></ion-icon>
+			</ion-col>
+		</ion-row>
+	</div>	
+	<ion-row margin-top *ngIf = "checkoutFormData.value.deliveryoption == 'delivery' && (!hideDelveryOption)">
+			<ion-col col-8 no-padding class="posRelative">
+				Delivery<span *ngIf="isPickupRequired">& Pickup&nbsp;</span> Charge
+			</ion-col>
+			<ion-col col-4 no-padding class="price-cont">
+				<div class="price">
+					${{deliveryCharge | number : '1.2-2'}}
+
+					<span *ngIf="payOption === 'MPcard' && !isPickupRequired" style='color:red;text-decoration:line-through'>$5.85</span>
+					<span *ngIf="payOption === 'MPcard' && isPickupRequired" style='color:red;text-decoration:line-through'>$11.70</span>
+				</div>
+			</ion-col>	
+		</ion-row>	
+		<ion-row margin-top>
+			<ion-col col-8 no-padding class="posRelative">
+				Total Cart Value
+			</ion-col>
+			<ion-col col-4 no-padding class="price-cont">
+				<div class="price">
+					${{checkoutFormData.value.cartvalue | number : '1.2-2'}}
+				</div>
+			</ion-col>	
+		</ion-row>
+		<ion-row radio-group formControlName="paymentmethod" padding-top>
+			<ion-col col-12 no-padding class="posRelative">
+				<div class="custom-label"  *ngIf="checkoutFormData.value.deliveryoption == 'delivery'">Payment method</div>
+				<div class="custom-label" *ngIf="checkoutFormData.value.deliveryoption == 'pickup'">Pay Directly at Chosen Pharmacy</div>
+			    <ion-item no-lines no-padding margin-right *ngIf = "checkoutFormData.value.deliveryoption == 'delivery' && !hideDelveryOption">
+					<ion-radio value="card"></ion-radio>
+					<ion-label>Card</ion-label>
+					</ion-item>
+					<diV *ngIf = "payOnDelivery">
+						<ion-item no-lines no-padding *ngIf = "checkoutFormData.value.deliveryoption == 'delivery' && !hideDelveryOption || payOnDelivery">
+							<ion-radio value="cash-on-delivery"></ion-radio>
+							<ion-label>Pay on Delivery</ion-label>
+						</ion-item>
+					</diV>
+					<ion-item no-lines no-padding *ngIf="checkoutFormData.value.deliveryoption == 'pickup' && !hideDelveryOption">
+						<ion-radio value="mpcard"></ion-radio>
+						<ion-label>MediPocket Rx Savings Card</ion-label>
+					</ion-item>
+					<ion-item no-lines no-padding *ngIf="checkoutFormData.value.deliveryoption == 'pickup' && !hideDelveryOption">
+						<ion-radio value="insurance_card"></ion-radio>
+						<ion-label>Insurance Card</ion-label>
+					</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col *ngIf="checkoutFormData.value.paymentmethod == 'mpcard'">
+				<mbsc-form class="md-schedule bg-white">
+					<div>
+				<mbsc-note no-margin color="success">Use the MediPocket Pharmacy Discount card to claim discounted cart price, <br>you can get your card from the menu in left to show at pharmacy counter. </mbsc-note>
+				
+				</div>
+				</mbsc-form>
+
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col *ngIf="checkoutFormData.value.paymentmethod == 'insurance_card' || payOption == 'insuranceCard'">
+			
+				<mbsc-form class="md-schedule bg-white">
+					<div>
+				<mbsc-note no-margin color="success">The price shown here is using our Pharamcy discount card, if you use your insurance card, <br>price may differ based on your co-pay.</mbsc-note>
+				</div>
+				</mbsc-form>
+			
+			</ion-col>
+   </ion-row>
+	 
+	 <ion-row>
+			<ion-col col *ngIf="checkoutFormData.value.paymentmethod == 'card'">
+			<mbsc-form class="md-schedule bg-white">
+				<div>
+				<mbsc-note no-margin color="success">We will authorise your card for the payment now, <br> the payment will be processed once the pharmacy confirmed the order.</mbsc-note>
+			</div>
+			</mbsc-form>
+			</ion-col>
+
+		</ion-row>
+
+		<ion-row *ngIf = "checkoutFormData.value.paymentmethod == 'card'">
+			<ion-col col-12 no-padding class="posRelative">
+				<span class="error-cont" *ngIf="checkoutFormData.get('cardholdername').hasError('required') && (checkoutFormData.get('cardholdername').touched || displayError)" >
+					<ion-icon name="alert"></ion-icon>
+					<span class="error-hover">Required</span>
+				</span>
+				<ion-label stacked>Cardholder's Name *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-input type="text" placeholder="Cardholder Name" formControlName="cardholdername" ></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf = "checkoutFormData.value.paymentmethod == 'card'">
+			<ion-col col-12 no-padding class="posRelative">
+				<span class="error-cont" *ngIf="checkoutFormData.get('cardnumber').hasError('required') && (checkoutFormData.get('cardnumber').touched || displayError)" >
+					<ion-icon name="alert"></ion-icon>
+					<span class="error-hover">Required</span>
+				</span>
+				<ion-label stacked>Card Number *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-input type="text" placeholder="Card Number" formControlName="cardnumber" ></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row padding-bottom *ngIf = "checkoutFormData.value.paymentmethod == 'card'">
+			<ion-col col-4 no-padding padding-right class="posRelative">
+				<ion-label stacked>Valid Thru *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-datetime displayFormat="MMM" pickerFormat="MMMM" [max]="maxMonth" [min]="minMonth" placeholder="MM" formControlName="validmonth">
+					</ion-datetime>
+				</ion-item>
+			</ion-col>
+			<ion-col col-4 no-padding padding-right class="posRelative">
+				<ion-label stacked>&nbsp;</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-datetime displayFormat="YYYY" placeholder="YYYY" [max]="maxYear" [min]="minYear" formControlName="validyear">
+					</ion-datetime>
+				</ion-item>
+			</ion-col>
+			<ion-col col-4 no-padding class="posRelative">
+				<span class="error-cont" *ngIf="checkoutFormData.get('cvc').hasError('required') && (checkoutFormData.get('cvc').touched || displayError)" >
+					<ion-icon name="alert"></ion-icon>
+					<span class="error-hover">Required</span>
+				</span>
+				<ion-label stacked>cvc *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-input type="text" placeholder="cvc" formControlName="cvc" ></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-content>
+<ion-footer>
+	<ion-row>
+        <ion-col col-12 no-padding>
+            <button ion-button class="custom" full (click) = "validateCard()" [disabled] = "showSpinner"><ion-spinner name="dots" class="white" *ngIf="showSpinner"></ion-spinner>&nbsp;Complete Purchase - ${{cartValue | number : '1.2-2'}}</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>
+<mbsc-popup [options]="deliveryAddrSettings" #deliveryAddr="mobiscroll">
+    <mbsc-form>
+        <mbsc-form-group inset>
+          <div class="popup-input-cont">
+            <!--<span class="fixed-label">mg</span>
+						<mbsc-input [(ngModel)]="deliveryAddress" type="text" ></mbsc-input>-->
+						<mbsc-textarea [(ngModel)]="deliveryAddress" icon="pencil" icon-align="right" name="deliveryAddress" placeholder="Full address"></mbsc-textarea>
+
+          </div>
+          
+        </mbsc-form-group>
+    </mbsc-form>
+</mbsc-popup>
+
+<mbsc-popup [options]="deliveryNotesSettings" #deliveryNotes="mobiscroll">
+	<mbsc-form>
+			<mbsc-form-group inset>
+				<div class="popup-input-cont">
+					<!--<span class="fixed-label">mg</span>
+					<mbsc-input [(ngModel)]="deliveryAddress" type="text" ></mbsc-input>-->
+					<mbsc-textarea [(ngModel)]="deliveryNotesModel" icon="pencil" icon-align="right" name="deliveryNotes" placeholder="Notes"></mbsc-textarea>
+
+				</div>
+				
+			</mbsc-form-group>
+	</mbsc-form>
+</mbsc-popup>
+
+<mbsc-popup [options]="verticalSettings" #vertical="mobiscroll">
+	<mbsc-listview [options]="lvSettings">
+		<mbsc-listview-item *ngFor="let item of deliverySlots" (click)="vertical.instance.hide()">
+			{{ item.text }}
+		</mbsc-listview-item>
+	</mbsc-listview>
+</mbsc-popup>

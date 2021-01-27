@@ -1,0 +1,30 @@
+<ion-content class="dr-ai-body" padding>
+  <ion-grid class="pb-3" no-padding>
+    <ion-row>
+      <ion-col col-12>
+        <div class="dr-ai-img flex-item flex-row items-center mb-4">
+          <img src="assets/imgs/homes/doctor.png" alt="" srcset="">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="text-center col-margin" col-12>
+        <h3 class="font-18 mb-3" no-margin>
+          Check health symptoms through our advanced Dr. AI. created using science of artificial intelligence with 2D body images, provide analysis of condition with call to action.
+          <p>COMING SOON</p>
+          To be the first one to know when we make it live, turn on auto update in your phone settings for the MediPocket app.
+        </h3>
+        </ion-col>
+        <ion-col col-12>
+          <div class="flex-item flex-row items-center mt-3" (click)="openUrl()">
+            <button ion-button class="default-btn Covid-btn">COVID Symptom Checker</button>
+          </div>
+        </ion-col>
+      <ion-col col-12>
+        <div class="flex-item flex-row items-center mt-3">
+          <button ion-button class="default-btn card-btn" (click)="ok()">ok</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

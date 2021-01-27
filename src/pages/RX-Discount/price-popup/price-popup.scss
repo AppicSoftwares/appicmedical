@@ -1,0 +1,30 @@
+
+page-price-popup {
+    @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+    .price-body {
+        .mr-3 {
+            margin-right: 16px;
+        }
+        .p1{
+            padding: 10px;
+        }
+        .divider {
+            background: #f2f2f2;
+            padding: 14px;
+
+            .text {
+                font-size: 12px;
+
+                .pink-color {
+                    color: #f42072;
+                }
+            }
+        }
+
+        .btn {
+            font-size: 12px;
+            font-weight: normal;
+            width: 150px;
+        }
+    }
+}

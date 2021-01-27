@@ -1,0 +1,91 @@
+<!--
+  Generated template for the SigninPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+		<ion-header>
+		
+			<ion-navbar>
+				<ion-title>&nbsp;&nbsp;</ion-title>
+			</ion-navbar>
+		
+		</ion-header>
+	<ion-content no-padding [ngClass] = "logintype">
+
+ <ion-fab bottom right edge>
+    <button ion-fab class="bg-color-blue" [disabled]= "isSubmitted" (tap)="sendOTP()" >
+			<ion-icon name="ios-arrow-dropright"></ion-icon>
+		</button>
+ </ion-fab>   
+        
+	<div class="logo-cont">
+    
+			<div class="logo-image">  
+					<div class="image"> 
+						<img alt="logo" src="././././assets/imgs/logo-tagline-white.png">
+					</div>
+						
+				 </div>  
+		
+	</div>
+	<div class="signin-cont-outer" >
+		<div class="signin-cont" padding>
+      <div class="page-title">
+        <span>Sign</span> Up
+      </div>
+      <div class="form-content">
+			<form [formGroup]="registerForm" novalidate >
+			<!--	<ion-row>
+					<ion-col col-12 no-padding>
+					 <span class="error-cont" *ngIf="registerForm.get('to').hasError('required') && (registerForm.get('to').touched || displayError)" >
+							<ion-icon name="alert"></ion-icon>
+							<span class="error-hover">Required</span>
+						</span> 
+						<ion-label stacked>We need your Phone number to identify you</ion-label>
+						<ion-item no-padding class="item-username">
+							<button clear item-left class="plus-button">+1</button>
+							<ion-input type="tel" class="stackedissue" placeholder="Enter Phone number" formControlName="to" ></ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row> -->
+				<ion-row>
+					<ion-col col-12 no-padding>
+					 <span class="error-cont" *ngIf="registerForm.get('email').hasError('required') && (registerForm.get('email').touched || displayError)" >
+							<ion-icon name="alert"></ion-icon>
+							<span class="error-hover">Required</span>
+						</span> 
+						<ion-label stacked>Email</ion-label>
+						<ion-item no-padding class="item-username">
+							<ion-input type="email" class="stackedissue" placeholder="Enter Your Email" formControlName="email" ></ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-12 no-padding>
+					 <span class="error-cont" *ngIf="registerForm.get('password').hasError('required') && (registerForm.get('password').touched || displayError)" >
+							<ion-icon name="alert"></ion-icon>
+							<span class="error-hover">Required</span>
+						</span> 
+						<ion-label stacked>Password</ion-label>
+						<ion-item no-padding class="item-username">
+							<ion-input type="password" class="stackedissue" placeholder="Choose Your Password" formControlName="password" ></ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+
+				<!-- <ion-row>
+					<ion-col col-12 no-padding>
+						<div class="social-icon">
+							 <button (click)="loginWithFacebook()"><ion-icon name="logo-facebook"></ion-icon></button>
+							 <button (click)="loginWithGoogle()"><ion-icon name="logo-google"></ion-icon></button>
+						</div>
+					</ion-col>
+				</ion-row> -->
+
+      </form>
+    </div>
+		</div>
+	</div>
+	
+</ion-content>

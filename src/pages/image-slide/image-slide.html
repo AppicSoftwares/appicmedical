@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ImageSlidePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+  <ion-navbar>
+    <ion-title>{{templateTitle}}</ion-title>
+    <ion-buttons end>
+		<button ion-button icon-only (click)="dismiss()">
+			<ion-icon name="close"></ion-icon>
+		</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding>
+
+  <div *ngIf="template == 'uploaded_insurance'" [style.height] = "'100%'">
+    <div class="image" [style.background-image]="currentImage" [style.background-repeat] = "'no-repeat'" [style.height] = "'100%'" [style.background-position]="'center'" [style.background-size]="'contain'">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
+    </div>
+  </div>
+	<div class="images-wrapper" padding-bottom *ngIf="!template">
+        <ion-row>
+            <ion-col col-12 no-padding class="image-wrapper">
+                <div class="image" [style.background-image]="currentImage">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""/>
+                </div>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

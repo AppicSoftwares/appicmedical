@@ -1,0 +1,80 @@
+
+page-invite-family-popup {
+    @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+    .invite-body {
+        background: #fff;
+
+        .input-container {
+            border: 2px solid #00d6ba;
+            border-radius: 6px;
+             margin-bottom: 1rem;
+            overflow: inherit;
+            contain: none;
+
+            &-general {
+                margin-bottom: 2rem !important;
+            }
+
+            .item-inner {
+                margin-left: 0;
+            }
+
+            &:nth-child(2) {
+                //   margin-bottom: 6rem;
+                padding-right: 0.8rem;
+            }
+
+            .label {
+                position: absolute;
+                top: -19px;
+                left: 20px;
+                background-color: #fff;
+                color: #00d6ba;
+                padding: 0 0.75rem;
+                font-weight: 300;
+            }
+
+            .icon {
+                font-size: 2rem;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #00d6ba;
+            }
+        }
+
+        .row-data {
+            padding: 16px;
+
+            .img-container {
+                margin: 3rem 0;
+
+                .img {
+                    height: 60px;
+                    width: 60px;
+                }
+            }
+
+        }
+
+        .title {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .row-bg {
+            background: #f6f6f6;
+            padding: 12px 0;
+
+            .b-right {
+                border-right: 1px solid #c4c4c4;
+            }
+
+            .btn {
+                height: 20px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,186 @@
+
+page-drug-info {
+	.toolbar-title {
+		text-align: center;
+		transform: translate(-30px, 0px);
+		letter-spacing: 0.8px;
+	}
+
+	 .toolbar-background-md {
+		background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+	}
+
+	.images-wrapper {
+		font-size: 0;
+		.image-wrapper {
+			display: inline-block;
+			margin: 0;
+			width: 33.3333%;
+			box-sizing: border-box;
+			padding: 1px;
+			position: relative;
+			.remove-image {
+				z-index: 100;
+				position: absolute;
+				right: 1px;
+				top: 1px;
+				padding: 5px 6px;
+				font-size: 20px;
+				text-shadow: white 0 0 1px;
+			}
+			ion-spinner {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				* {
+					stroke: white;
+				}
+			}
+			.image {
+				position: relative;
+				background-size: cover;
+				background-position: center center;
+				img {
+					width: 100%;
+					&.uploading {
+						background: rgba(0, 0, 0, 0.20);
+					}
+				}
+				ion-icon {
+					font-size: 50px;
+					position: absolute;
+					transform: translate(-50%, -50%);
+					top: 50%;
+					left: 50%;
+					color: white;
+				}
+				.progress-bar {
+					height: 6px;
+					width: 100%;
+					position: absolute;
+					bottom: 0px;
+					overflow: hidden;
+					.progress {
+						background: map_get($colors, 'primary');
+						height: 100%;
+					}
+				}
+			}
+
+			&.add-image-btn .image {
+				background: #DDD;
+			}
+		}
+  	}
+	.selected_drug{
+		padding: 8px;
+		text-transform: capitalize;
+		background: #fff;
+		color: #000;
+	}
+	.selected_drug .name{
+		font-size: 1.4rem;
+	}
+	.selected_drug .sub{
+		font-size: 1.2rem;
+	}
+	.selected_drug .type {
+		padding: 8px 0px;
+		border-bottom: 1px solid #00d6ba;
+		text-transform: uppercase;
+		font-size: 1.2rem;
+		color: #00d6ba;
+	}
+	.quantity {
+		padding-top: 3px;
+	}
+	.quantity .count {
+		border-radius: 5px;
+		padding: 3px 0px;
+		font-size: 1.2rem;
+		color: #ad9999;
+	}
+	.quantity .edit{
+		padding-left: 8px;
+		font-size: 1.2rem;
+	}
+	.druglist {
+		padding: 8px 0px;
+	}
+	.price {
+		text-align: center;
+	    padding: 8px 0px;
+	    border: 1px solid #00d6ba;
+	    border-radius: 3px;
+	    width: 100%;
+	}
+	.price-cont {
+		display: flex;
+		align-items: flex-end;
+		width: 100%;
+	}
+	.button.transparent, .button.transparent:hover {
+		background: #fff;
+	    color: #00d6ba;
+	    margin: 0px;
+	    text-transform: inherit;
+	    font-weight: normal;
+	    height: 4.4rem;
+	}
+	.action-cont .col {
+		padding: 0px 8px;
+	}
+	.remove-drug-cont, .remove-membership-cont {
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		align-items: flex-end;
+		padding-bottom: 10px;
+	}
+	.custom.savemembership, .custom.savemembership:hover {
+		background: #c6cace;
+		color: #454b50;
+	}
+	 
+	.posRel{
+		position: relative;
+	}
+	 .drug-info-pill-pos{
+		    position: absolute;
+			top: -4px;
+			right: 0px;
+	 }
+
+	 .pill{
+		 margin-right: 3px;
+	 }
+
+	 .override-margin-right{
+		 margin-right: 9px !important;
+	 }
+
+	 .top_mar_pat {
+		padding-top: 52px !important;
+		padding-bottom: 18px !important;
+	  }
+	  
+	  .button.custom {
+		background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+		margin: 0px;
+		text-transform: inherit;
+		font-weight: normal;
+		height: 4.4rem;
+		letter-spacing: 0.8px;
+		
+	}
+		.pill-default {
+		    background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+			color: #ffffff;
+		}
+		.toolbar-md {
+			padding: 4px;
+			min-height: 100px;
+		}
+	
+}

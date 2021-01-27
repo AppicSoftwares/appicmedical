@@ -1,0 +1,10 @@
+
+page-feedback {
+	@import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+	.feedback_comment_input{
+		.text-input{
+			background: #f9f9f9;
+			padding:5px;
+		}
+	}
+}

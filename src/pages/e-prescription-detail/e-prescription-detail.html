@@ -1,0 +1,110 @@
+<!--
+  Generated template for the OrderStatusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+  <ion-navbar>
+    <!--<button ion-button menuToggle  *ngIf="fromPage !== 'orderList'">
+	   <ion-icon name="menu"></ion-icon>
+	 </button>-->
+	
+	    <button ion-button menuToggle (tap)="closeModel({})">
+			<ion-icon name="arrow-back"></ion-icon>
+		</button>
+	
+	<ion-title *ngIf="fromPage == 'EPrescriptionList'">E-Prescription Detail</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-row padding-bottom>
+		<ion-col padding-right>
+		<div><b>Doctor Address </b></div>
+		<div><small> W Pico Blvd, Los Angeles, CA 90064, USA</small></div>
+		</ion-col>
+		<ion-col text-right>
+			<div><b>Created at</b> </div>
+			<div><small>OCT 28, 2014</small></div>
+		</ion-col>	
+	</ion-row>
+
+	<div class="sep" padding-bottom>
+</div>
+
+<ion-row class="padding-bottom-half">
+	<ion-col >
+		<div ><b>Dr. Richard John MBBS</b> </div>
+	
+	</ion-col>
+	
+</ion-row>
+
+<ion-row class="padding-bottom-half">
+	<ion-col padding-right>
+		<div><b>DAE# </b></div>
+		<div><small> AB66653DF</small></div>
+	</ion-col>
+	<ion-col text-right>
+		<div><b>State LIC#</b> </div>
+		<div><small>MME8467</small></div>
+	</ion-col>
+</ion-row>
+
+<ion-row class="padding-bottom-half">
+	<ion-col padding-right>
+		<div><b>Patient Name </b></div>
+		<div><small> Harish Delwar</small></div>
+	</ion-col>
+	<ion-col text-right>
+		<div><b>Patient Address</b> </div>
+		<div><small>2716 Griffith Park Blvd, Los Angeles, CA 90027, USA</small></div>
+	</ion-col>
+</ion-row>
+
+<ion-row class="padding-bottom-half">
+	<ion-col padding-right>
+		<div><b>DOB </b></div>
+		<div><small> OCT 5, 1987</small></div>
+	</ion-col>
+	<ion-col text-right>
+		<div><b>Phone</b> </div>
+		<div><small>+19865472075</small></div>
+	</ion-col>
+</ion-row>
+<ion-row class="padding-bottom-half">
+	<ion-col padding-right>
+		<div><b>Pharmacy Name </b></div>
+		<div><small>CVS Pharmacy</small></div>
+	</ion-col>
+	<ion-col text-right>
+		<div><b>Address</b> </div>
+		<div><small>3400 Whittier Blvd, Los Angeles, CA 90023, USA</small></div>
+	</ion-col>
+</ion-row>
+
+	<div class="sep" padding-bottom>
+	 <small>	Prescribed Medicine </small>
+	</div>
+
+
+</ion-content>
+<ion-footer  *ngIf="fromPage === 'EPrescriptionList'">
+	<ion-row>
+		
+		<ion-col col no-padding >
+			<button ion-button class="custom" full 
+				(click)="closeModel({})">Close</button>
+		</ion-col>
+		
+	 
+
+	    
+
+    </ion-row>
+
+</ion-footer>
+
+ 

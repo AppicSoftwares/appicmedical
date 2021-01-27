@@ -1,0 +1,291 @@
+<!--
+  Generated template for the RequestPxPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+  <ion-navbar class="top_mar_pat">
+    <button ion-button menuToggle>
+      <!--<ion-icon name="menu"></ion-icon>-->
+    </button>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+	<div class="doctor-cont" padding *ngIf="!isItFill">
+		<form [formGroup]="requestpxFormData">
+			<ion-row *ngIf="!doctorNotFound">
+				<ion-col col-12 text-center class="doctor-name" no-padding>
+					<select mbsc-select [mbsc-options]="doctorSettings" #doctorSelect="mobiscroll" formControlName="doctor" class="doctor-dd"></select>
+				</ion-col>
+				<ion-col col-12 text-center no-padding class="posRelative">
+					<a href="javascript:void(0);" class="edit-doctor" (click) = "doctorSelect.instance.show()" *ngIf ="!requestpxFormData.value.doctor">
+						<ion-icon name="create"></ion-icon>&nbsp;Pick a Doctor
+					</a>
+					<a href="javascript:void(0);" class="edit-doctor" (click) = "doctorSelect.instance.show()" *ngIf ="requestpxFormData.value.doctor">
+						<ion-icon name="create"></ion-icon>&nbsp;Edit
+					</a>
+					<span class="error-cont" *ngIf="requestpxFormData.get('doctor').hasError('required') && (requestpxFormData.get('doctor').touched || displayError)" >
+						<ion-icon name="alert"></ion-icon>
+						<span class="error-hover">Required</span>
+					</span>
+				</ion-col>
+			</ion-row>
+			<ion-row margin-top *ngIf="requestpxFormData.value.doctor"> 
+				<ion-col col-12 class="shadow doctor-address" padding>
+					<div class="hospital-label">Hospital/ Clinic Address</div>
+					<div class="hospital-name" *ngIf="currentDoctorData.hospital">{{currentDoctorData.hospital}}</div>
+					<div class="hospital-address" *ngIf="currentDoctorData.address">{{currentDoctorData.address}}</div>
+				</ion-col>
+			</ion-row>
+			<ion-row *ngIf="doctorNotFound">
+				<ion-col col-12 no-padding class="posRelative" text-right>
+						<button ion-button color="danger" small outline (click)="closeNewDoctor()">Close</button>
+				</ion-col>
+			</ion-row>
+			<ion-row *ngIf="doctorNotFound">
+				<ion-col col-12 no-padding class="posRelative">
+					<span class="error-cont"
+						*ngIf="requestpxFormData.get('name').hasError('required') && (requestpxFormData.get('name').touched || displayError)">
+						<ion-icon name="alert"></ion-icon>
+						<span class="error-hover">Required</span>
+					</span>
+					<ion-label stacked>Doctor Name *</ion-label>
+					<ion-item no-padding class="item-name">
+						<ion-input placeholder="Doctor Name" formControlName="name"></ion-input>
+					</ion-item>
+			
+				</ion-col>
+			</ion-row>
+
+			<ion-row *ngIf="doctorNotFound">
+				<ion-col col-12 no-padding class="posRelative">
+					<span class="error-cont"
+						*ngIf="requestpxFormData.get('clinicalAddress').hasError('required') && (requestpxFormData.get('clinicalAddress').touched || displayError)">
+						<ion-icon name="alert"></ion-icon>
+						<span class="error-hover">Required</span>
+					</span>
+					<ion-label stacked>Clinic Address *</ion-label>
+					<ion-item no-padding class="item-name">
+							<ion-textarea placeholder="Clinical Address" formControlName="clinicalAddress" rows="3" ></ion-textarea>
+					</ion-item>
+			
+				</ion-col>
+			</ion-row>
+
+				<ion-row *ngIf="doctorNotFound">
+					<ion-col col-12 no-padding class="posRelative">
+						<span class="error-cont"
+							*ngIf="requestpxFormData.get('phone').hasError('required') && (requestpxFormData.get('phone').touched || displayError)">
+							<ion-icon name="alert"></ion-icon>
+							<span class="error-hover">Required</span>
+						</span>
+						<ion-label stacked>Doctor/Clinic Phone *</ion-label>
+						<ion-item no-padding class="item-name">
+							<ion-input type="tel" placeholder="Doctor Phone" formControlName="phone"></ion-input>
+						</ion-item>
+				
+					</ion-col>
+				</ion-row>
+
+					<ion-row *ngIf="doctorNotFound">
+						<ion-col col-12 no-padding class="posRelative">
+							<span class="error-cont"
+								*ngIf="requestpxFormData.get('email').hasError('required') && (requestpxFormData.get('email').touched || displayError)">
+								<ion-icon name="alert"></ion-icon>
+								<span class="error-hover">Required</span>
+							</span>
+							<ion-label stacked>Doctor Email *</ion-label>
+							<ion-item no-padding class="item-name">
+								<ion-input type="email" placeholder="Doctor Email"  formControlName="email"></ion-input>
+							</ion-item>
+					
+						</ion-col>
+					</ion-row>
+
+
+
+			<ion-row>
+				<ion-col col-12 no-padding class="posRelative">
+					<span class="error-cont" *ngIf="requestpxFormData.get('reason').hasError('required') && (requestpxFormData.get('reason').touched || displayError)" >
+						<ion-icon name="alert"></ion-icon>
+						<span class="error-hover">Required</span>
+					</span>
+					<ion-label stacked>Reason for Request *</ion-label>
+					<ion-item no-padding class="item-name">
+						<ion-textarea placeholder="Enter here" formControlName="reason" rows="3"></ion-textarea>
+					</ion-item>
+					
+				</ion-col>
+			</ion-row>
+		</form>
+	</div>
+	<div class="doctor-cont" *ngIf="isItFill">
+		<form [formGroup]="fillpxFormData">
+			
+
+			<mbsc-card class="no-margin-force">
+				<mbsc-card-content>
+						<mbsc-card-title>Doctor Detail</mbsc-card-title>
+
+						<ion-row >
+							<ion-col col-12 no-padding class="posRelative">
+								<span class="error-cont"
+									*ngIf="fillpxFormData.get('doctor_name').hasError('required') && (fillpxFormData.get('doctor_name').touched || displayError)">
+									<ion-icon name="alert"></ion-icon>
+									<span class="error-hover">Required</span>
+								</span>
+								<ion-label stacked>Doctor Name *</ion-label>
+								<ion-item no-padding class="item-name">
+									<ion-input placeholder="Doctor Name" formControlName="doctor_name"></ion-input>
+								</ion-item>
+						
+							</ion-col>
+						</ion-row>
+			
+						<ion-row >
+							<ion-col col-12 no-padding class="posRelative">
+								<span class="error-cont"
+									*ngIf="fillpxFormData.get('clinicalAddress').hasError('required') && (fillpxFormData.get('clinicalAddress').touched || displayError)">
+									<ion-icon name="alert"></ion-icon>
+									<span class="error-hover">Required</span>
+								</span>
+								<ion-label stacked>Clinic Address *</ion-label>
+								<ion-item no-padding class="item-name">
+										<ion-textarea placeholder="Clinical Address" formControlName="clinicalAddress" rows="3" ></ion-textarea>
+								</ion-item>
+						
+							</ion-col>
+						</ion-row>
+			
+							<ion-row >
+								<ion-col col-12 no-padding class="posRelative">
+									<span class="error-cont"
+										*ngIf="fillpxFormData.get('phone').hasError('required') && (fillpxFormData.get('phone').touched || displayError)">
+										<ion-icon name="alert"></ion-icon>
+										<span class="error-hover">Required</span>
+									</span>
+									<ion-label stacked>Doctor/Clinic Phone *</ion-label>
+									<ion-item no-padding class="item-name">
+										<ion-input type="tel" placeholder="Doctor Phone" formControlName="phone"></ion-input>
+									</ion-item>
+							
+								</ion-col>
+							</ion-row>
+			
+								<ion-row >
+									<ion-col col-12 no-padding class="posRelative">
+										<span class="error-cont"
+											*ngIf="fillpxFormData.get('email').hasError('required') && (fillpxFormData.get('email').touched || displayError)">
+											<ion-icon name="alert"></ion-icon>
+											<span class="error-hover">Required</span>
+										</span>
+										<ion-label stacked>Doctor Email</ion-label>
+										<ion-item no-padding class="item-name">
+											<ion-input type="email" placeholder="Doctor Email"  formControlName="email"></ion-input>
+										</ion-item>
+								
+									</ion-col>
+								</ion-row>
+
+				</mbsc-card-content>
+				
+		</mbsc-card>
+			
+		<mbsc-card class="no-margin-force">
+			<mbsc-card-content>
+					<mbsc-card-title>Pharmacy Detail 
+						<br>
+						<small>
+							<a href="javascript:void(0)" class="mp-text-green" (click)="warningChangePhamracy()">
+								Want change pharmacy?
+							</a>
+						</small>
+					</mbsc-card-title>
+
+					<ion-row >
+						<ion-col col-12 no-padding class="posRelative">
+							<span class="error-cont"
+								*ngIf="fillpxFormData.get('pharmacyName').hasError('required') && (fillpxFormData.get('pharmacyName').touched || displayError)">
+								<ion-icon name="alert"></ion-icon>
+								<span class="error-hover">Required</span>
+							</span>
+							<ion-label stacked>Pharmacy Rx Sent To *</ion-label>
+							<ion-item no-padding class="item-name">
+								<ion-input [disabled]="true" placeholder="Pharmacy Name" formControlName="pharmacyName"></ion-input>
+							</ion-item>
+					
+						</ion-col>
+					</ion-row>
+					
+					<ion-row >
+						<ion-col col-12 no-padding class="posRelative">
+							<span class="error-cont"
+								*ngIf="fillpxFormData.get('pharmacyPhone').hasError('required') && (fillpxFormData.get('pharmacyPhone').touched || displayError)">
+								<ion-icon name="alert"></ion-icon>
+								<span class="error-hover">Required</span>
+							</span>
+							<ion-label stacked>Pharmacy Phone *</ion-label>
+							<ion-item no-padding class="item-name">
+								<ion-input [disabled]="true" placeholder="Pharmacy Phone" formControlName="pharmacyPhone"  ></ion-input>
+							</ion-item>
+					
+						</ion-col>
+					</ion-row>
+
+					<ion-row >
+						<ion-col col-12 no-padding class="posRelative">
+							<span class="error-cont"
+								*ngIf="fillpxFormData.get('pharmacyAddress').hasError('required') && (fillpxFormData.get('pharmacyAddress').touched || displayError)">
+								<ion-icon name="alert"></ion-icon>
+								<span class="error-hover">Required</span>
+							</span>
+							<ion-label stacked>Pharmacy Address *</ion-label>
+							<ion-item no-padding class="item-name">
+									<ion-textarea [disabled]="true" placeholder="Pharmacy Address" formControlName="pharmacyAddress" rows="3" ></ion-textarea>
+							</ion-item>
+					
+						</ion-col>
+					</ion-row>
+
+					
+
+			</mbsc-card-content>
+			
+	  </mbsc-card>
+
+		</form>
+	</div>
+	
+	
+	<div class="otc-drugs-cont selected_drug" margin-bottom *ngIf="rxdrugs.length">
+		<ion-row *ngFor="let rxdrug of rxdrugs; let in = index; let isOdd=odd; let isEven=even; let isLast=last" [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst" class="druglist">
+			<ion-col col-12 no-padding>
+				<div class="name">
+		            {{rxdrug.drug.text}}
+		        </div>
+		        <div class="sub" *ngIf="rxdrug.drug.sub">
+		            {{rxdrug.drug.sub}}
+		        </div>
+		        <div class="quantity">
+		          <span class="count">30 Tablets, 300 mg</span>
+		        </div>
+			</ion-col>		
+		</ion-row>
+	</div>
+</ion-content>
+<ion-footer>
+	<ion-row>
+		<ion-col col-12 padding text-center *ngIf = "rxdrugs.length">
+			<div class="pharmacy-name">{{rxdrugs[0].pharmacy_name}}</div>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+        <ion-col col-12 no-padding>
+						<button ion-button class="custom" *ngIf="!isItFill" [disabled]="submitted"  full (click) = "sendRequest()">Send Request</button>
+						<button ion-button class="custom" *ngIf="isItFill" full (click) = "addRxObj()">Submit</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

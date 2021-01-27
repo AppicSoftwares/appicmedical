@@ -1,0 +1,113 @@
+<!--
+  Generated template for the LowestPricePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="rx-discount-header" no-border>
+  <ion-navbar  text-center color="themeColor" class="top_fam ">
+    <ion-title  class="mar">Rx Discount Card</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="rx-discount-body" *ngIf="smallbanner" padding>
+  <ion-grid no-padding class="mar_fam">
+    <ion-row>
+      <ion-col col-12 class="mb-3-rem">
+        <div class="flex-item flex-row align-center items-center mb-3">
+          <label class="theme-color text-uppercase font-weight-300">simply show this card at any pharmacy</label>
+        </div>
+        <div class="flex-item flex-row align-center items-center">
+          <label class="theme-color text-uppercase font-weight-300">at checkout to get discount</label>
+        </div>
+      </ion-col>
+      <ion-col col-12>
+        <ion-segment [(ngModel)]="segement">
+          <ion-segment-button value="family">
+            for family
+          </ion-segment-button>
+          <ion-segment-button value="pet">
+            for pet
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+    <ion-row [ngSwitch]="segement">
+      <ion-col *ngSwitchCase="'family'" col-12>
+        <div class="flex-item flex-row items-center banner-container box-shadow-normal">
+          <img src="assets/imgs/banner-img.png" (click)="showBigImage()">
+        </div>
+        <div class="flex-item flex-row items-space-between mb-2rem">
+          <label class="small-text">
+            <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+            discount on generic, brand otc
+          </label>
+          <label class="small-text">
+            <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+            free card never expire
+          </label>
+        </div>
+        <div class="flex-item flex-row items-space-around">
+          <img src="assets/onboardingscreen/cvs-pharmacy.svg">
+          <img src="assets/onboardingscreen/Walgreens.svg" >
+          <img src="assets/onboardingscreen/Walmart.svg" >
+          <img src="assets/onboardingscreen/Rite-Aid.svg" >
+          <img src="assets/onboardingscreen/brand5.svg" >
+        </div>
+        <div class="flex-item flex-column mt-3 col-12">
+          <div class="flex-item flex-row items-center btn-container col-12 m-tb-large ">
+            <button ion-button block class="btn-pink box-shadow-normal" color="pink" (click)="lowPrice()">
+              <ion-icon name="search"></ion-icon>
+              <span class="text">find lowest price</span>
+            </button>
+          </div>
+          <div class="flex-item flex-row items-center btn-container col-12">
+            <button ion-button block class="btn-pink box-shadow-normal" color="themeColor" (click)="shareMpCard('family')">
+              <ion-icon name="md-share"></ion-icon>
+              <span class="text">share to help</span>
+            </button>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col *ngSwitchCase="'pet'" col-12>
+        <div class="flex-item flex-row items-center banner-container box-shadow-normal">
+          <img src="assets/imgs/medidelivery/pharmacy-savings-card-front-pet.png">
+        </div>
+        <div class="flex-item flex-row items-space-between mb-2rem">
+          <label class="small-text">
+            <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+            discount on generic, brand otc
+          </label>
+          <label class="small-text">
+            <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+            free card never expire
+          </label>
+        </div>
+        <div class="flex-item flex-row items-space-around">
+          <img src="assets/onboardingscreen/cvs-pharmacy.svg">
+          <img src="assets/onboardingscreen/Walgreens.svg" >
+          <img src="assets/onboardingscreen/Walmart.svg" >
+          <img src="assets/onboardingscreen/Rite-Aid.svg" >
+          <img src="assets/onboardingscreen/brand5.svg" >
+        </div>
+        <div class="flex-item flex-column mt-3 col-12">
+          <div class="flex-item flex-row items-center btn-container col-12 m-tb-large ">
+            <button ion-button block class="btn-pink box-shadow-normal" color="pink" (click)="lowPrice()" >
+              <ion-icon name="search"></ion-icon>
+              <span class="text">find lowest price</span>
+            </button>
+          </div>
+          <div class="flex-item flex-row items-center btn-container col-12">
+            <button ion-button block class="btn-pink box-shadow-normal" color="themeColor" (click)="shareMpCard('pet')">
+              <ion-icon name="md-share"></ion-icon>
+              <span class="text">share to help</span>
+            </button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-content class="rx-discount-body" *ngIf="bigImageBanner" padding>
+    <img src="assets/imgs/banner-img.png" (click)="showBigImage()">
+</ion-content>

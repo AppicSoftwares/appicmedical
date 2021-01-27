@@ -1,0 +1,162 @@
+<!--
+  Generated template for the MembershipCardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="rx-discount-header" no-border>
+	<ion-navbar color="themeColor">
+	  <ion-title text-center>Rx DISCOUNT CARD</ion-title>
+	</ion-navbar>
+  </ion-header>
+  <ion-content class="rx-discount-body" padding>
+	<ion-grid no-padding>
+	  <ion-row>
+		<ion-col col-12 class="mb-3-rem">
+		  <div class="flex-item flex-row align-center items-center mb-3">
+			<label class="theme-color text-uppercase font-weight-300">simply show this card at any pharmacy</label>
+		  </div>
+		  <div class="flex-item flex-row align-center items-center">
+			<label class="theme-color text-uppercase font-weight-300">at checkout to get discount</label>
+		  </div>
+		</ion-col>
+		<ion-col col-12>
+		  <ion-segment [(ngModel)]="toWhom">
+			<ion-segment-button value="family">
+			  for family
+			</ion-segment-button>
+			<ion-segment-button value="pet">
+			  for pet
+			</ion-segment-button>
+		  </ion-segment>
+		</ion-col>
+	  </ion-row>
+	  <ion-row [ngSwitch]="toWhom">
+		<ion-col *ngSwitchCase="'family'" col-12>
+		  <div class="flex-item flex-row items-center banner-container box-shadow-normal">
+			<img src="assets/imgs/banner-img.png">
+		  </div>
+		  <div class="flex-item flex-row items-space-between mb-2rem">
+			<label class="small-text">
+			  <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+			  discount on generic, brand otc
+			</label>
+			<label class="small-text">
+			  <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+			  free card never expire
+			</label>
+		  </div>
+		  <div class="flex-item flex-row items-space-around">
+			<img src="assets/imgs/brands/brand-1.png">
+			<img src="assets/imgs/brands/brand-2.png">
+			<img src="assets/imgs/brands/brand-3.png">
+			<img src="assets/imgs/brands/brand-4.png">
+			<img src="assets/imgs/brands/brand-5.png">
+		  </div>
+		  <div class="flex-item flex-column mt-3 col-12">
+			<div class="flex-item flex-row items-center btn-container col-12 m-tb-large ">
+			  <button ion-button block class="btn-pink box-shadow-normal" color="pink" (click)="lowPrice()">
+				<ion-icon name="search"></ion-icon>
+				<span class="text">find lowest price</span>
+			  </button>
+			</div>
+			<div class="flex-item flex-row items-center btn-container col-12">
+			  <button ion-button block class="btn-pink box-shadow-normal" color="themeColor" (click)="shareMpCard('family')">
+				<ion-icon name="md-share"></ion-icon>
+				<span class="text">share to help</span>
+			  </button>
+			</div>
+			<div class="flex-item flex-row items-center btn-container col-12 m-tb-large">
+				<button ion-button block class="btn-pink box-shadow-normal" color="pink" (click)="okay()">
+				 
+				  <span class="text">ok</span>
+				</button>
+			  </div>
+		  </div>
+		</ion-col>
+		<ion-col *ngSwitchCase="'pet'" col-12>
+		  <div class="flex-item flex-row items-center banner-container box-shadow-normal">
+			<img src="assets/imgs/medidelivery/pharmacy-savings-card-front-pet.png">
+		  </div>
+		  <div class="flex-item flex-row items-space-between mb-2rem">
+			<label class="small-text">
+			  <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+			  discount on generic, brand otc
+			</label>
+			<label class="small-text">
+			  <ion-icon name="checkmark-circle" color="themeColor"></ion-icon>
+			  free card never expire
+			</label>
+		  </div>
+		  <div class="flex-item flex-row items-space-around">
+			<img src="assets/imgs/brands/brand-1.png">
+			<img src="assets/imgs/brands/brand-2.png">
+			<img src="assets/imgs/brands/brand-3.png">
+			<img src="assets/imgs/brands/brand-4.png">
+			<img src="assets/imgs/brands/brand-5.png">
+		  </div>
+		  <div class="flex-item flex-column mt-3 col-12">
+			<div class="flex-item flex-row items-center btn-container col-12 m-tb-large ">
+			  <button ion-button block class="btn-pink box-shadow-normal" color="pink" (click)="lowPrice()" >
+				<ion-icon name="search"></ion-icon>
+				<span class="text">find lowest price</span>
+			  </button>
+			</div>
+			<div class="flex-item flex-row items-center btn-container col-12">
+			  <button ion-button block class="btn-pink box-shadow-normal" color="themeColor" (click)="shareMpCard('pet')">
+				<ion-icon name="md-share"></ion-icon>
+				<span class="text">share to help</span>
+			  </button>
+			</div>
+			<div class="flex-item flex-row items-center btn-container col-12 m-tb-large">
+				<button ion-button block class="btn-pink box-shadow-normal" color="pink" (click)="okay()">
+				 
+				  <span class="text">ok</span>
+				</button>
+			  </div>
+		  </div>
+		</ion-col>
+	  </ion-row>
+	</ion-grid>
+  </ion-content>
+<!-- <ion-content padding>
+	<mbsc-form class="md-schedule bg-white">
+		<div>
+			<mbsc-note color="success" no-margin margin-bottom>FREE CARD! NEVER EXPIRES!</mbsc-note>
+
+			<mbsc-segmented-group [(ngModel)]="toWhom" class="no-padding">
+				<mbsc-segmented value="family">For Family</mbsc-segmented>
+				<mbsc-segmented value="pet">For Pet</mbsc-segmented>
+
+			</mbsc-segmented-group>
+		</div>
+	</mbsc-form>
+
+	<div class="card-scroll-cont" *ngIf="toWhom == 'family'" padding-top>
+		<div class="custom-card-cont">
+			<div class="custom-card">
+				<img src="assets/imgs/medidelivery/pharmacy-savings-card-front.png" />
+			</div>
+
+		</div>
+	</div>
+	<div class="card-scroll-cont" *ngIf="toWhom == 'pet'" padding-top>
+		<div class="custom-card-cont">
+			<div class="custom-card">
+				<img src="assets/imgs/medidelivery/pharmacy-savings-card-front-pet.png" />
+			</div>
+
+		</div>
+	</div>
+	<button margin-top ion-button icon-end full (click)="shareMpCard()" class="share-button mp-bg-green">
+		<b>SHARE &nbsp;</b> Help Your Family & Friends SAVE too!
+		<ion-icon name="md-share"></ion-icon>
+	</button>
+</ion-content> -->
+<ion-footer *ngIf="membershipCreatedId">
+	<ion-row>
+		<ion-col col-12 no-padding>
+			<button ion-button class="custom" full (click)="continue()">Continue</button>
+		</ion-col>
+	</ion-row>
+</ion-footer>

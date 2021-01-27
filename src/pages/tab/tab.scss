@@ -1,0 +1,55 @@
+
+page-tab {
+  @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+  .tabs-md {
+    .tabbar {
+      padding: 0.8rem 0 0 0;
+      border-radius: 26px 26px 0 0;
+      box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2);
+    }
+    ion-icon[class*="tab-notification"] {
+      -webkit-mask-image: url("/assets/imgs/tabs-icons/note.svg");
+      mask-image: url("/assets/imgs/tabs-icons/note.svg");
+    }
+
+    .tab-button {
+      &-icon {
+        margin-top: 4px;
+      }
+      &-text{
+        white-space: break-spaces;
+      }
+    }
+    
+   
+    // .tab-button[aria-selected="true"] {
+    //   color: #f42072;
+    // }
+    
+    // .ion-logo-usd:before {
+    //   content: url('../assets/imgs/homes/family-tree.png');
+    // }
+
+    // .ion-md-heart:before {
+    //   content: url('../assets/imgs/homes/discount-card.png');
+    // }
+
+    // .ion-md-home:before {
+    //   content: url('../assets/imgs/homes/home.png');
+    // }
+
+    // .ion-md-notifications:before {
+    //   content: url('../assets/imgs/homes/notification.png');
+    // }
+    // .ion-md-more:before{
+    //   content: url('../assets/imgs/homes/more.png');
+    // }
+    // .ion-md-notifications{
+    //     min-width: 68px;
+    // }
+  }
+}
+.tabs-md .tab-button[aria-selected=true] {
+  color: #f42072;
+  padding: 7px !important;
+}

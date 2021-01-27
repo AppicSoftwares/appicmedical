@@ -1,0 +1,101 @@
+
+<ion-content >
+  <!-- <h6 text-center margin-vertical>{{ pagetitle }}</h6>
+  <div text-center large margin-vertical>
+     <ion-icon [name]="pin.length>0 ? 'radio-button-on' : 'radio-button-off'"></ion-icon>
+    <ion-icon [name]="pin.length>1 ? 'radio-button-on' : 'radio-button-off'"></ion-icon>
+    <ion-icon [name]="pin.length>2 ? 'radio-button-on' : 'radio-button-off'"></ion-icon>
+    <ion-icon [name]="pin.length>3 ? 'radio-button-on' : 'radio-button-off'"></ion-icon> 
+  </div>
+
+  <div>
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('1')">1</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('2')">2</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('3')">3</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('4')">4</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('5')">5</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('6')">6</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('7')">7</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('8')">8</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('9')">9</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <button ion-button round large outline (click)="handleInput('0')">0</button>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button clear large no-padding (click)="handleInput('clear')">Clear</button>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <button ion-button clear large (click)="emitEvent()">OK</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div> -->
+  <div class="ILS_lock" [ngClass]="!_showLockScreen ?  'ILS_lock-hidden' : ''">
+    <div class="ILS_label-row">
+      {{passcodeLabel}}
+    </div>
+    <div class="ILS_circles-row" [ngClass]="passcodeWrong ?  'ILS_shake' : ''">
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>0 ? 'ILS_full' : ''"></div>
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>1 ? 'ILS_full' : ''"></div>
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>2 ? 'ILS_full' : ''"></div>
+      <!-- <div class="ILS_circle" [ngClass]=" enteredPasscode.length>3 ? 'ILS_full' : ''"></div> -->
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="digit(1)" class="ILS_digit">1</div>
+      <div (click)="digit(2)" class="ILS_digit">2</div>
+      <div (click)="digit(3)" class="ILS_digit">3</div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="digit(4)" class="ILS_digit">4</div>
+      <div (click)="digit(5)" class="ILS_digit">5</div>
+      <div (click)="digit(6)" class="ILS_digit">6</div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="digit(7)" class="ILS_digit">7</div>
+      <div (click)="digit(8)" class="ILS_digit">8</div>
+      <div (click)="digit(9)" class="ILS_digit">9</div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="allClear()" class="ILS_digit ILS_ac">AC</div>
+      <div (click)="digit(0)" class="ILS_digit">0</div>
+      <div (click)="remove()" class="ILS_digit ILS_del">DEL</div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,36 @@
+<!-- Generated template for the SingleImageUploadComponent component -->
+<div>
+	<div class="images-wrapper">
+		<ion-row>
+			<ion-col col-12 class="image-wrapper" *ngFor="let image of imagesValue">
+
+				<div class="image" [style.background-image]="image.sanitized">
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+					[class.uploading]="isUploading" alt=""/>
+					<!--<img src="{{image.base64}}" [class.uploading]="isUploading" alt="" />
+					<img [src]="sanitization.bypassSecurityTrustUrl(image.base64)" [class.uploading]="isUploading" alt="" />
+					<img src="{{sanitization.bypassSecurityTrustUrl(image.url)}}" [class.uploading]="isUploading" alt="" />
+					
+					<img src="{{image.sanitized}}" [class.uploading]="isUploading" alt="" />
+					<img src="{{sanitization.bypassSecurityTrustUrl(image.resolvenativeuri)}}" [class.uploading]="isUploading" alt="" />
+					-->
+					<ion-spinner *ngIf="isUploading && uploadingProgress[image.url]<100"></ion-spinner>
+
+					<ion-icon name="checkmark" *ngIf="isUploading && uploadingProgress[image.url]==100"></ion-icon>
+					<div *ngIf="isUploading" class="progress-bar">
+						<div class="progress" [style.width]="(uploadingProgress[image.url]||0)+'%'"></div>
+					</div>
+				</div>
+				<div class="remove-image-cont" *ngIf="!isUploading">
+					<ion-icon class="remove-image mp-text-red" name="close" (click)="removeImage(image)"></ion-icon>
+				</div>
+			</ion-col>
+			<ion-col col-12 class="image-wrapper add-image-btn" *ngIf="!isUploading && !images.length" (click)="showAddImage()">
+				<div class="image">
+					<ion-icon name="camera"></ion-icon>
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""/>
+				</div>
+			</ion-col>
+		</ion-row>  
+	</div>
+</div>

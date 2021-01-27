@@ -1,0 +1,46 @@
+
+page-otp-verification {
+  .bar-button-default {
+    color: #00d6ba;
+  }
+  .otp-body {
+    background: #fff;
+    .grid {
+        padding: 2rem;
+      .input-container {
+        border: 2px solid #00d6ba;
+        border-radius: 6px;
+        margin-bottom: 2rem;
+        overflow: inherit;
+        contain: none;
+        .item-inner {
+          margin-left: 0;
+        }
+        &:nth-child(2) {
+          margin-bottom: 1.5rem;
+        }
+        .label {
+          position: absolute;
+          top: -19px;
+          left: 20px;
+          background-color: #fff;
+          color: #00d6ba;
+          padding: 0 0.75rem;
+          font-weight: 300;
+        }
+        .icon {
+          font-size: 2rem;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #00d6ba;
+        }
+      }
+    }
+  }
+  .top_fam{
+    padding-top: 52px;;
+      padding-bottom: 22px;
+  }
+}

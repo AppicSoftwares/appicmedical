@@ -1,0 +1,154 @@
+
+page-signin {
+    .text-input {
+        margin: 13px 0px;
+    }
+    .item.item-input.item-input-has-focus .item-inner,
+    .item.item-input.input-has-focus .item-inner {
+        border-bottom-color: inherit;
+        -webkit-box-shadow: none !important;
+        box-shadow: none;
+    }
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: #d1d3d6;
+        -webkit-box-shadow: none !important;
+        box-shadow: none;
+    }
+
+    .item.item-input.item-input-has-focus .item-inner ion-input,
+    .item.item-input.input-has-focus .item-inner ion-input,
+    .item.item-input.item-input-has-focus .item-inner ion-textarea,
+    .item.item-input.input-has-focus .item-inner ion-textarea {
+        border-color: #d1d3d6;
+    }
+
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input,
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea
+    {
+        border-color: #d1d3d6;
+    }
+
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-color: inherit;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input,
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea {
+        border-color: #d1d3d6;
+    }
+
+    .item-input{
+        background: transparent !important;
+        color: #ffffff;
+        .plus-button{
+            background: transparent !important;
+            color: #ffffff;
+        }
+    }
+    .label{
+        color: #d1d3d6;
+        font-size: 1.5rem !important;
+    }
+    .color-white{
+        color: #ffffff;
+    }
+    .font-1x{
+        font-size: 1.5rem;
+    }
+    .content{
+        background-image: url(../assets/imgs/medidelivery/landing_page_bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        background-position: top center;
+    }
+    .logo-cont{
+        
+        width: 100%;
+        height: 40vh;
+        
+    }
+    .logo-backdrop{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background: #5c5c5c;
+        opacity: 0.6;
+    }
+    .logo-image{
+        width: 58%;
+        margin: 0 auto;
+        margin-top: 22%;
+       /* position: absolute;
+        left: 25%;*/
+        z-index: 1;
+        text-align: center;
+        .image{
+            width: 100%;
+            text-align: center;
+            img{
+                width: 90%;
+            }
+        }
+
+        .tag-line{
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.8rem;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .page-title{
+        font-size: 2rem;
+        font-weight: bold;
+        padding-bottom: 7px;
+    span{
+        padding-bottom: 7px;
+        border-bottom: 2px red solid; 
+    }    
+    }
+
+    .form-content{
+        /*padding-top: 15px; */
+        ion-label{
+        /*    padding-bottom: 15px;*/
+        }
+    }
+    .bg-color-blue{
+        background-color: #00cfb1 !important;
+    }
+    
+    .forget_password{
+     text-align: right;
+     font-size: 1.4rem;
+    }
+    .sign_up{
+        text-align: center;
+    }
+    .button {
+        height: 4.4rem;
+    }
+    .forget_password a {
+        color: #fff;
+        text-decoration: none;
+    }
+  
+    .intro {
+        text-align: center;
+        border-bottom: 1px solid #e2e2e2;
+        padding-bottom: 14px;
+    }
+
+    .btn_container {
+        padding-top: 14px;
+
+        button {
+            background: #3b5998;
+        }
+    }
+    
+}

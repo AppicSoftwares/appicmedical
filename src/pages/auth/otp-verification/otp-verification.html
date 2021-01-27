@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar class="top_fam"> </ion-navbar>
+</ion-header>
+<ion-content class="otp-body">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="logo-col" col-12>
+        <div class="img-container">
+          <img src="assets/imgs/medidelivery/logo.png" alt="" />
+        </div>
+      </ion-col>
+      <ion-col class="text-center" col-12>
+        <label class="small-heading"> OTP Verification</label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mb-2-big">
+      <ion-col class="text-center" col-12>
+        <label class="description">
+          We sent you a otp to verify your <br />
+          Email. OTP sent to {{loggedData.email}}
+        </label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [formGroup]="verifyOTPForm" col-12>
+        <ion-item class="input-container" no-lines>
+          <ion-label>OTP</ion-label>
+          <ion-icon class="icon" name="ios-unlock-outline" item-start></ion-icon>
+          <ion-input type="text" formControlName="otp"></ion-input>
+        </ion-item>
+
+        <div class="flex-item flex-row items-end">
+          <button item-end no-margin ion-button color="themeColor" no-padding clear>
+            <span class="text-capitalize font-bold-3" (tap)="resendOTP()"> Resend code</span>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block class="default-btn" [disabled]="verifyOTPForm.invalid"
+          (tap)="pageType ==='reset'?forgotPassowrd():verifyAndCreate()">Verify Otp</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

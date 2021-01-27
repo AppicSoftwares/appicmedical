@@ -1,0 +1,32 @@
+
+page-drai-popup {
+    .dr-ai-body {
+        .dr-ai-img {
+            img {
+                height: 100px;
+                width: 100px;
+                object-fit: contain;
+            }
+        }
+
+        .card-btn {
+            height: 3rem !important;
+            border-radius: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0 3rem !important;
+        }
+        .col-margin{
+            margin: 1.5rem 0 !important;
+        }
+    }
+    .Covid-btn{
+        height: 3rem !important;
+            border-radius: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0 3rem !important;
+            background-color: #f22071 !important;
+            border-radius: 38px;
+    }
+}

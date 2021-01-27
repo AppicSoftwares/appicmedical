@@ -1,0 +1,102 @@
+
+page-rx-discount {
+    @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+
+    .toolbar-title {
+        letter-spacing: 0.8px;
+    }
+  .toolbar-md-themeColor .toolbar-background-md {
+        background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%);
+    }
+    .rx-discount-body {
+        background: #fff;
+        .segment {
+            border: 1px solid #00d6ba;
+
+            &-button {
+                color: #00d6ba;
+                border-bottom: none;
+                letter-spacing: 0.8px;
+            }
+
+            &-activated {
+                background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%);
+                color: #fff;
+            }
+        }
+
+        .banner-container {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+
+            img {
+                width: 376px;
+            }
+        }
+
+        .small-text {
+            font-size: 9px;
+            color: #00d6ba;
+            margin-right: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .m-tb-large {
+            margin: 1.5rem 0;
+        }
+
+        .btn-container {
+            padding: 0 4rem;
+
+            .button-inner {
+                justify-content: start;
+            }
+
+            .btn-pink {
+                // width: 25rem;
+                ion-icon {
+                    font-size: 2rem;
+                    margin-left: 1rem;
+                }
+
+                .text {
+                    font-weight: 400;
+                    font-size: 13px;
+                    width: 100%;
+                    text-align: center;
+                    letter-spacing: 0.8px;
+                }
+            }
+        }
+    }
+    // .top_fam c{
+    //     padding-top:52px;;
+    //       padding-bottom: 22px;
+    //   }
+      .mar_fam{
+        margin-top: 21px;
+      }
+   
+      .button-md-themeColor {
+        color: #fff;
+        background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%);
+        letter-spacing: 0.8px;
+    }
+    
+
+
+.toolbar-title {
+    font-size: 1.7rem;
+    font-weight: normal;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 0px;
+    transform: translate(-24px, 0px) !important;
+}
+
+.toolbar-md {
+    padding: 4px;
+    min-height: 100px;
+}
+}

@@ -1,0 +1,359 @@
+<!-- Generated template for the customAutoComplete component -->
+
+<ion-header class="bg1">
+	<ion-navbar  class="top_mar_pat">
+		<button ion-button menuToggle (tap)="dismiss({})">
+			<ion-icon name="arrow-back"></ion-icon>
+		</button>
+		<ion-title>{{BackText}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="body" [attr.padding]="paddingIonicContent == 'padding'?'':null"
+	[attr.no-padding]="paddingIonicContent == 'no-padding'?'':null" >
+	<div *ngIf="template == ''">
+		<form [formGroup]="searchDataForm">
+			<div class="searchbar-cont posRelative">
+				<span class="spinner-cont" *ngIf="showspinner">
+					<ion-spinner name="dots"></ion-spinner>
+				</span>
+				<ion-searchbar no-padding id="autocompleteInp" (click)="searchbarClick()" [showCancelButton]="shouldShowCancel"
+					(ionChange)="search($event)" (ionClear)="onClearMedicineSearch($event)"
+					(ionCancel)="onCancelMedicineSearch($event)" [disabled] #autosearch autocorrect="off"
+					placeholder="{{placeHolder}}" formControlName="term">
+				</ion-searchbar>
+			</div>
+			<div class="search-result-cont" *ngIf="autoCompleteResultShow || autoCompleteNoResultShow">
+				<ion-row>
+					<ion-col col-12 no-padding padding-left padding-right>
+						<ion-list *ngIf="autocomplete.length && autoCompleteResultShow" class="autocomplete_results">
+							<button type="button" ion-item *ngFor="let item of autocomplete;  let in = index; "
+								(click)="updateAC(item)">
+								<span class="ac-label">{{item.text}}</span>
+								<span class="ac-sub">{{item.sub}}</span>
+							</button>
+						</ion-list>
+						<ion-list *ngIf="autoCompleteNoResultShow" class="autocomplete_results no-result">
+							<ion-item>
+								No record found!
+							</ion-item>
+						</ion-list>
+					</ion-col>
+				</ion-row>
+			</div>
+		</form>
+
+
+
+
+	</div>
+
+	<div *ngIf="template == 'pharmacy_price_list'">
+
+		<div *ngIf="showspinner" padding> Please wait, Loading pharmacies nearby. </div>
+		<div *ngIf="showspinner" class="mbsc-lv-loading mbsc-show-lv-loading"><span class="mbsc-ic mbsc-ic-loop2"></span>
+		</div>
+		<div *ngIf="!showspinner && pharmPriceData.length === 0 "> No data found. </div>
+		<div *ngIf="!showspinner && pharmPriceData.length > 0 ">
+			<ion-row class="p-16">
+				<ion-col col-12>
+				  <div class="flex-item flex-row align-center  mb-4">
+					<label class="text-uppercase font-bold font-13">order by</label>
+				  </div>
+		  
+				</ion-col>
+				<ion-col  col-12>
+				  <ion-segment [(ngModel)]="filterSelected">
+					<ion-segment-button value="distance" (click)="reOrderPharmacyData('distance')">
+					  distance
+					</ion-segment-button>
+					<ion-segment-button value="price" (click)="reOrderPharmacyData('price')">
+					  price
+					</ion-segment-button>
+				  </ion-segment>
+				</ion-col>
+			  </ion-row>
+			<!-- <mbsc-form>
+				<mbsc-form-group no-margin>
+					<mbsc-form-group-title>Order By</mbsc-form-group-title>
+					<mbsc-segmented-group [(ngModel)]="filterSelected">
+						<mbsc-segmented value="distance" (click)="reOrderPharmacyData('distance')">distance</mbsc-segmented>
+						<mbsc-segmented value="price" (click)="reOrderPharmacyData('price')">Price</mbsc-segmented>
+					</mbsc-segmented-group>
+				</mbsc-form-group>
+			</mbsc-form> -->
+
+			<div class="pharmacy-cont" no-padding>
+
+				<mbsc-listview [options]="listviewSettings" class="font1-4rem">
+					<mbsc-listview-item
+						*ngFor="let priceData of pharmPriceData; let in = index; let isOdd=odd; let isEven=even; let isLast=last">
+						<img *ngIf="priceData.name==='Healthy Way Pharmacy'" src="assets/imgs/pharmacy.svg">
+						<img *ngIf="priceData.name==='CVS'" src="assets/imgs/cvs-pharma.svg">
+						<img *ngIf="priceData.name==='CVS Inside Target'" src="assets/imgs/CVS-Inside-Target.svg">
+						<img *ngIf="priceData.name==='Walmart'" src="assets/imgs/Walmart.svg">
+						<img *ngIf="priceData.name==='Rite Aid'" src="assets/imgs/Rite-Aid.svg">
+						<img *ngIf="priceData.name==='Walgreens'" src="assets/imgs/Walgreens.svg">
+						<img
+							*ngIf="priceData.name !== 'CVS' && priceData.name !== 'CVS Inside Target' && priceData.name !== 'Walmart' && priceData.name !== 'Rite Aid' && priceData.name !== 'Walgreens'  && priceData.name !== 'Healthy Way Pharmacy'"
+							src="assets/imgs/pharmacy.svg" style="width:30px" />
+						<div class="mbsc-grid" no-padding>
+							<div class="mbsc-row" padding-bottom>
+								<div class="mbsc-col-8" no-padding padding-left>
+									{{(priceData.Summary.PharmacyGroup=="OTHER")?"Local":priceData.name}}&nbsp;({{priceData.Summary.PharmacyCount}})
+									
+									<!--   <mbsc-button outline float-right class="colorblue borderblue pickbutton" ></mbsc-button>-->
+								</div>
+								<div class="coupon mbsc-col-4" (click)="MedsPrice.instance.show();" >
+									COUPON
+								</div>
+							</div>
+							<div class="mbsc-row">
+								<div class="mbsc-col-4" no-padding padding-left>
+									<ion-icon name="pin" class="colorblue">&nbsp;</ion-icon>
+									{{priceData.Summary.MinDistance | number : '1.2-2'}}mi
+								</div>
+								
+								<div class="mbsc-col-5 mbsc-offset-3" text-right>${{priceData.Summary.MinPrice | number : '1.2-2'}}
+								</div>
+							</div>
+						</div>
+
+						<mbsc-listview-sublist class="font1-4rem">
+							<!--	<mbsc-listview-item *ngFor="let price of priceData.pricing">
+															
+															<div class="mbsc-grid" no-padding>
+																	
+																	<div class="mbsc-row">
+																			<div class="mbsc-col-4" text-capitalize no-padding padding-left >
+																				{{tempStorage.cart.medications.byNdc[price.ndc].BN || tempStorage.cart.medications.byNdc[price.ndc].AN}}</div>
+																				<div class="mbsc-col-4" >{{price.qty}}&nbsp;{{tempStorage.cart.medications.byNdc[price.ndc].PackageUnit}}&nbsp;{{tempStorage.cart.medications.byNdc[price.ndc].PackageDesc}}</div>
+																				<div class="mbsc-col-4" text-right>${{price.price | number : '1.2-2'}}</div>
+																	</div>
+																</div>	
+
+													</mbsc-listview-item> -->
+							<mbsc-listview-item *ngFor="let pharmacy of pharmGroupPriceData; let Gin = index">
+
+								<div class="mbsc-grid pharmGroupPriceData" no-padding>
+
+									<div class="mbsc-row" padding-bottom>
+
+										<div class="mbsc-col-7 pharmacy_name" (click)="MedsPrice.instance.show();" no-padding padding-left>
+											<b>{{pharmacy.name}} ({{pharmacy.pricing.length}})</b>
+										</div>
+										<!-- <div class="coupon mbsc-col-3" (click)="MedsPrice.instance.show();" no-padding padding-left>
+											COUPON
+										</div> -->
+										<div class="mbsc-col-5" no-padding padding-left>
+
+											<mbsc-checkbox (click)="choosePharmacy(pharmacy)" outline float-right
+												class="colorblue borderblue pickbutton" icon="checkmark"></mbsc-checkbox>
+
+
+										</div>
+									</div>
+									<div class="mbsc-row" padding-bottom (click)="MedsPrice.instance.show();">
+										<div class="mbsc-col-12 pharmacy_address" no-padding padding-left>
+											<ion-icon name="map" class="colorblue">&nbsp;</ion-icon>
+											{{pharmacy.street1}}&nbsp;
+											{{pharmacy.street2}}&nbsp;
+											{{pharmacy.city}}&nbsp;
+											{{pharmacy.zip}}&nbsp;
+											{{pharmacy.state}}&nbsp;
+
+										</div>
+									</div>
+									<div class="mbsc-row" (click)="MedsPrice.instance.show();">
+										<div class="mbsc-col-4 pharmacy_distance" no-padding padding-left>
+											<ion-icon name="pin" class="colorblue">&nbsp;</ion-icon>{{pharmacy.distance | number : '1.2-2'}}mi
+										</div>
+										<div class="mbsc-col-5 mbsc-offset-3 pharmacy_price" text-right>
+											<ion-icon name="cash" class="colorblue">&nbsp;</ion-icon>
+											$ {{calculateTotalPrice(pharmacy.pricing, Gin) | number : '1.2-2'}}
+										</div>
+									</div>
+								</div>
+
+							</mbsc-listview-item>
+						</mbsc-listview-sublist>
+					</mbsc-listview-item>
+				</mbsc-listview>
+
+				<!--	<div class="pharmacy shadow"  padding-bottom padding-top margin-bottom *ngFor="let priceData of pharmPriceData; let in = index; let isOdd=odd; let isEven=even; let isLast=last" [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst">
+								<ion-row (click)="choosePharmacy(priceData)">
+									<ion-col col-6  no-padding style="padding-left:5px">
+										<div class="name text-captalize" >
+										{{priceData.Summary.PharmacyNames[0]}}
+										</div>
+										</ion-col>
+										<ion-col col-4  no-padding padding-right padding-left>
+												<div class="name text-captalize" >
+														<ion-icon name="pin" class="colorblue">&nbsp;</ion-icon>
+														{{priceData.distance | number : '1.2-2'}}mi
+												</div>
+									</ion-col>
+									<ion-col col-2 no-padding class="price-coll">
+										<div class="order">
+												${{priceData.Summary.MaxPrice | number : '1.2-2'}}
+											
+										</div>
+									</ion-col>
+								</ion-row>
+							</div> -->
+
+			</div>
+
+		</div>
+  
+		<!-- <mbsc-popup [options]="MedsPriceSettings" #MedsPrice="mobiscroll">
+			<mbsc-listview [options]="lvSettings">
+				<mbsc-listview-item class="font1-2rem priceSetting" *ngFor="let price of pharmacySelected.pricing"
+					(click)="MedsPrice.instance.hide();">
+					<div class="mbsc-grid" no-padding>
+
+						<div class="mbsc-row padding-5px-bottom">
+							<div class="mbsc-col-4" text-capitalize no-padding padding-left>
+								{{tempStorage.cart.medications.byNdc[price.ndc].BN || tempStorage.cart.medications.byNdc[price.ndc].AN}}
+							</div>
+							<div class="mbsc-col-4">
+								{{price.qty}}&nbsp;{{tempStorage.cart.medications.byNdc[price.ndc].PackageUnit}}&nbsp;{{tempStorage.cart.medications.byNdc[price.ndc].PackageDesc}}
+							</div>
+							<div class="mbsc-col-4" text-right><b>${{price.price | number : '1.2-2'}}</b></div>
+						</div>
+						<div class="mbsc-row" *ngIf="price.unc && price.price && price.unc > price.price">
+							<div class="mbsc-col-6" no-padding padding-left>
+								Retail Price: ${{price.unc | number : '1.2-2'}}
+							</div>
+							<div class="mbsc-col-6" text-right>
+								Saved: ${{ price.unc - price.price | number : '1.2-2'}}
+							</div>
+						</div>
+					</div>
+				</mbsc-listview-item>
+			</mbsc-listview>
+		</mbsc-popup> -->
+
+		<mbsc-popup [options]="MedsPriceSettings" #MedsPrice="mobiscroll">
+			<mbsc-listview [options]="lvSettings">
+				<mbsc-listview-item class="font1-2rem priceSetting" *ngFor="let price of pharmacySelected.pricing"
+					(click)="MedsPrice.instance.hide();">
+					
+					<div class="mbsc-grid" no-padding>
+						<div class="mbsc-row youSave">
+							<div class="mbsc-col-12" text-center>
+							{{tempStorage.cart.medications.byNdc[price.ndc].BN || tempStorage.cart.medications.byNdc[price.ndc].AN}}
+						</div>
+						</div>
+                           <div class="mbsc-row youSave" *ngIf="price.unc && price.price && price.unc > price.price">
+							<div class="mbsc-col-12" text-center>
+								YOU SAVE :
+								<label> ${{ price.unc - price.price | number : '1.2-2'}} </label>
+							</div>
+						   </div>
+						   <div class="mbsc-row retailPrice" *ngIf="price.unc && price.price && price.unc > price.price" >
+							<div class="mbsc-col-5" text-center >
+								RETAIL PRICE : ${{ price.unc  | number : '1.2-2'}}
+							</div>
+							<label class="mbsc-col-2">
+
+							</label>
+							<div class="mbsc-col-5" text-center>
+								CARD PRICE : ${{  price.price | number : '1.2-2'}}
+							</div>
+						   </div>
+						   <div class="mbsc-row youSave" *ngIf="!price.unc">
+							<div class="mbsc-col-12 " text-center>
+								CARD PRICE : ${{  price.price | number : '1.2-2'}}
+							</div>
+						   </div>
+						   <div class="mbsc-row getCardRow">
+  <button class="getCard" (click)="goDiscountPage()" text-center> GET THE CARD </button>
+						   </div>
+						<!-- <div class="mbsc-row padding-5px-bottom">
+							<div class="mbsc-col-4" text-capitalize no-padding padding-left>
+								{{tempStorage.cart.medications.byNdc[price.ndc].BN || tempStorage.cart.medications.byNdc[price.ndc].AN}}
+							</div>
+							<div class="mbsc-col-4">
+								{{price.qty}}&nbsp;{{tempStorage.cart.medications.byNdc[price.ndc].PackageUnit}}&nbsp;{{tempStorage.cart.medications.byNdc[price.ndc].PackageDesc}}
+							</div>
+							<div class="mbsc-col-4" text-right><b>${{price.price | number : '1.2-2'}}</b></div>
+						</div> -->
+						
+					</div>
+				</mbsc-listview-item>
+			</mbsc-listview>
+		</mbsc-popup>
+	
+
+	<!-- <mbsc-popup [options]="MedsPriceSettings" #MedsPharmPrice="mobiscroll">
+			<mbsc-listview [options]="lvSettings">
+
+				<mbsc-listview-item class="font1-2rem priceSetting" *ngFor="let price of pharmacySelected.pricing"
+					(click)="MedsPharmPrice.instance.hide();">
+					
+					<div class="mbsc-grid" no-padding>
+						<div class="mbsc-row youSave">
+							<div class="mbsc-col-12" text-center>
+							 {{tempStorage.cart.medications.byNdc[price.ndc].BN || tempStorage.cart.medications.byNdc[price.ndc].AN}} 
+						</div>
+						</div>
+						<div class="mbsc-row youSave" *ngIf="price.unc && price.price && price.unc > price.price">
+							<div class="mbsc-col-12" text-center>
+								YOU SAVE :
+								<label> ${{ price.unc - price.price | number : '1.2-2'}} </label>
+							</div>
+						   </div>
+						   <div class="mbsc-row retailPrice" *ngIf="price.unc && price.price && price.unc > price.price" >
+							<div class="mbsc-col-5" text-center >
+								RETAIL PRICE : ${{ price.unc  | number : '1.2-2'}}
+							</div>
+							<label class="mbsc-col-2">
+
+							</label>
+							<div class="mbsc-col-5" text-center>
+								CARD PRICE : ${{  price.price | number : '1.2-2'}}
+							</div>
+						   </div>
+						   <div class="mbsc-row youSave" *ngIf="!price.unc">
+							<div class="mbsc-col-12 " text-center>
+								CARD PRICE : ${{  price.price | number : '1.2-2'}}
+							</div>
+						   </div>
+						   <div class="mbsc-row getCardRow">
+  <button class="getCard" (click)="goDiscountPage()" text-center> GET THE CARD </button>
+						   </div>
+					
+						
+					</div>
+				</mbsc-listview-item>
+			</mbsc-listview>
+		</mbsc-popup> -->
+	</div>
+
+	<div *ngIf="template == 'change_location'">
+
+		<!-- 	<div *ngIf="showspinner"> Map loading. </div>
+			<div *ngIf="!showspinner && pharmPriceData.length === 0 "> No Map found. </div> -->
+		<div>
+
+			<div class="pharmacy-cont" no-padding>
+
+				<ion-searchbar no-padding placeholder="Type your address" [(ngModel)]="autocomplete.query"
+					[showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
+
+
+				<ion-list>
+					<ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+						{{ item }}
+					</ion-item>
+				</ion-list>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+</ion-content>

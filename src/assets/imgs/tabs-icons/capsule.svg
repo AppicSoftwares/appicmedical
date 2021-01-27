@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.325" height="30.827" viewBox="0 0 27.325 30.827">
+  <g id="Group_1437" data-name="Group 1437" transform="translate(-2589.207 -1554.374)">
+    <g id="Group_1434" data-name="Group 1434" transform="translate(2603.492 1554.374) rotate(30)">
+      <g id="Group_1433" data-name="Group 1433" transform="translate(0 0)">
+        <g id="Path_3677" data-name="Path 3677" transform="translate(0)" fill="#1d1d1d">
+          <path d="M 11.66871929168701 13.78501987457275 L 0.4999996423721313 13.78501987457275 L 0.4999996423721313 6.084359645843506 C 0.4999996423721313 3.00512957572937 3.00512957572937 0.499999463558197 6.084359645843506 0.499999463558197 C 9.163589477539063 0.499999463558197 11.66871929168701 3.00512957572937 11.66871929168701 6.084359645843506 L 11.66871929168701 13.78501987457275 Z" stroke="none"/>
+          <path d="M 6.084359645843506 0.9999990463256836 C 3.280829429626465 0.9999990463256836 1 3.280829429626465 1 6.084359169006348 L 1 13.28501987457275 L 11.16871929168701 13.28501987457275 L 11.16871929168701 6.084359169006348 C 11.16871929168701 3.280829429626465 8.887889862060547 0.9999990463256836 6.084359645843506 0.9999990463256836 M 6.084359645843506 -9.5367431640625e-07 C 9.444660186767578 -9.5367431640625e-07 12.16871929168701 2.724059104919434 12.16871929168701 6.084359169006348 L 12.16871929168701 14.28501987457275 L 0 14.28501987457275 L 0 6.084359169006348 C 0 2.724059104919434 2.72406005859375 -9.5367431640625e-07 6.084359645843506 -9.5367431640625e-07 Z" stroke="none" fill="#686868"/>
+        </g>
+        <g id="Rectangle_610" data-name="Rectangle 610" transform="translate(0 14.285)" fill="#686868" stroke="#686868" stroke-width="1">
+          <path d="M0,0H12.169a0,0,0,0,1,0,0V8.2a6.084,6.084,0,0,1-6.084,6.084h0A6.084,6.084,0,0,1,0,8.2V0A0,0,0,0,1,0,0Z" stroke="none"/>
+          <path d="M.624.5H11.545a.124.124,0,0,1,.124.124V8.2a5.584,5.584,0,0,1-5.584,5.584h0A5.584,5.584,0,0,1,.5,8.2V.624A.124.124,0,0,1,.624.5Z" fill="none"/>
+        </g>
+      </g>
+      <path id="Path_3676" data-name="Path 3676" d="M1.018.343A2.944,2.944,0,0,1,2.642,3.38C2.447,5.657,2.783,2.02.823.7S1.018.343,1.018.343Z" transform="translate(7.338 3.103)" fill="#fdfefa" stroke="#fff" stroke-width="1"/>
+    </g>
+    <g id="Group_1436" data-name="Group 1436" transform="translate(2603.639 1568.085)">
+      <g id="Ellipse_204" data-name="Ellipse 204" transform="translate(-0.107 -0.298)" fill="#686868" stroke="#fff" stroke-width="1">
+        <circle cx="6.5" cy="6.5" r="6.5" stroke="none"/>
+        <circle cx="6.5" cy="6.5" r="6" fill="none"/>
+      </g>
+      <g id="Group_1435" data-name="Group 1435" transform="translate(3.893 0.702)">
+        <text id="P" transform="translate(2 7)" fill="#fff" font-size="7" font-family="SegoeUI-Bold, Segoe UI" font-weight="700" letter-spacing="0.05em"><tspan x="-2.15" y="0">P</tspan></text>
+        <line id="Line_242" data-name="Line 242" x2="3.098" y2="3.718" transform="translate(2.537 4.815)" fill="none" stroke="#fff" stroke-width="1"/>
+        <line id="Line_243" data-name="Line 243" x1="3" y2="4" transform="translate(2.5 4.5)" fill="none" stroke="#fff" stroke-width="0.2"/>
+      </g>
+    </g>
+  </g>
+</svg>

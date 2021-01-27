@@ -1,0 +1,59 @@
+<!--
+  Generated template for the OrderVerifyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+  <ion-navbar class="top_mar_pat">
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+	<div class="order-cont"  margin-top padding-top>
+		<ion-row>
+			<ion-col col-12 no-padding class="order-id" text-center>
+				Order #{{currentOrder.order_id || "MP4321"}}
+			</ion-col>
+			<ion-col col-12 no-padding class="order-id" text-center>
+				Amount: ${{amountToPay.totalPrice | number : '1.2-2' }}
+				</ion-col>
+			<ion-col col-12 no-padding class="patient-name" text-center>
+				Patient Name : {{patientInfo.name || "Patient Name"}}
+			</ion-col>
+		</ion-row>
+	</div>
+
+	<div id="verification" margin padding-top>
+		<ion-row class="shadow" padding text-center margin-top *ngIf = "pageAction == 'orderStatus'">
+			<ion-col col-12 no-padding>
+				Verification code to delivery person
+			</ion-col>
+			<ion-col col-12 no-padding class="code">
+				{{currentOrder.verify_patient_code || "MP1234"}}
+
+			</ion-col>
+			
+			<ion-col col-12 no-padding class="">
+				<p>
+					Provide above verification code to delivery person to verify and get the package.
+				</p>	
+				</ion-col>
+
+		</ion-row>
+		
+	</div>
+</ion-content>
+<ion-footer>
+	
+	
+	<!--(click) = "goto('delivery')"-->
+	<button ion-button class="custom" color="danger" [disabled]="showspinner" full (click) = verifyWithPharmacy()  *ngIf = "pageAction == 'orderStatus'">
+		Completed & Feedback
+		<div  *ngIf="showspinner" class="mbsc-lv-loading mbsc-show-lv-loading map-location-css" >
+			<span class="mbsc-ic mbsc-ic-loop2 text-white"></span>
+		</div>
+	</button>
+	
+</ion-footer>

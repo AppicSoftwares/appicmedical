@@ -1,0 +1,8 @@
+<ion-tabs [selectedIndex]="2" >
+  <ion-tab [root]="tab2Root" tabIcon="tab-tree"  tabTitle="Family tree"></ion-tab>
+  <ion-tab [root]="tab3Root" tabIcon="tab-capsule" tabTitle="Discount card"></ion-tab>
+  <ion-tab [root]="tab1Root" tabIcon="tab-home" tabTitle="Home"></ion-tab>
+  <ion-tab [root]="tab4Root"  tabIcon="tab-notification" tabTitle="Order History"></ion-tab>
+  <ion-tab   tabIcon="tab-more" (ionSelect)="viewMore()" tabTitle="More"></ion-tab>
+  
+</ion-tabs>

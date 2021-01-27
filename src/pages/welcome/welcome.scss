@@ -1,0 +1,24 @@
+
+page-welcome {
+  @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+  
+  .welcome-body {
+    background: #fff;
+    .grid {
+      padding: 2rem;
+      .heading {
+        font-size: 5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+      }
+      .description {
+        font-size: 1.6rem;
+        letter-spacing: 0.1rem;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+     
+    }
+  }
+}

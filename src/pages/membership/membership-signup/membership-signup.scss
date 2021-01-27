@@ -1,0 +1,71 @@
+
+page-membership-signup {
+    @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+	.content {
+		background: #f9f9f9;
+	}
+	.item-block {
+		min-height: 3.4rem;
+		font-size: 1.2rem;
+		margin-top: 8px;
+	}
+	.text-input {
+		margin: 8px;
+        font-size: 1.3rem;
+	}
+	.datetime {
+		padding: 8px;
+	}
+	.item.item-block .item-inner {
+		border: 1px solid #00d6ba !important;
+		border-radius: 3px;
+	}
+	.label {
+		color: #797979;
+	}
+	.button.custom {
+		background: #00d6ba;
+		margin: 0px;
+	}
+	.button.custom:hover {
+		background: #00d6ba;
+	}
+	.item.item-input.item-input-has-focus .item-inner,
+    .item.item-input.input-has-focus .item-inner {
+        border-bottom-color: inherit;
+        -webkit-box-shadow: none !important;
+        box-shadow: none;
+    }
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: #00d6ba;
+        -webkit-box-shadow: none !important;
+        box-shadow: none;
+    }
+
+    .item.item-input.item-input-has-focus .item-inner ion-input,
+    .item.item-input.input-has-focus .item-inner ion-input,
+    .item.item-input.item-input-has-focus .item-inner ion-textarea,
+    .item.item-input.input-has-focus .item-inner ion-textarea {
+        border-color: #00d6ba;
+    }
+
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input,
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea
+    {
+        border-color: #00d6ba;
+    }
+
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-color: inherit;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input,
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea {
+        border-color: #00d6ba;
+    }
+    .top_mar_pat {
+		padding-top: 52px !important;
+		padding-bottom: 18px !important;
+	  }
+}

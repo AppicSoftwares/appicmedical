@@ -1,0 +1,294 @@
+<!--
+  Generated template for the DrugInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+	<ion-navbar class="top_mar_pat">
+		<!-- <button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button> -->
+		<ion-title>Cart info</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding >
+	<div class="otc-drugs-cont selected_drug shadow" margin-bottom *ngIf ="cartOrders.otcdrugs.length">
+		<ion-row>
+			<ion-col col-12 no-padding>
+				<div class="type">
+					OTC Drugs
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngFor="let otcdrug of cartOrders.otcdrugs; let in = index; let isOdd=odd; let isEven=even; let isLast=last" [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst" class="druglist posRel">
+			<ion-col col-8 no-padding>
+				<div class="name">
+					{{cartOrders.medications[otcdrug.ndc].BN || cartOrders.medications[otcdrug.ndc].AN}}
+					&nbsp;{{cartOrders.medications[otcdrug.ndc].Strength}}&nbsp;{{cartOrders.medications[otcdrug.ndc].DosageForm}}
+		        </div>
+		      <!--  <div class="sub" >
+					<i>{{cartOrders.medications[otcdrug.ndc].QtySelected.qty}}&nbsp;{{cartOrders.medications[otcdrug.ndc].PackageUnit}}&nbsp;{{cartOrders.medications[otcdrug.ndc].PackageDesc}}</i>
+		        </div>-->
+		        <div class="quantity">
+		          <span class="count">
+					<i>{{otcdrug.qty}}&nbsp;{{cartOrders.medications[otcdrug.ndc].PackageUnit}}&nbsp;{{cartOrders.medications[otcdrug.ndc].PackageDesc}}</i>
+					</span>
+					&nbsp;
+					<span class="pill pill-default  "
+						*ngIf="cartOrders.medications[otcdrug.ndc].DrugType == 'B'" float-right text-center>Brand</span>
+					<span class="pill pill-default "
+						*ngIf="cartOrders.medications[otcdrug.ndc].DrugType == 'G'" float-right text-center>Generic</span>
+						
+		        </div>
+			</ion-col>
+			<ion-col col-3 no-padding class="price-cont">
+				<div class="price">
+					${{otcdrug.price | number : '1.2-2'}}
+					<!-- otcdrug.unc ||  -->
+				</div>
+			</ion-col>	
+			<ion-col col-1 no-padding>
+				<div class="remove-drug-cont">
+					<ion-icon class="remove-drug" color="danger" name="trash" (click)="removeDrug(otcdrug, in)"></ion-icon>
+				</div>
+				
+				
+
+			</ion-col>		
+		</ion-row>
+	</div>
+	<div class="otc-drugs-cont selected_drug shadow" margin-bottom *ngIf="cartOrders.rxdrugs.length">
+		<ion-row>
+			<ion-col col-12 no-padding>
+				<div class="type">
+					RX Drugs
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngFor="let rxdrug of cartOrders.rxdrugs; let in = index; let isOdd=odd; let isEven=even; let isLast=last" [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst" class="druglist posRel">
+			<ion-col col-8 no-padding>
+				<div class="name">
+					{{cartOrders.medications[rxdrug.ndc].BN || cartOrders.medications[rxdrug.ndc].AN}}
+					&nbsp;{{cartOrders.medications[rxdrug.ndc].Strength}}&nbsp;{{cartOrders.medications[rxdrug.ndc].DosageForm}}
+		        </div>
+		       <!-- <div class="sub" >
+					<i>{{cartOrders.medications[rxdrug.ndc].QtySelected.qty}}&nbsp;{{cartOrders.medications[rxdrug.ndc].PackageUnit}}&nbsp;{{cartOrders.medications[rxdrug.ndc].PackageDesc}}</i>
+		        </div>-->
+		        <div class="quantity">
+		          <span class="count">
+					<i>{{rxdrug.qty}}&nbsp;{{cartOrders.medications[rxdrug.ndc].PackageUnit}}&nbsp;{{cartOrders.medications[rxdrug.ndc].PackageDesc}}</i>
+					</span> &nbsp;
+					<span class="pill pill-default "
+						*ngIf="cartOrders.medications[rxdrug.ndc].DrugType == 'B'" float-right text-center>Brand</span>
+					<span class="pill pill-default "
+						*ngIf="cartOrders.medications[rxdrug.ndc].DrugType == 'G'" float-right text-center>Generic</span>
+						
+		        </div>
+			</ion-col>
+			<ion-col col-3 no-padding class="price-cont">
+				<div class="price">
+					${{rxdrug.price | number : '1.2-2'}}
+					<!-- rxdrug.unc ||  -->
+				</div>
+			</ion-col>	
+			<ion-col col-1 no-padding>
+				<div class="remove-drug-cont">
+					<button ion-button no-margin icon-only clear>
+						<img src="/assets/imgs/delete-sweep.png" (click)="removeDrug(rxdrug, in)" alt="" srcset="" />
+					  </button>
+					<!-- <ion-icon class="remove-drug" color="danger" name="trash" (click)="removeDrug(rxdrug, in)"></ion-icon> -->
+				</div>
+				
+			</ion-col>		
+		</ion-row>
+	</div>
+	<div class="membership-cont selected_drug shadow" margin-bottom *ngIf="(cartMembership.plan == 'free' || cartMembership.plan == 'premium') && cartOrders.cartvalue > 0 && 1 !== 1">
+		<ion-row>
+			<ion-col col-12 no-padding>
+				<div class="type">
+					Membership
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row class="druglist">
+			<ion-col col-8 no-padding>
+				<div class="name">
+		            {{cartMembership.plan}}
+		        </div>
+			</ion-col>
+			<ion-col col-3 no-padding class="price-cont">
+				<div class="price">
+					${{cartMembership.price}}
+				</div>
+			</ion-col>	
+			<ion-col col-1 no-padding>
+				<div class="remove-membership-cont">
+					<ion-icon class="remove-membership" color="danger" name="trash"  (click)="removeMembership()"></ion-icon>
+				</div>
+			</ion-col>			
+		</ion-row>
+	</div>
+	<div class="" margin-top *ngIf="cartOrders.rxdrugs.length">
+		<ion-row padding-bottom>
+			<ion-col no-padding >
+				<ion-item>
+					<ion-label class="mp-text-green font1-4rem" text-wrap	>is there any controlled medication in above list?</ion-label>
+					<ion-checkbox [(ngModel)]="cartHasControlledMedicine"  class="mp-bg-green override-margin-right" (click)="updateValue()" ></ion-checkbox>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			
+			<ion-col col-6 no-padding>
+				<button ion-button class="transparent" [disabled] = "submitted || addingInProgress || cartOrders.fillpxFormData.doctor_name" full (click) = "uploadRX()">Upload RX <span class="count" *ngIf="uploadedRXimages.length">({{uploadedRXimages.length}})</span></button>
+			</ion-col>
+			<ion-col col-6 no-padding>
+					<button ion-button class="custom" [disabled] = "submitted || addingInProgress || uploadedRXimages.length" full (click) = "requestRX()">Request RX</button>
+				</ion-col>
+		</ion-row>
+
+		<ion-row padding-top *ngIf="!uploadedRXimages.length">
+			<ion-col no-padding>
+					<button ion-button text-wrap class="custom"  full
+						(click)="requestRX(true)">If Rx already sent to pharmacy, tap here to fill details</button>
+
+			 
+			</ion-col>
+		</ion-row>
+  <!--
+		<ion-row padding-top>
+			
+			<ion-col col-12 no-padding *ngIf="uploadedRXimages.length < 1" padding-bottom>
+				<a href="javascript:void(0)" class="mp-text-green" (click) = "requestRX(true)">If you dont have Rx with you now, tap here to fill it.</a>
+			</ion-col>
+		</ion-row>	-->
+
+			<ion-row padding-top>
+			<ion-col col-12 no-padding>
+			<mbsc-card collapsible #run1="mobiscroll" class="no-margin-force" *ngIf="cartOrders.fillpxFormData.doctor_name">
+				<mbsc-card-header class="mbsc-card-header">
+					<div>
+					<!--	<mbsc-card-subtitle class="mbsc-bold mbsc-txt-s">27/07/2018</mbsc-card-subtitle>-->
+						<div class="mbsc-bold">{{cartOrders.fillpxFormData.pharmacyName}}
+								<ion-icon float-right class="remove-membership" color="danger" name="trash" (click)="removeFilledRx()"></ion-icon>
+						</div>
+						<div class="mbsc-grid mbsc-margin mbsc-txt-muted mbsc-bold mbsc-txt-s">
+							<div class="mbsc-row mbsc-no-padding">
+								<div class="mbsc-col">{{cartOrders.fillpxFormData.doctor_name}}</div>
+							 	<div class="mbsc-col">{{cartOrders.fillpxFormData.phone}}</div>
+							</div>
+						</div>
+					</div>
+				</mbsc-card-header>
+				<mbsc-card-content class="mbsc-no-padding">
+					<ion-row padding-bottom>
+						<div class="col">
+							{{cartOrders.fillpxFormData.doctor_name}}<br>
+							<small>
+								({{cartOrders.fillpxFormData.clinicalAddress}})
+							</small>
+
+						</div>
+						
+					</ion-row>
+					<ion-row>
+					
+						<div class="col">
+							{{cartOrders.fillpxFormData.pharmacyName}}<br>
+							<small>
+								({{cartOrders.fillpxFormData.pharmacyAddress}})
+							</small>
+					
+						</div>
+					
+					</ion-row>
+				</mbsc-card-content>
+			</mbsc-card>
+			</ion-col>
+		</ion-row>
+	</div>
+	<div class="cart-empty" *ngIf="!cartOrders.cartvalue">
+		Your Cart is empty
+	</div>
+	<div *ngIf="uploadedRXimages.length > 0">
+		<ion-row>
+			<ion-col col-12 no-padding padding-top>
+				Pickup Slot *:
+				<span class="" float-right id="showVertical" (click)="vertical.instance.show()">
+					{{selectedDeliverySlot || "Pick delivery slot"}}
+					<ion-icon ios="ios-create" md="md-create" class="mp-text-green"></ion-icon>
+		
+				</span>
+			</ion-col>
+		</ion-row>
+		<ion-row (click)="changeLocation()">
+			<ion-col col-12 no-padding class="delivery-to"  padding-top text-center>
+				<ion-icon name="ios-pin" class="mp-text-green"></ion-icon>&nbsp;{{rxPickUpLocation.text || "Tap here to add address"}}
+				<br>
+				<span *ngIf="rxPickUpLocation.text">
+					<ion-icon class="mp-text-green" name="ios-refresh-circle">&nbsp;</ion-icon> Tap here to change address
+				</span>
+		
+			</ion-col>
+		</ion-row>
+	</div>
+	<div class="images-wrapper" margin-top *ngIf="uploadedRXimages.length">
+		<ion-row>
+			<ion-col col-12 no-padding padding-top>
+				<h6 text-center>Uploaded RX</h6>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+            <ion-col col-6 no-padding class="image-wrapper" *ngFor="let image of uploadedRXimages; let in = index;">
+                <ion-icon class="remove-image mp-text-red" name="close" (click)="removeImage(image, in)"></ion-icon>
+                <div class="image" [style.background-image]="image.path" (click) ="zoomImage(image)">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""/>
+                    <ion-icon name="checkmark"></ion-icon>
+                </div>
+            </ion-col>
+        </ion-row>
+	</div>
+	
+	<mbsc-popup [options]="customSettings" #customButtons="mobiscroll" class="customer-option">
+		<div class="mbsc-align-center mbsc-padding">
+			<h3 class="md-text-center">Would you like to use your? <br>
+				<small>
+						(Save 20% on delivery & 
+						 Rx Pickup charges,
+						when using our discount card)
+			</small>		</h3>
+			<!--<p class="md-text-center">Would you like to use your?		</p>-->
+		</div>
+	</mbsc-popup>
+
+	<mbsc-popup [options]="verticalSettings" #vertical="mobiscroll">
+		<mbsc-listview [options]="lvSettings">
+			<mbsc-listview-item *ngFor="let item of deliverySlots" (click)="vertical.instance.hide()">
+				{{ item.text }}
+			</mbsc-listview-item>
+		</mbsc-listview>
+	</mbsc-popup>
+
+</ion-content>
+<ion-footer *ngIf ="cartOrders.cartvalue > 0">
+	<ion-row *ngIf="cartOrders.pricediff > 0">
+		<ion-col col-12 no-padding>
+			<button ion-button class="custom savemembership" [disabled] = "submitted" full >Saved ${{cartOrders.pricediff | number : '1.2-2'}}</button>
+				
+        </ion-col>
+	</ion-row>
+    <ion-row>
+			<ion-col col no-padding *ngIf="tempStorage.cart.isEdit">
+				<button ion-button class="custom"
+					
+					full (click)="takeToSearch()">Add more drugs</button>
+				<!--(click)="customButtons.instance.show()"-->
+			</ion-col>
+			<ion-col col no-padding>
+			<button ion-button class="custom" [disabled] = "submitted || (cartOrders.rxdrugs.length > 0 && (uploadedRXimages.length == 0 && cartOrders.fillpxFormData.doctor_name == undefined)) || (uploadedRXimages.length > 0 && !selectedDeliverySlot)" full (click)="customButtons.instance.show()" >Confirm & Pay&nbsp;<b>${{cartOrders.cartvalue | number : '1.2-2'}}</b></button>
+			<!--(click)="customButtons.instance.show()"-->
+        </ion-col> 
+    </ion-row>
+</ion-footer>

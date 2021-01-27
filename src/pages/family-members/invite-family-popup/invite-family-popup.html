@@ -1,0 +1,37 @@
+<ion-content class="invite-body">
+  <ion-grid no-padding>
+    <ion-row class="row-data">
+      <ion-col col-12>
+        <div class="flex-item flex-row items-center img-container">
+          <img class="img" src="assets/imgs/invite-family.png">
+        </div>
+      </ion-col>
+      
+      <ion-col [formGroup]="formGroup" no-padding col-12 class="mb-2-big">
+        <div class="flex-item flex-row items-start mb-4-big">
+        <label class="title">Invite your family member by email</label>
+        </div>
+        <ion-item class="input-container" no-lines>
+          <ion-label>Email</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="Enter email ID"></ion-input>
+        </ion-item>
+        <ion-item class="input-container" no-lines>
+          <ion-label>Family member relation to you</ion-label>
+          <ion-input type="text" formControlName="relationWithMe" placeholder="Enter family member realtion to you"></ion-input>
+        </ion-item>
+        <ion-item class="input-container" no-lines>
+          <ion-label>Your relation to family member</ion-label>
+          <ion-input type="text" formControlName="relationWithThem" placeholder="Enter your relation to family member"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <div class="flex-item flex-row items-center row-bg">
+      <div class="flex-item col-6 b-right">
+        <button ion-button block clear class="btn" color="gray" (click)="onCancel()">cancel</button>
+      </div>
+      <div class="flex-item col-6">
+        <button ion-button block clear class="btn" color="pink" [disabled]="!formGroup.valid" (click)="onSend()">send</button>
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>

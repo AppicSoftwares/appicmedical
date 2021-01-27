@@ -1,0 +1,39 @@
+
+page-more-tab {
+  @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+
+
+  .feedback_comment_input {
+    .text-input {
+      background: #000;
+      padding: 5px;
+      position: relative;
+      top: 250px;
+    }
+ 
+  }
+
+  .pop-page {
+    height: 100%;
+
+    .divider-container {
+      ion-icon {
+        display: block;
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        line-height: 35px;
+        font-size: 2em;
+
+        &:hover {
+          background: #efefef;
+        }
+      
+      }
+      label{
+        font-size: 13px;
+      }
+    }
+  }
+
+}

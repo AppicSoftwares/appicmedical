@@ -1,0 +1,758 @@
+// http://ionicframework.com/docs/theming/
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.toolbar-background {
+  background: transparent;
+}
+
+.header::after,
+.tabs[tabsPlacement="top"]>.tabbar::after,
+.footer::before,
+.tabs[tabsPlacement="bottom"]>.tabbar::before {
+  background-image: none;
+}
+
+.bar-button-default,
+.bar-button-clear-default,
+.bar-button-default {
+  color: #fff;
+}
+
+.text-input {
+  font-size: 1.4rem;
+}
+
+.toolbar-title {
+  font-size: 1.7rem;
+  font-weight: normal;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 0px;
+  
+}
+
+.spinner.white circle {
+  fill: #fff;
+}
+
+.bar-button-menutoggle ion-icon {
+  font-size: 2.2rem;
+}
+
+.toolbar .bar-button .icon {}
+
+.searchbar .searchbar-input {
+  font-size: 1.6rem;
+}
+
+.mbsc-fr .mbsc-cal-year,
+.mbsc-fr .mbsc-cal-month {
+  font-size: 1.2rem;
+  line-height: 4rem;
+}
+
+.mbsc-cal-scroll-c {
+  font-size: 1.2rem;
+}
+
+.mbsc-fr.mbsc-fr-inline .mbsc-fr-w {
+  border-top: 0px;
+  margin-top: 8px;
+  background: #fffbfb;
+}
+
+.mbsc-fr.mbsc-calendar .mbsc-fr-btn {
+  color: #00d6ba !important;
+}
+
+.mbsc-fr .mbsc-cal-c .mbsc-cal .mbsc-cal-body .mbsc-selected .mbsc-cal-cell-txt {
+  border-color: #00d6ba !important;
+  background: #00d6ba !important;
+}
+
+.mbsc-range .mbsc-cal-day.mbsc-selected:after {
+  border-color: #00d6ba !important;
+  background: #00d6ba !important;
+  height: 1.975em !important;
+}
+
+.mbsc-fr .mbsc-cal-today {
+  color: #00d6ba !important;
+}
+
+.mbsc-fr .mbsc-cal-today .mbsc-cal-cell-txt {
+  background: #f3eaea !important;
+  border-color: #f3eaea !important;
+}
+
+.mbsc-mobiscroll.mbsc-no-touch .mbsc-cal-cell:not(.mbsc-disabled):hover .mbsc-cal-cell-txt,
+.mbsc-mobiscroll .mbsc-cal-cell:focus .mbsc-cal-cell-txt {
+  background: red;
+}
+
+.mbsc-fr.mbsc-fr-inline .mbsc-fr-w {
+  margin-top: 0px;
+}
+
+.mbsc-event-color {
+  width: 2px;
+}
+
+.mbsc-event-txt,
+.mbsc-ltr .mbsc-event-time {
+  padding: 1em 0px;
+}
+
+.mbsc-event-list .mbsc-lv .mbsc-lv-item {
+  padding: 0px 1em;
+}
+
+.mbsc-lv-cont .mbsc-lv-gr-title {
+  background: #fff;
+}
+
+.mbsc-fr.mbsc-alert {
+  font-size: 1.2rem;
+}
+
+.mbsc-alert.mbsc-fr p {}
+
+.mbsc-fr.mbsc-alert h2 {
+  color: #888888;
+  font-weight: 500;
+}
+
+.mbsc-fr.mbsc-alert .mbsc-fr-btn-w {
+  min-width: 30%;
+}
+
+.mbsc-fr.mbsc-alert .mbsc-fr-btn {
+  height: 40px;
+  line-height: 40px;
+  margin: 0px 6px;
+  font-size: 1.1rem;
+  /* padding: 0px 24px; */
+}
+
+.mbsc-fr.mbsc-alert .mbsc-fr-btn-cont {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.mbsc-fr.mbsc-alert .mbsc-fr-btn-c .mbsc-fr-btn,
+.mbsc-fr.mbsc-alert .mbsc-fr-btn-c .mbsc-fr-btn:hover {
+  background: #fe4a7a !important;
+}
+
+.mbsc-fr.mbsc-alert .mbsc-fr-btn-s .mbsc-fr-btn,
+.mbsc-fr.mbsc-alert .mbsc-fr-btn-s .mbsc-fr-btn:hover {
+  background: #00d6ba;
+}
+
+.mbsc-fr .mbsc-fr-btn {
+  color:#00d6ba;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 1.1em;
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.mbsc-fr .mbsc-fr-btn.custom {
+  color: #00d6ba;
+}
+
+.mbsc-fr.mbsc-fr-top .mbsc-fr-btn-cont,
+.mbsc-fr.mbsc-fr-bottom .mbsc-fr-btn-cont {
+  /* background: #12c1ab; */
+}
+
+.mbsc-fr.mbsc-sc.mbsc-fr-top .mbsc-fr-w,
+.mbsc-fr.mbsc-sc.mbsc-fr-bottom .mbsc-fr-w {
+  /* background: #00d6ba; */
+}
+
+.mbsc-fr.mbsc-fr-top .mbsc-sc-whl-o,
+.mbsc-fr.mbsc-fr-bottom .mbsc-sc-whl-o {
+  background: transparent;
+}
+
+.mbsc-fr.mbsc-fr-top .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c,
+.mbsc-fr.mbsc-fr-bottom .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c {
+  background: #00d6ba;
+}
+
+.mbsc-fr .mbsc-sc-whl-gr-3d .mbsc-sc-itm {
+  color: #000;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.mbsc-fr .mbsc-sc-whl-gr-3d .mbsc-sc-itm.mbsc-sc-itm-sel {
+  color: #fff;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.mbsc-fr .mbsc-sc-whl-gr-3d .mbsc-sc-itm.mbsc-sc-itm-sel.mbsc-active {
+  background: transparent;
+}
+
+/* .mbsc-sc-whl-sc
+{
+    transform: none !important;
+    transition: none !important;
+    margin-top: 34px !important
+} */
+
+.mbsc-fr.mbsc-fr-top .mbsc-sc-whl-l,
+.mbsc-fr.mbsc-fr-bottom .mbsc-sc-whl-l {
+  border: 0px;
+}
+
+.mbsc-fr .mbsc-ltr .mbsc-fr-btn-c {
+  float: none;
+}
+
+.mbsc-fr .mbsc-sel-filter-cont.mbsc-input {
+  background: #00d6ba;
+}
+
+.mbsc-mobiscroll .mbsc-input input,
+.mbsc-mobiscroll .mbsc-input textarea {
+  height: auto;
+  padding: 10px 8px;
+  border: 0px;
+  font-size: 1.2rem;
+  border-radius: 0px;
+}
+
+.mbsc-mobiscroll .mbsc-input {
+  margin: 0px 0px 16px 0px;
+}
+
+.mbsc-form-group-inset {
+  margin: 0px;
+}
+
+.mbsc-fr-popup .mbsc-fr-btn,
+.mbsc-fr-popup .mbsc-fr-btn:hover {}
+
+.mbsc-fr-popup .mbsc-fr-btn-c .mbsc-fr-btn,
+.mbsc-fr-popup .mbsc-fr-btn-c .mbsc-fr-btn:hover {
+  color: #bb1919;
+}
+
+.mbsc-fr-popup .mbsc-fr-btn-s .mbsc-fr-btn,
+.mbsc-fr-popup .mbsc-fr-btn-s .mbsc-fr-btn:hover {
+  color: #5cb85c;
+}
+
+.app-root .picker-wrapper {
+  background-color: #00d6ba;
+}
+
+.picker-wrapper .picker-toolbar {
+  background-color: #00d6ba;
+}
+
+.picker-wrapper .picker-toolbar-button .picker-button {
+  font-size: 1.2rem;
+}
+
+.picker-opt {
+  color: #5a0108;
+}
+
+.app-root .picker-button,
+.app-root .picker-button.activated,
+.app-root .picker-wrapper .picker-button,
+.app-root .picker-wrapper .picker-button.activated,
+.app-root .picker-prefix,
+.app-root .picker-suffix,
+.app-root .picker-opt.picker-opt-selected {
+  color: #fff;
+}
+
+.bg1 {
+  background: #00d6ba;
+}
+
+.posRelative {
+  position: relative;
+}
+
+.error-cont {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #ff0000;
+  z-index: 9;
+  cursor: pointer;
+}
+
+.error-cont .error-hover {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  display: none;
+}
+
+.error-cont:hover .error-hover {
+  display: block;
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 1px 1px 0px #ccc;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 1px 1px 0px #ccc;
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 1px 1px 0px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  border-radius: 3px;
+  border: 1px solid #dcd2d2;
+}
+
+.iconshadow {
+  -webkit-box-shadow: 3px 3px 3px #bba5a5;
+  -moz-box-shadow: 3px 3px 3px #bba5a5;
+  box-shadow: 3px 3px 3px #bba5a5;
+}
+
+.pick-doctor-name {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+}
+
+.pick-doctor-address {
+  font-size: 1.2rem;
+}
+
+.content {
+  background: #f9f9f9;
+  font-size: 1.4rem;
+}
+
+.footer {
+  font-size: 1.2rem;
+}
+
+.label {
+  font-size: 1.2rem;
+}
+
+.button.custom.mini {
+  height: auto;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding: 5px 20px;
+  margin: 0px;
+  background: #b2b2b2;
+  text-transform: inherit;
+}
+
+.button.custom.mini.selected {
+  background: #00d6ba;
+}
+
+.button.custom {
+  background: #00d6ba;
+  margin: 0px;
+  text-transform: inherit;
+  font-weight: normal;
+  height: 4.4rem;
+}
+
+.custom.fab {
+  background: #00d6ba;
+}
+
+.button.custom:hover {
+  background: #00d6ba;
+}
+
+.fixed-label {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 9;
+  height: 100%;
+  font-size: 1.2rem;
+  background: #cdcdcd;
+  padding: 10px 8px;
+  width: 50px;
+  text-align: center;
+}
+
+.logo-cont {
+  width: 50%;
+  margin: 0px auto;
+  text-decoration: none;
+  padding: 0px 0px;
+}
+
+.home-icon a {
+  text-decoration: none;
+  border: 1px solid #bba5a5;
+  text-align: center;
+  display: inline-block;
+  border-radius: 5px;
+  width: 100%;
+  color: #000;
+  padding: 8px 0px;
+  font-size: 1.2rem;
+}
+
+.home-icon a img {
+  max-width: 50%;
+}
+
+.logo-cont a {
+  text-decoration: none;
+  color: #000;
+  font-size: 2.4rem;
+  text-align: center;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #bba5a5;
+  border-radius: 5px;
+}
+
+.menu-logo-cont {
+  max-width: 80%;
+  margin: 0px auto;
+}
+
+.menu-logo-sub-cont {
+  color: #00d6ba;
+}
+
+#menu-cont .item {
+  background-color: transparent;
+}
+
+#menu-cont .item .label {
+  font-size: 1.3rem;
+}
+
+.menu-header {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.searchbar {
+  background: none;
+}
+
+/* IOS style */
+.toolbar-title-ios {
+  color: #fff;
+  font-weight: normal;
+}
+
+.bar-button-default-ios,
+.bar-button-default.bar-button-ios-default,
+.bar-button-clear-ios-default {
+  color: #fff;
+}
+
+.header-ios .toolbar-background-ios,
+.footer-ios .toolbar-background-ios {
+  border: none;
+  background: transparent;
+}
+
+.bar-button-ios {
+  font-size: 1.5rem;
+}
+
+.toolbar-title-ios {
+  font-size: 1.5rem;
+}
+
+.mbsc-ios .mbsc-form-group-inset .mbsc-control-ng .mbsc-control-w:before,
+.mbsc-ios .mbsc-form-group-inset .mbsc-control-ng .mbsc-control-w:after {
+  border: 0px;
+}
+
+.mbsc-ios .mbsc-form-group-inset .mbsc-control-ng:last-child .mbsc-control-w {
+  border: 1px solid #cdcdcd;
+  border-radius: 0px;
+}
+
+.mbsc-material .mbsc-input input,
+.mbsc-material .mbsc-input textarea {
+  padding: 0px 10px;
+}
+
+.mbsc-note-info {
+  margin: 0px;
+  border-radius: 0px;
+}
+
+.mbsc-fr .mbsc-sc-whl-gr-3d .mbsc-sc-itm {
+  font-size: 1.5rem;
+}
+
+.font1-4rem {
+  font-size: 1.4rem;
+}
+
+.font1-2rem {
+  font-size: 1.2rem;
+}
+
+.MedsPriceSettings .mbsc-fr-popup {
+  width: 90% !important;
+  left: 5% !important;
+  top: 20% !important;
+  height: 250px !important;
+}
+
+.MedsPriceSettings .mbsc-fr-w {
+  width: 99% !important;
+}
+
+.padding-5px-bottom {
+  padding-bottom: 5px;
+}
+
+.mbsc-lv-loading .mbsc-ic {
+  color: #00d6ba !important;
+}
+
+.mbsc-segmented .mbsc-segmented-item input:checked+.mbsc-segmented-content {
+  background: #00d6ba !important;
+  color: #ffffff !important;
+}
+
+.mbsc-segmented-content {
+  border: 0.07142857em solid #00d6ba !important;
+  color: #00d6ba !important;
+}
+
+.mbsc-empty {
+  font-size: 1.2rem;
+  color: #000000;
+  background: #ffffff;
+}
+
+.pill {
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pill-default {
+  background: #00d6ba;
+  color: #ffffff;
+}
+
+.pill-inverse {
+  color: #00d6ba;
+  background: #ffffff;
+}
+
+.pill-min-width {
+  min-width: 65px;
+}
+
+.btn_mp_yes .mbsc-btn {
+  background: #0b7366;
+  color: #ffffff;
+}
+
+.btn_mp_no .mbsc-btn {
+  border: 1px #00d6ba solid;
+  color: #00d6ba;
+  background: #ffffff;
+}
+
+.no-margin-force {
+  margin: 0 !important;
+}
+
+.mp-bg-green {
+  background: #00d6ba !important;
+}
+
+.mp-bg-lt-green {
+  background: #00d6ba !important;
+}
+
+.mp-bg-red {
+  background: #ff0000 !important;
+}
+
+.mp-bg-drk-red {
+  background: #630202 !important;
+}
+
+.mp-text-red {
+  color: #d80a0a !important;
+}
+
+.mp-text-green {
+  color: #00d6ba !important;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.verify-phone-input {
+  input {
+    padding: 5px;
+    width: 99%;
+  }
+}
+
+.padding-bottom-half {
+  padding-bottom: 8px;
+}
+
+.background-white {
+  background: #ffffff;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.mp-bg-green {
+  .checkbox-checked {
+    border-color: #00d6ba !important;
+    background-color: #00d6ba !important;
+  }
+
+  .checkbox-icon {
+    border-color: #00d6ba !important;
+  }
+}
+
+.customer-option {
+  .mbsc-fr-btn {
+    color: #00d6ba;
+  }
+}
+
+.no-padding {
+  .mbsc-segmented {
+    padding: 0px !important;
+  }
+}
+
+.bg-white {
+  background: #ffffff !important;
+}
+
+.bg-pink {
+  background: #fe4a7a !important;
+}
+
+.-popover {
+  .popover-content {
+    top: initial !important;
+    right: 20px !important;
+    bottom: 65px !important;
+    left: initial !important;
+    width: 150px;
+    height: 94;
+    padding: 1rem 0 1rem 1rem;
+  }
+
+  .popover-viewport {
+    height: 100%;
+  }
+}
+
+.check-availability-alert-box {
+  .alert-title {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .alert-input {
+    text-align: center;
+  }
+
+  .alert-message {
+    text-align: center;
+  }
+
+  .alert-button-group {
+    padding: 8px !important;
+    justify-content: space-between;
+
+    .alert-input {
+      text-align: center;
+    }
+
+    .alert-button {
+      width: calc(50% - 4px);
+      margin: 0;
+      text-align: center;
+
+      .button-inner {
+        justify-content: center;
+      }
+
+      &:nth-child(2) {
+        margin-left: 8px;
+      }
+
+      &:only-child {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+    }
+  }
+}
+
+.price-popup{
+   .popover-content{
+    width: 300px;
+  }
+}
+.invite-family-popup{
+  .popover-content{
+    width: 320px;
+  }
+}
+.ios.cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+  height: calc(44px + constant(safe-area-inset-top));
+}
+
+
+.ios.cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  margin-top: constant(safe-area-inset-top);
+}
+
+div.tab-nav.tabs {
+  height: calc(49px + constant(safe-area-inset-bottom));
+}
+
+ion-content.padding.scroll-content.ionic-scroll.has-header.has-tabs {
+  top: calc(64px + constant(safe-area-inset-top));
+}
+.top_pad13{
+  padding-top: 53px !important;
+}
+.top_pad12{
+  padding-top: 75px !important;
+}

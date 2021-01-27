@@ -1,0 +1,43 @@
+<ion-content fullscreen="true" no-padding>
+  <ion-header  no-border>
+     <ion-navbar  class="top_fam">
+        <ion-title><img src="../../assets/imgs/skip.png" (click)="skip()" *ngIf="SkipBtn" id="skip"></ion-title>
+     </ion-navbar>
+  </ion-header>
+  <ion-slides pager="true" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()" class="sample-onbording">
+  <div class="custro">
+     <ion-slide class="diag2">
+        <div>
+        </div>
+        <div class="dsd4 text-center">
+           <img src="assets/onboardingscreen/text-offer.svg" class="diag8">
+        </div>
+     </ion-slide>
+  </div>
+  <div class="custro">
+     <ion-slide>
+        <div>
+           <img src="assets/onboardingscreen/deliver_screen.svg" class="diag">
+        </div>
+        <div class="dsd6 text-center">
+           <img src="assets/onboardingscreen/text1.svg" class="diag">
+        </div>
+     </ion-slide>
+  </div>
+  <div class="custro">
+     <ion-slide>
+        <div>
+           <img src="assets/onboardingscreen/healtai.svg" class="diag">
+        </div>
+        <div class="dsd text-center">
+           <img src="../../assets/imgs/get-started.png" (click)="skip()" class="diag1">
+           <div class="custom-text-2">
+              <img src="assets/onboardingscreen/YourHealth.svg" class="diag">
+           </div>
+        </div>
+     </ion-slide>
+  </div>
+  </ion-slides>
+  <!-- <button  (click)="skip()" id="skip" class="btn1">SKIP</button> -->
+  <!-- <button (click)="skip()" id="start">{{skipMsg}}</button> -->
+</ion-content>

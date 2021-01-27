@@ -1,0 +1,13 @@
+{
+  "name": "delivery",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/rxapiendpoint",
+      "proxyUrl": "https://qa.rxapi.net/1.1"
+    }
+  ]
+}

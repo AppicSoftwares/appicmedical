@@ -1,0 +1,78 @@
+<!--
+  Generated template for the MembershipSignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="bg1">
+	<ion-navbar class="top_mar_pat">
+		<ion-title>Membership Signup</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding class="membership-signup-cont">
+	<form [formGroup]="signupFormData">
+		<ion-row>
+			<ion-col col-12 no-padding class="posRelative">
+				<span class="error-cont"
+					*ngIf="signupFormData.get('name').hasError('required') && (signupFormData.get('name').touched || displayError)">
+					<ion-icon name="alert"></ion-icon>
+					<span class="error-hover">Required</span>
+				</span>
+				<ion-label stacked>Name *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-input type="text" placeholder="Your Name" formControlName="name"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-12 no-padding class="posRelative">
+				<span class="error-cont"
+					*ngIf="signupFormData.get('email').hasError('required') && (signupFormData.get('email').touched || displayError)">
+					<ion-icon name="alert"></ion-icon>
+					<span class="error-hover">Required</span>
+				</span>
+				<ion-label stacked>Email *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-12 no-padding class="posRelative">
+				<span class="error-cont"
+					*ngIf="signupFormData.get('dob').hasError('required') && (signupFormData.get('dob').touched || displayError)">
+					<ion-icon name="alert"></ion-icon>
+					<span class="error-hover">Required</span>
+				</span>
+				<ion-label stacked>DOB *</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-datetime displayFormat="MM-DD-YYYY" [min]="minDateISO" [max]="maxDateISO" placeholder="MM-DD-YYYY"
+						formControlName="dob">
+					</ion-datetime>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-12 no-padding class="posRelative">
+				<ion-label stacked>Membership Started</ion-label>
+				<ion-item no-padding class="item-name">
+					<ion-datetime displayFormat="MM-DD-YYYY" [min]="minDateISO" [max]="maxDateISO" placeholder="MM-DD-YYYY"
+						formControlName="startdate" disabled="true">
+					</ion-datetime>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-content>
+<ion-footer>
+	<ion-row>
+		<ion-col col-12 no-padding>
+			<button ion-button class="custom" full (click)="signup()" [disabled]="submitted">Generate Discount Card
+
+				&nbsp;
+
+			</button>
+		</ion-col>
+	</ion-row>
+</ion-footer>

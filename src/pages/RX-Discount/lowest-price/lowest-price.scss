@@ -1,0 +1,609 @@
+
+page-lowest-price {
+
+  @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+
+  .toolbar-md-themeColor .toolbar-background-md {
+    background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+}
+
+.button-md-themeColor {
+  color: #fff;
+  background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+}
+
+  .lowest-price-body {
+    background: #fff;
+    .search-container {
+      border-radius: 10px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      .searchbar-search-icon{
+        background-size: 25px;
+      }
+      .searchbar-input {
+        display: flex;
+        border: 1px solid #bdbdbd;
+        height: 50px;
+        border-radius: 10px 0 0 10px;
+
+        .text-input {
+          margin: 11px 8px;
+        }
+    
+      }
+
+      .search-btn {
+        border-radius: 0 10px 10px 0;
+        height: 50px;
+        width: 60px;
+
+        .icon {
+          font-size: 2.5rem;
+          top: 1px;
+        }
+      }
+    }
+
+    .config {
+      background-color: #e1e1e1;
+      padding: 1.5rem 2rem;
+      margin: 0 -16px;
+    }
+
+    .delete-divider {
+      padding: 0 16px;
+      background: #f6f6f6;
+      .down-icon {
+        font-size: 1.8em;
+      }
+    }
+    .text-title{
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+    .data-container {
+      border-bottom: 2px solid #d3d3d3;
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-bottom: 8px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .item {
+        background-color: transparent;
+
+        .new-label {
+          max-width: 31%;
+          text-transform: uppercase;
+          font-size: 15px;
+        }
+
+        .select {
+          max-width: 100%;
+          width: 65%;
+          background: #e1e1e1;
+          padding: 8px;
+
+          &-icon {
+            width: 19px;
+            height: 19px;
+
+            &-inner {
+              color: #f42072;
+              border-top: 8px solid;
+              border-right: 8px solid transparent;
+              border-left: 8px solid transparent;
+            }
+          }
+        }
+      }
+    }
+    .ptb-16{
+        padding: 16px 0;
+    }
+    .add-btn {
+      box-shadow: none;
+      height: 22px;
+      width: 22px;
+      font-size: 11px;
+    }
+
+    .text {
+      margin-left: 1rem;
+      font-size: 12px;
+    }
+    .dd-icon {
+      .icon-arrow {
+        font-size: 30px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+        color: #f42072;
+      }
+    }
+    .address {
+      background: #f9f9f9;
+      padding: 16px;
+      margin: 8px 0;
+
+      .title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .desc {
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+
+    .price-btn {
+      font-weight: 400;
+      font-size: 13px;
+    }
+    .selected_drug {
+      padding: 5px;
+      border-top: 1px solid #fff;
+      text-transform: capitalize;
+      background: #f9f9f9;
+      color: #fff;
+    }
+    .selected_drug .name {
+      font-size: 1.6rem;
+    }
+    .drugname {
+      border: 1px solid #ddd;
+      padding: 10px 5px;
+      margin-top: 5px;
+    }
+    .drugname-title {
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+    .brand-name {
+      margin-top: 30px;
+    }
+    .dosage-value {
+      border: 1px solid #fff;
+      border-radius: 5px;
+      font-size: 1.6rem;
+      padding: 3px 10px;
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+    .custom-nearme {
+      border: 2px solid;
+      border-radius: 6px;
+      width: 100%;
+      border: none;
+      padding: 10px;
+      background: #00d6ba;
+      color: #fff;
+    }
+    .selected_drug .sub {
+      font-size: 1.2rem;
+      padding-top: 3px;
+    }
+    .quantity span {
+      display: inline-block;
+      margin-top: 5px;
+    }
+    .quantity .count {
+      border: 1px solid #fff;
+      border-radius: 5px;
+      font-size: 1.6rem;
+      padding: 3px 10px;
+    }
+    .quantity .edit {
+      padding-left: 8px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      ion-icon {
+        font-weight: bold;
+      }
+    }
+    .custom {
+      background: #00d6ba;
+      margin: 0px;
+      text-transform: inherit;
+      font-weight: normal;
+      height: 4.4rem;
+      color: #f3436d;
+      font-weight: 900 !important;
+      font-size: 20px;
+    }
+    // .pharmacy {
+    // }
+    .pharmacy .name {
+      font-size: 1.4rem;
+    }
+    .pharmacy .retail-price,
+    .pharmacy .non-member-price,
+    .pharmacy .member-price {
+      padding-top: 3px;
+    }
+    .price-coll {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .delivery-to {
+      text-align: center;
+      padding: 8px 16px;
+      color: #00d6ba;
+      background: #f9f9f9;
+    }
+    .delivery-to .icon {
+      font-size: 1.8rem;
+    }
+    .btn-cart .icon {
+      position: relative;
+    }
+    span.cartcount {
+      font-size: 1rem;
+      position: absolute;
+      background: #00d6ba;
+      padding: 2px 4px;
+      text-align: center;
+      right: 0px;
+      border-radius: 25px;
+      top: -2px;
+      line-height: 11px;
+      color: #fff;
+    }
+    .shadow {
+      -webkit-box-shadow: 0px 1px 1px 0px #ccc;
+      /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+      -moz-box-shadow: 0px 1px 1px 0px #ccc;
+      /* Firefox 3.5 - 3.6 */
+      box-shadow: 0px 1px 1px 0px #ccc;
+      /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+      border-radius: 3px;
+      border: 1px solid #dcd2d2;
+    }
+    .searchbar .searchbar-input {
+      text-transform: capitalize;
+    }
+    .search-result-cont {
+      position: absolute;
+      width: 100%;
+      left: 0px;
+      z-index: 9;
+    }
+    .autocomplete_results {
+      max-height: 200px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    .ac-label,
+    .ac-sub {
+      display: block;
+    }
+    .ac-label {
+      font-size: 1.4rem;
+      text-transform: capitalize;
+    }
+    .ac-sub {
+      font-size: 1.2rem;
+    }
+    .search-result-cont .item {
+      border-bottom: 1px solid #cdcdcd;
+      padding-left: 5px;
+    }
+    .search-result-cont .item .item-inner {
+      border-bottom: none;
+    }
+    .search-result-cont .item .item-inner .label {
+      margin: 8px 8px 8px 0px;
+    }
+    .search-result-cont .list {
+      border-top: 1px solid #cdcdcd;
+    }
+    .spinner-cont {
+      position: absolute;
+      z-index: 9;
+      background: #fff;
+      padding: 5px 10px;
+    }
+    .search-result-cont .item.item-ios {
+      padding-left: 30px;
+    }
+    .searchbar-ios {
+      min-height: auto;
+    }
+    .searchbar-cont .spinner-cont {
+      padding: 0px;
+      top: 4px;
+      left: 4px;
+    }
+    .header-ios .spinner-cont .spinner-ios {
+      position: relative;
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+    }
+    .footer {
+      z-index: 1;
+    }
+    // .add-fab-button .fab{
+    // }
+    .add-fab-button {
+      width: 100%;
+      left: auto;
+      margin-left: 0px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+    }
+    .pharmacy_sent_footer {
+      background: #00d6ba;
+      color: #ffffff;
+    }
+    .pharmacy_sent_footer button {
+      color: #ffffff !important;
+    }
+    .pharmacy_sent_header .mbsc-card-title {
+      font-size: 2rem;
+    }
+    .padding-right-mini {
+      padding-right: 8px;
+    }
+    .padding-left-mini {
+      padding-left: 8px;
+    }
+    .mbsc-ios .mbsc-control-w:before,
+    .mbsc-ios .mbsc-control-w:after {
+      border: none;
+    }
+    #filtered-search .label {
+      margin: 0px 0px 6px 0px;
+    }
+    .margin-top-mini {
+      margin-top: 12px;
+    }
+    .text-lower {
+      text-transform: lowercase;
+    }
+    .text-captalize {
+      text-transform: capitalize;
+    }
+    .mbsc-card-content mbsc-button {
+      margin-top: 0px !important;
+    }
+    .bg1 {
+      background: #30cbb2 !important;
+    }
+    .cart {
+      width: 55%;
+      position: relative;
+      left: 15px;
+    }
+    @media (min-width: 800px) {
+      .cart {
+        width: 100%;
+        padding: 5px 10px;
+        margin-top: 30px;
+      }
+    }
+    .heading {
+      h2 {
+        background: #f0eff4;
+        margin: 0;
+        padding: 15px 15px;
+        color: #656567;
+        font-size: 17px;
+      }
+    }
+    .custom_input {
+      .item-md {
+        padding-left: 0px;
+        background: transparent;
+      }
+    }
+    .form-group {
+      select {
+        margin-top: 0rem;
+        width: 100%;
+        padding: 6px 0px;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        background: transparent;
+        border-color: #bfeae4;
+        color: #928d8d;
+      }
+      .custom_qty {
+        float: right;
+        font-size: 11px;
+        font-weight: 500;
+        margin-top: 7px;
+      }
+      .button-md {
+        background: transparent;
+        color: black;
+        box-shadow: none;
+        font-size: 17px;
+        float: right;
+        top: -12px;
+        height: 10px;
+        width: 10px;
+      }
+      .button-md:hover:not(.disable-hover) {
+        background-color: transparent;
+      }
+      label {
+        color: #000;
+        font-weight: bold;
+      }
+      .locationItem {
+        .item-md {
+          padding-left: 0px;
+          background: transparent;
+        }
+        .item-md.item-block .item-inner {
+          padding-right: 0px;
+        }
+        .label {
+          font-size: 15px;
+        }
+      }
+    }
+    .row {
+      display: flex;
+    }
+    .column {
+      flex: 50%;
+      padding: 7px;
+    }
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: black;
+    }
+    .checkbox-md .checkbox-icon {
+      border-color: #119b8b;
+      width: 20px;
+      height: 20px;
+    }
+    .ion-md-add-circle::before {
+      color: #119b8b;
+    }
+    .button.custom {
+      margin-bottom: 0;
+    }
+    .checkbox__text {
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
+      cursor: pointer;
+      .item-md {
+        background-color: transparent;
+        padding-left: 0px;
+      }
+      .item.item-md .checkbox-md {
+        margin: 9px 9px 9px 0px;
+      }
+      .item-md.item-block .item-inner {
+        border-bottom: none;
+      }
+      span {
+        // margin-left: 1.2rem;
+        font-size: 17px;
+        position: relative;
+        top: -4px;
+        color: #119b8b;
+        font-weight: 500;
+      }
+      .checkbox-md-primary .checkbox-checked {
+        background-color: #119b8b;
+      }
+      .label {
+        color: #119b8b;
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
+    .add_icon__text {
+      margin-bottom: 16px;
+      border-bottom: 1px solid #bfeae4;
+      button {
+        background: transparent;
+        // padding: 0;
+        box-shadow: none;
+        margin-left: -15px;
+      }
+      button:hover:not(.disable-hover) {
+        background: transparent;
+      }
+      .add {
+        color: #fff;
+        background: #119b8b;
+        padding: 2px 5px;
+        border-radius: 50px;
+        height: 22px;
+        width: 22px;
+        text-align: center;
+        box-shadow: 0px 3px 5px #00000096;
+        margin-top: 2.2rem;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-bottom: 20px;
+      }
+      span {
+        color: #119b8b;
+        font-size: 17px;
+        font-weight: 500;
+      }
+    }
+    .dosage-name {
+      margin: 0;
+      margin-left: -4px;
+    }
+    #showVariations {
+      color: black;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+    .down_arrow {
+      position: absolute;
+      top: 0px;
+      color: black;
+      right: 11px;
+      ion-icon {
+        font-size: 25px;
+      }
+    }
+    .down_arrow_drug {
+      position: absolute;
+      top: 31px;
+      color: black;
+      right: 15px;
+      ion-icon {
+        font-size: 25px;
+      }
+    }
+
+    .cst-quantity-input {
+      padding: 5px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      display: block;
+      background: transparent;
+    }
+  }
+  .top_mar_pat {
+    padding-top: 36px !important;
+    // padding-bottom: 18px !important;
+  }
+  .okayBtn{
+    position: absolute;
+    right: 0;
+    top:-1;
+  }
+  .cartCounter{
+    background-color: #f42072;
+    border-radius: 63%;
+    padding: 2px;
+    position: absolute;
+    top: -11px;
+    left: 18px;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    z-index: -1111;
+  }
+  .toolbar-md {
+    padding: 4px;
+    min-height: 100px;
+}
+.pill-default {
+  background: #00d6ba;
+  color: #ffffff;
+  background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+}
+}

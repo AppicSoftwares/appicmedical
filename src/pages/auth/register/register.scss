@@ -1,0 +1,161 @@
+
+page-register  {
+    .text-input {
+        margin: 13px 0px;
+    }
+    .item.item-input.item-input-has-focus .item-inner,
+    .item.item-input.input-has-focus .item-inner {
+        border-bottom-color: inherit;
+        -webkit-box-shadow: none !important;
+        box-shadow: none;
+    }
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-bottom-color: #777777;
+        -webkit-box-shadow: none !important;
+        box-shadow: none;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom-color: #777777 !important;
+    }
+
+    .item.item-input.item-input-has-focus .item-inner ion-input,
+    .item.item-input.input-has-focus .item-inner ion-input,
+    .item.item-input.item-input-has-focus .item-inner ion-textarea,
+    .item.item-input.input-has-focus .item-inner ion-textarea {
+        border-color: #777777;
+    }
+
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input,
+    .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea, .item.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea
+    {
+        border-color: #777777;
+    }
+
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+        border-color: inherit;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input,
+    .item.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-textarea {
+        border-color: #777777;
+    }
+
+    .item-input{
+        background: transparent !important;
+        color: #777777;
+        .plus-button{
+            background: transparent !important;
+            color: #777777;
+        }
+    }
+    .label{
+        color: #777777;
+        font-size: 1.5rem !important;
+    }
+    .color-white{
+        color: #ffffff;
+    }
+    .font-1x{
+        font-size: 1.5rem;
+    }
+    ion-fab{
+        bottom: 10px !important;
+    }
+    .content{
+        background-color: #ffffff;
+    }
+    .scroll-content{
+        margin-top: 0px !important;
+    }
+    .logo-cont{
+        background-image: url(../assets/imgs/medidelivery/home_bg_grayed.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 48vh;
+        background-size: cover;
+        position: relative;
+        background-position: top center;
+    }
+   
+     
+
+    .page-title{
+        font-size: 2rem;
+        font-weight: bold;
+        padding-bottom: 7px;
+    span{
+        padding-bottom: 7px;
+        border-bottom: 2px red solid; 
+    }    
+    }
+    
+
+    .form-content{
+     /*   padding-top: 15px;
+        ion-label{
+            padding-bottom: 15px;
+        }*/
+    }
+    .bg-color-blue{
+        background-color: #00cfb1 !important;
+    }
+    .item-inner{
+     /*   border-bottom: none !important;*/
+    box-shadow: none !important;
+    }
+    .input{
+       /* border-left: 2px solid #777777;*/
+    }
+    .plus-button{
+        font-size: 2rem;
+    }
+    .logo-image{
+        width: 58%;
+        margin: 0 auto;
+        padding-top: 16%;
+      /*  margin-bottom: 15%;
+        position: absolute;
+        left: 25%;*/
+        z-index: 1;
+        text-align: center;
+        .image{
+            width: 100%;
+            text-align: center;
+            img{
+    /*                width: 63%;*/
+            }
+        }
+    
+        .tag-line{
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.8rem;
+            text-align: center;
+            width: 100%;
+        }
+    }
+    .social-icon button{
+        margin: 35px 15px auto;
+        font-size: 25px;
+        background: #fff;
+        box-shadow: 0px 0px 10px #0000004f;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+    
+    }
+    .social-icon {
+        text-align: center;
+    }
+    ion-icon.icon.icon-md.ion-logo-facebook {
+        color: #286de3;
+      
+    }
+    ion-icon.icon.icon-md.ion-logo-google {
+        color: #e71212;
+        
+    }
+
+    
+}

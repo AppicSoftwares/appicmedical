@@ -1,0 +1,61 @@
+<ion-header class="rx-discount-header" no-border>
+    <ion-navbar  text-center color="themeColor" class="top_fam">
+      <ion-title text-center style="margin-left: -87px;" >Delivered</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="delivered-body" padding>
+    <ion-grid no-padding>
+        <ion-row>
+            <ion-col col-12 no-padding>
+                <div class="flex-item flex-column align-center mb-2-big top_mar">
+                    <label class="text-uppercase title mb-3">simply show this discount card on app </label>
+                    <label class="text-uppercase title mb-4">at any pharmacy to get discounted price.</label>
+                    <label class="text-uppercase title mb-4 pink-color">or</label>
+                    <label class="text-uppercase title mb-3">get it delivered same day!</label>
+                </div>
+            </ion-col>
+            <ion-col class="mb-2-big" col-12 no-padding>
+                <div class="flex-item flex-row custom-segement">
+                    <div class="flex-item flex-column col-6 align-center border-right theme-bg">
+                        <div class="icon-holder box-shadow-normal">
+                            <img src="assets/imgs/homes/capsule.png">
+                        </div>
+                        <div class="flex-item divider">
+                            <label class="label text-uppercase">discount card</label>
+                        </div>
+                    </div>
+                    <div class="flex-item flex-column align-center col-6">
+                        <div class="icon-holder box-shadow-normal">
+                            <img src="assets/imgs/homes/track.png">
+                        </div>
+                        <div class="flex-item divider">
+                            <label class="label text-uppercase">get delivery</label>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+            <ion-col col-12 no-padding>
+                <div class="flex-item flex-row border-bottom pb-2rem">
+                    <label class="heading text-uppercase font-bold">nearest pharmacies:</label>
+                </div>
+                <div class="flex-item flex-column custom-item border-bottom" *ngFor="let item of [1,2]">
+                    <label class="text">CVS Inside Target (1)</label>
+                    <div class="flex-item flex-row mt-3 p-lr">
+                        <i class="fa fa-map icon-color" aria-hidden="true"></i>
+                        <span class="small-text"> 10851 Weyburn Ave Los Angeless 90024 CA</span>
+                    </div>
+                    <div class="flex-row flex-item mt-2 col-12 items-space-between p-lr">
+                        <div class="flex-item">
+                            <i class="fa fa-map-marker icon-color" aria-hidden="true"></i>
+                            <span class="small-text"> 0.39mi</span>
+                        </div>
+                        <div class="flex-item">
+                            <i class="fa fa-map-marker icon-color" aria-hidden="true"></i>
+                            <span class="small-text"> 0.39mi</span>
+                        </div>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

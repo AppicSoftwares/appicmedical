@@ -1,0 +1,245 @@
+<ion-header class="bg3">
+  <ion-navbar color="themeColor" class="top_mar_pat ">
+  
+    <ion-title>Creating your profile</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="profile-body profile_mar">
+  <ion-grid>
+    <ion-row>
+      <!-- <ion-col class="text-center" col-12>
+        <label class="small-heading"> Creating your profile</label>
+      </ion-col> -->
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 no-padding>
+        <div class="timeline flex-item flex-row items-center">
+          <div class="timeline-container">
+            <div class="line-1"
+              [ngClass]="{'active': (timeLine ==='gender'|| timeLine ==='general' || timeLine ==='bio')}">
+              <div class="indicator indicator-left active"></div>
+            </div>
+            <div class="line-2" [ngClass]="{'active':  timeLine ==='general'|| timeLine ==='bio'}">
+              <div class="indicator indicator-left deactive"
+                [ngClass]="{'active': (timeLine ==='gender'|| timeLine ==='general'|| timeLine ==='bio')}"></div>
+            </div>
+            <div class="line-3" [ngClass]="{'active':  timeLine ==='bio'}">
+              <div class="indicator indicator-left deactive"
+                [ngClass]="{'active':  timeLine ==='general'|| timeLine ==='bio'}"></div>
+              <div class="indicator indicator-right deactive" [ngClass]="{'active':  timeLine ==='bio'}"></div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row [formGroup]="profileForm" [ngSwitch]="timeLine">
+      <ion-col formGroupName="name" *ngSwitchCase="'picture'" col-12>
+        <div class="flex-item flex-row mb-4rem">
+          <label class="font-bold title">Upload a clear picture of your face</label>
+        </div>
+        <div class="flex-item flex-row items-center profile-container">
+          <div class="img-container">
+            <img class="radius-img" src="{{userImageURL+userId+loadUserImageParam}}" onError="this.src='assets/imgs/person.png'"  alt="" />
+            <button ion-button color="themeColor" class="btn-radius">
+              <ion-icon name="ios-share-outline" (click)="filePicker()"></ion-icon>
+            </button>
+          </div>
+        </div>
+        <ion-item class="input-container" no-lines>
+          <ion-label>First Name</ion-label>
+          <ion-icon class="icon" name="md-person" item-start></ion-icon>
+          <ion-input type="text" formControlName="firstName"></ion-input>
+        </ion-item>
+        <ion-item class="input-container" no-lines>
+          <ion-label>Last Name</ion-label>
+          <ion-icon class="icon" name="md-person" item-start></ion-icon>
+          <ion-input type="text" formControlName="lastName"></ion-input>
+        </ion-item>
+        <div class="flex-item flex-row pt-5">
+          <button ion-button block class="default-btn" [disabled]="name.invalid" (tap)="onUserNext()">
+            next
+          </button>
+          <button ion-button block class="default-btn" (tap)="skipstep()">
+            Skip
+          </button>
+        </div>
+      </ion-col>
+      <ion-col formGroupName="basic" *ngSwitchCase="'gender'" col-12>
+        <div class="flex-item flex-row mb-4rem p-relative">
+          <label class="font-bold title title-ml-gender">Select your gender</label>
+        </div>
+        <div class="flex-item flex-row p-4 mb-4rem">
+          <ion-card class="align-center card card-md flex-column flex-item items-center text-center"
+            (click)="gender='female'">
+            <div class="card-icon">
+              <ion-icon class="icon-large" name="md-female" [ngClass]="{'active':gender==='female' }"></ion-icon>
+            </div>
+            <div class="card-title">
+              <p>female</p>
+            </div>
+          </ion-card>
+          <ion-card class="align-center card card-md flex-column flex-item items-center text-center"
+            (click)="gender='male'">
+            <div class="card-icon">
+              <ion-icon class="icon-large" name="md-male" [ngClass]="{'active':gender==='male' }"></ion-icon>
+            </div>
+            <div class="card-title">
+              <p>male</p>
+            </div>
+          </ion-card>
+        </div>
+        <ion-item class="input-container input-container-general" no-lines>
+          <ion-label>D/O/B</ion-label>
+          <ion-icon class="icon" name="md-calendar" item-start></ion-icon>
+          <ion-datetime displayFormat="MM-DD-YYYY" formControlName="dob" placeholder="MM-DD-YYYY">
+          </ion-datetime>
+        </ion-item>
+        <ion-item class="input-container input-container-general" no-lines>
+          <ion-label>Phone</ion-label>
+          <ion-icon class="icon" name="md-call" item-start></ion-icon>
+          <ion-input type="tel" formControlName="phone"></ion-input>
+        </ion-item>
+        <div class="flex-item flex-row pt-5">
+          <button ion-button block class="default-btn" [disabled]="basic.invalid" (tap)="onGenderNext()">
+            next
+          </button>
+        </div>
+      </ion-col>
+      <ion-col formGroupName="general" *ngSwitchCase="'general'" col-12>
+        <div class="flex-item flex-row mb-4rem p-relative">
+          <label class="font-bold title title-general">General Details</label>
+        </div>
+        <ion-item class="input-container input-container-general" no-lines>
+          <ion-label>Street Address</ion-label>
+          <ion-input type="text" formControlName="address"></ion-input>
+        </ion-item>
+       
+        <mbsc-form-group class="mobi-form">
+          <ion-row>
+            <ion-col col-12 no-padding class="posRelative name-cont">
+              <div class="mb-2-big posRelative">
+                <span class="error-cont"
+                  *ngIf="general.get('country').hasError('required') && (general.get('country').touched)">
+                  <ion-icon name="alert"></ion-icon>
+                  <span class="error-hover">Required</span>
+                </span>
+                <ion-label stacked class="custom-label">Country *</ion-label>
+                <mbsc-select formControlName="country"   [options]="countrySettings" #mbscRemoteCoun="mobiscroll"
+                  placeholder="Please Select..."></mbsc-select>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 no-padding class="posRelative name-cont">
+              <div class="mb-2-big posRelative">
+                <span class="error-cont"
+                  *ngIf="general.get('state').hasError('required') && (general.get('state').touched )">
+                  <ion-icon name="alert"></ion-icon>
+                  <span class="error-hover">Required</span>
+                </span>
+                <ion-label stacked class="custom-label">State *</ion-label>
+                <mbsc-select formControlName="state"  [options]="stateSettings"  #mbscRemoteReg="mobiscroll"
+                  placeholder="Please Select..."></mbsc-select>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12 no-padding class="posRelative name-cont">
+              <div class="mb-2-big posRelative">
+                <span class="error-cont"
+                  *ngIf="general.get('city').hasError('required') && (general.get('city').touched )">
+                  <ion-icon name="alert"></ion-icon>
+                  <span class="error-hover">Required</span>
+                </span>
+                <ion-label stacked class="custom-label">City</ion-label>
+                <mbsc-select formControlName="city"  [options]="citySettings"  #mbscRemoteDiv="mobiscroll"
+                  placeholder="Please Select..." disabled></mbsc-select>
+              </div>
+            </ion-col>
+          </ion-row>
+        </mbsc-form-group>
+        <ion-row class="mb-2-big">
+          <ion-col no-padding col-12>
+            <ion-item class="input-container" no-lines>
+              <ion-label>ZIP Code</ion-label>
+              <ion-input
+                type="text"
+                placeholder="ZIP Code"
+                formControlName="zip_code"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <div class="flex-item flex-row pt-5">
+          <button ion-button block class="default-btn" [disabled]="general.invalid" (tap)="onGeneralNext()">
+            next
+          </button>
+        </div>
+      </ion-col>
+      <ion-col formGroupName="bio" *ngSwitchCase="'bio'" col-12>
+        <div class="flex-item flex-row items-end mb-4rem">
+          <label class="font-bold title">Bio</label>
+        </div>
+        <ion-row class="custom-input-group">
+					<ion-col col-12 no-padding class="posRelative">
+						<span class="error-cont"
+							*ngIf="bio.get('height').hasError('required') && (bio.get('height').touched )">
+							<ion-icon name="alert"></ion-icon>
+							<span class="error-hover">Required</span>
+						</span>
+						<ion-label stacked class="custom-label">Height *</ion-label>
+						<ion-row class="mb-2-big">
+							<ion-col col-8 no-padding>
+								<ion-item no-padding class="custom-item">
+									<ion-input type="text" placeholder="Height" formControlName="height"></ion-input>
+								</ion-item>
+							</ion-col>
+							<ion-col col-4 no-padding class="dd-color">
+								<mbsc-select formControlName="height" [options]="heightSettings" [data]="heightItems">
+								</mbsc-select>
+							</ion-col>
+						</ion-row>
+
+					</ion-col>
+				</ion-row>
+
+				<ion-row class="custom-input-group">
+					<ion-col col-12 no-padding class="posRelative">
+						<span class="error-cont"
+							*ngIf="bio.get('weight').hasError('required') && (bio.get('weight').touched )">
+							<ion-icon name="alert"></ion-icon>
+							<span class="error-hover">Required</span>
+						</span>
+						<ion-label stacked class="custom-label">Weight *</ion-label>
+						<ion-row class="mb-2-big">
+							<ion-col col-8 no-padding>
+								<ion-item no-padding class="custom-item">
+									<ion-input type="text" placeholder="Weight" formControlName="weight"></ion-input>
+								</ion-item>
+							</ion-col>
+							<ion-col col-4 no-padding class="dd-color">
+								<mbsc-select formControlName="weight" [options]="weightSettings" [data]="weightItems">
+								</mbsc-select>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+				</ion-row>
+
+				<ion-row margin-bottom padding-bottom>
+					<ion-col col-12 no-padding class="posRelative">
+		
+						<ion-label stacked class="custom-label">Blood Type </ion-label>
+						<mbsc-select placeholder="Please Select Blood group" formControlName="blood_type" [options]="bloodtypeSettings" [data]="bloodtypeItems">
+						</mbsc-select>
+					</ion-col>
+				</ion-row>
+        
+        <div class="flex-item flex-row pt-5">
+          <button ion-button block class="default-btn" [disabled]="bio.invalid" (tap)="onSubmit()">
+            submit
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

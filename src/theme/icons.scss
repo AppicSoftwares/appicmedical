@@ -1,0 +1,26 @@
+ion-icon {
+    &[class*="tab-"] {
+       mask-size: contain;
+       mask-position: 50% 50%;
+       mask-repeat: no-repeat;
+       background: currentColor;
+       width: 1em;
+       height: 1em;
+    }
+    &[class*="tab-tree"] {
+       mask-image: url('/assets/imgs/tabs-icons/tree.svg');
+    }
+    &[class*="tab-capsule"] {
+        mask-image: url('/assets/imgs/tabs-icons/capsule.svg');
+     }
+     &[class*="tab-notification"] {
+        mask-image: url('/assets/imgs/tabs-icons/notification.svg');
+     }
+     &[class*="tab-more"] {
+        mask-image: url('/assets/imgs/tabs-icons/more.svg');
+     }
+     &[class*="tab-home"] {
+        mask-image: url('/assets/imgs/tabs-icons/home.svg');
+     }
+    
+ }

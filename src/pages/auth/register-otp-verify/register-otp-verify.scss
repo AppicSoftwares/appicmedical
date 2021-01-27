@@ -1,0 +1,85 @@
+
+page-register-otp-verify  {
+    .content{
+        background-color: #ffffff;
+        margin-top: calc(-56px - env(safe-area-inset-top)) !important;
+    }
+    .logo-cont{
+        background-image: url(../assets/imgs/medidelivery/home_bg_grayed.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 48vh;
+        background-size: cover;
+        position: relative;
+        background-position: top center;
+    }
+   
+    .item-inner{
+        border-bottom: none !important;
+    box-shadow: none !important;
+    }
+    .input{
+        border-left: 2px solid #777777;
+    }
+    .plus-button{
+        font-size: 2rem;
+    }
+    .logo-image{
+        width: 58%;
+        margin: 0 auto;
+        padding-top: 16%;
+      /*  margin-bottom: 15%;
+        position: absolute;
+        left: 25%;*/
+        z-index: 1;
+        text-align: center;
+        .image{
+            width: 100%;
+            text-align: center;
+            img{
+    /*                width: 63%;*/
+            }
+        }
+    
+        .tag-line{
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.8rem;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .page-title{
+        font-size: 2rem;
+        font-weight: bold;
+        padding-bottom: 7px;
+    span{
+        padding-bottom: 7px;
+        border-bottom: 2px red solid; 
+    }    
+    }
+
+    .form-content{
+        padding-top: 15px;
+        ion-label{
+            padding-bottom: 15px;
+        }
+    }
+    .bg-color-blue{
+        background-color: #00cfb1 !important;
+	}
+	.resend-info{
+		color: #5c5c5c;
+		.red{
+			color: red;
+		}
+    }
+    .no-padding{
+        padding: 0px !important;
+    }
+    .padding-25{
+        padding-bottom: 25px !important;
+    }
+    
+}

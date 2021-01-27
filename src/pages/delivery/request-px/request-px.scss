@@ -1,0 +1,91 @@
+
+page-request-px {
+	.selected_drug{
+		padding: 16px 8px;
+		text-transform: capitalize;
+		color: #000;
+	}
+	.toolbar-md {
+		padding: 4px;
+		min-height: 100px;
+	}
+	.scroll-content{
+		margin-top: 94px;
+		margin-bottom: 44px;
+		
+	}
+	.button.custom {
+		background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+	
+		margin: 0px;
+		text-transform: inherit;
+		font-weight: normal;
+		height: 4.4rem;
+	}
+	.selected_drug .name{
+		font-size: 1.4rem;
+	}
+	.selected_drug .sub{
+		font-size: 1.2rem;
+	}
+	.selected_drug .type {
+		padding: 8px 0px;
+		border-bottom: 1px solid #00d6ba;
+		text-transform: uppercase;
+		font-size: 1.6rem;
+		color: #00d6ba;
+	}
+	.item.item-block .item-inner {
+		border: 1px solid #00d6ba;
+		border-radius: 3px;
+	}
+	.label {
+		color: #797979;
+	}
+	.item-block {
+		font-size: 1.2rem;
+		margin-top: 8px;
+	}
+	.edit-doctor {
+		text-decoration: none;
+		font-size: 1.4rem;
+		color: #00d6ba;
+	}
+	.doctor-name {
+		color: #00d6ba;
+	}
+	.quantity .count {
+		border-radius: 5px;
+		padding: 3px 0px;
+		font-size: 1.2rem;
+		color: #ad9999;
+	}
+	.pharmacy-name {
+		font-size: 1.6rem;
+		color: #00d6ba;
+	}
+	.doctor-name .mbsc-control {
+		border: 0px;
+		text-align: center;
+		background: transparent;
+	}
+	.doctor-address {
+		background: #fff;
+	}
+	.hospital-label {
+	    color: #00d6ba;
+	    padding-bottom: 8px;
+	}
+	// .top_mar_pat {
+	// 	padding-top: 52px !important;
+	// 	padding-bottom: 18px !important;
+	//   }
+
+	
+	.bg1 {
+		background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+	}
+	mbsc-form-group.mbsc-form-group {
+		padding: 6px 12px;
+	}
+}

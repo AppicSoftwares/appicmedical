@@ -1,0 +1,62 @@
+
+page-membership-card {
+	.rx-discount-body {
+        background: #fff;
+        .segment {
+            border: 1px solid #00d6ba;
+
+            &-button {
+                color: #00d6ba;
+                border-bottom: none;
+            }
+
+            &-activated {
+                background: #00d6ba;
+                color: #fff;
+            }
+        }
+
+        .banner-container {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+
+            img {
+                width: 343px;
+            }
+        }
+
+        .small-text {
+            font-size: 9px;
+            color: #00d6ba;
+            margin-right: 8px;
+            text-transform: uppercase;
+        }
+
+        .m-tb-large {
+            margin: 1.5rem 0;
+        }
+
+        .btn-container {
+            padding: 0 4rem;
+
+            .button-inner {
+                justify-content: start;
+            }
+
+            .btn-pink {
+                // width: 25rem;
+                ion-icon {
+                    font-size: 2rem;
+                    margin-left: 1rem;
+                }
+
+                .text {
+                    font-weight: 400;
+                    font-size: 13px;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

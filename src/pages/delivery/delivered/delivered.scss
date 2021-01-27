@@ -1,0 +1,95 @@
+
+page-delivered {
+
+    .toolbar-md-themeColor .toolbar-background-md {
+        background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%);
+    }
+    .delivered-body {
+        .title {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .pink-color {
+            color: #f42072;
+        }
+
+        .custom-segement {
+            border: 1px solid;
+            border-radius: 35px;
+
+            .border-right {
+                border-right: 1px solid;
+                border-radius: 35px 0 0 35px;
+            }
+
+            .icon-holder {
+                background: white;
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                margin: 7px 0 5px 0;
+                padding: 5px;
+
+                img {
+                    object-fit: cover;
+                }
+            }
+
+            .divider {
+                margin-bottom: 6px;
+                background: #f42072;
+                color: white;
+                padding: 6px;
+                border-radius: 5px;
+
+                .label {
+                    font-size: 9px;
+                    font-weight: 500;
+                    line-height: 10px;
+                }
+            }
+        }
+
+        .heading {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .custom-item {
+            padding: 10px 0;
+
+            .text {
+                font-size: 13px;
+                font-weight: 500;
+            }
+            .small-text{
+                font-size: 11px;
+                margin-left: 10px;
+            }
+        }
+        .border-bottom{
+            border-bottom: 1px solid #c3c3c3;
+        }
+        .p-lr{
+            padding: 0 16px;
+        }
+        .mt-2{
+            margin-top: 0.5rem !important;
+        }
+        .icon-color{
+            color: #12e7ca;
+        }
+    }
+    .top_mar{
+        margin-top:40px;
+    }
+    .top_fam{
+        padding-top: 52px;;
+          padding-bottom: 22px;
+      }
+}

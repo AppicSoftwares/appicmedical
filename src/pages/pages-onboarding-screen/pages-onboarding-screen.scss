@@ -1,0 +1,122 @@
+
+page-pages-onboarding-screen {
+  @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+
+    #skip {
+      /* width: 100%; */
+      background: none !important;
+      /* text-align: center; */
+      cursor: pointer;
+      z-index: 5;
+      left: 270px;
+      /* font-weight: 700; */
+      top: -4px;
+      color: black;
+      float: right;
+      margin-right: 13px;
+      margin-top: 28px;
+
+    }
+    .dsd1 {
+      padding: 0px 40px;
+      position: relative;
+      top: 84px;
+  }
+
+  .diag2{
+     background-image: url("../../assets/onboardingscreen/offers_screen.png");
+     background-repeat: no-repeat;
+     background-size: cover;
+  }
+    
+    .diag {
+        position: relative;
+        z-index: 1;
+        width:100%;
+        top: 0;
+        height: 100%;
+        background-size: cover !important;
+        left: 0;
+      }
+      #start{
+        position: absolute;
+        background: none !important;
+        text-align: center;
+        cursor: pointer;
+        z-index: 5;
+        font-weight: 700;
+       // top: 478px;
+        color: red;
+        font-size: 21px;
+        left: 132px;
+        width: 147px;
+      }
+      .top_fam{
+        margin-top: 20px;
+      }
+      ion-footer {
+        left: -3px !important;
+        bottom: 125px !important;
+        position: absolute;
+        z-index: 10;
+        display: block;
+        width: 100%;
+    }
+    .button-inner{
+      display: none;
+    }
+
+    .dsd4 {
+      padding: 0px 40px;
+  
+      top: 84px;
+  }
+
+  .diag8 {
+    position: absolute;
+    /* top: 0px; */
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    padding: 0px 46px;
+}
+
+    ion-slides {
+      display: block;
+      width: 100%;
+      /* height: 100%; */
+      background: none;
+      height: 100%;
+      border-bottom: 1px solid #ffffff8a;
+    }
+    
+    .scroll-content {
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+    }
+    .sample-onbording{
+      background:white !important;
+      height: 100% !important;
+    
+    }
+    
+    .dsd {
+      padding: 0px 40px;
+      position: relative;
+      top: 43px;
+    }
+
+    .diag{
+      position: relative;
+    }
+    .dsd6 {
+      padding: 0px 40px;
+      position: relative;
+      top: 26px;
+  }
+}
+
+
+
+

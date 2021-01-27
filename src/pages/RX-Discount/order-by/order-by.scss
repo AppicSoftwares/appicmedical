@@ -1,0 +1,97 @@
+
+page-order-by {
+    @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+    .toolbar-title {
+        font-size: 1.7rem;
+        font-weight: normal;
+        color: #fff;
+        text-transform: capitalize;
+        padding: 0px;
+        text-align: center !important;
+        transform: translate(-28px, 0px);
+    } 
+    .order-by-body {
+        background: #fff;
+
+        .p-16 {
+            padding: 16px;
+        }
+       
+
+        .segment {
+            border: 1px solid #00d6ba;
+
+            &-button {
+                color: #00d6ba;
+                border-bottom: none;
+            }
+
+            &-activated {
+                background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
+                color: #fff;
+            }
+        }
+
+        .item-view {
+            background: transparent;
+            border-top: 1px solid #d6d6d6;
+            padding: 8px 16px;
+
+            &:last-child {
+                border-bottom: 1px solid #d6d6d6;
+            }
+
+            .title {
+                font-size: 13px;
+                font-weight: 500;
+                letter-spacing: 0.8px;
+            }
+
+            .mb-5px {
+                margin-bottom: 5px;
+            }
+
+            .img-container {
+                margin: 0 12px 9px 0;
+
+                img {
+                    height: 33px;
+                    width: 33px;
+                }
+            }
+
+            .label {
+                margin: 0;
+            }
+
+            .item-inner {
+                padding-right: 0;
+            }
+
+            .pink-btn {
+                box-shadow: none;
+                font-size: 15px;
+                padding: 0 8px;
+                height: 22px;
+                font-weight: 400;
+                margin: 0;
+
+            }
+
+            .font-20 {
+                font-size: 20px;
+            }
+
+            .font-13 {
+                font-size: 13px;
+            }
+
+            .text {
+                font-size: 13px;
+                color: #545454;
+                font-weight: 500;
+                margin: 4px 0 0 4px;
+            }
+        }
+    }
+}

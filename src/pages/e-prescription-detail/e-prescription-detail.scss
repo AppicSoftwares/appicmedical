@@ -1,0 +1,65 @@
+
+page-e-prescription-detail {
+	.order-reference {
+		font-size: 1.4rem;
+		color: #00d6ba
+	}
+	.confirm-icon .icon {
+		font-size: 5rem;
+		color: #00d6ba;
+	}
+	.confirm-msg {
+		font-size: 1.4rem;
+	}
+	.os_icon {
+		font-size: 2.4rem;
+		line-height: 1.8rem;
+		color: #d0d0d0;
+	}
+	.os_label {
+		font-size: 1.3rem;
+	}
+	.order_status{
+		background: #fff;
+		padding: 16px 0px;
+	}
+	.os_icon.selected .icon {
+		color: #63c136;
+	}
+	.os_icon.selected .os_label {
+		color: #000;
+	}
+	.os_icon.warning .icon {
+		color: #ffce00;
+	}
+	.os_icon.warning .os_label {
+		color: #000;
+	}
+	.os_line_cont {
+		position: absolute;
+		width: 100%;
+		padding-top: 14px;
+	}
+	.os_line {
+		height: 1px;
+		background: #cdcdcd;
+	}
+	.clrBoth {
+		clear: both;
+	}
+	.icon-cont {
+		background: #fff;
+		padding: 0px 10px;
+		display: inline-block;
+	}
+	.activity-cont .head {
+		font-size: 1.3rem;
+	}
+	.activity-cont .result {
+		color: #afafaf;
+	}
+	.sep{
+		border-top: 1px solid #353535;
+	}
+	
+}
