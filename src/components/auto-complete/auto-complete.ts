@@ -115,8 +115,10 @@ export class customAutoComplete {
 					inst,
 					this.pharmPriceData[event.index].Summary.PharmacyGroup
 				);
-				this.MedsPrice.instance.show()
+				// this.MedsPrice.instance.show()
 				 
+				
+				 console.log( this.tempStorage.cart.recentSearch.drugs);
 				console.log(this.tempStorage.cart.medications.byNdc);
 				this.pharmacySelected = this.pharmPriceData[event.index];
 			} else {
@@ -170,7 +172,7 @@ export class customAutoComplete {
 			this.BackText = 'Close';
 			this.filterSelected = 'distance';
 			this.paddingIonicContent = 'no-padding';
-			  
+			
 			this.templateBasedData = this.navParams.get('templateBasedData'); // medications
 			this.loadPharmaciesPrices();
 		} else if (this.template === 'change_location') {
@@ -303,6 +305,7 @@ export class customAutoComplete {
 	loadPharmaciesPrices(inst: any = '', pharmacyGroup = '') {
 		this.showspinner = true;
 		let paramsMeds = [];
+		 
 		//  console.log(this.tempStorage.cart.medications);
 		for (let i = 0; i < this.templateBasedData.length; i++) {
 			paramsMeds.push({
@@ -358,7 +361,7 @@ export class customAutoComplete {
 					//   console.log(this.pharmPriceData);
 					//   console.log(this.pharmGroupPriceData);
 				} else {
-					  
+					   
 					this.pharmPriceData = result.pharmData;
 					console.log(this.pharmPriceData)
 					setTimeout(() => {
@@ -409,6 +412,7 @@ export class customAutoComplete {
 
 		this.deliveryService.rxapi_price(params).then((result: any) => {
 			if (result.pharmData !== undefined && result.pharmData.length > 0) {
+				 
 				this.pharmGroupPriceData = result.pharmData;
 				inst.hideLoading();
 				//  inst.sortable = true;
@@ -642,10 +646,11 @@ export class customAutoComplete {
 				message: 'MediDelivery service is not available in your zip code yet ',
 				buttons: [
 					{
-						text: 'CONTINUE RX LOWEST PRICE SEARCH', // Rx Lowest Price search
+						text: 'RETURN', // Rx Lowest Price search
 						handler: data => {
 							console.log('Saved clicked');
-							this.goToSearchMedicinesPage();
+							return;
+							//this.goToSearchMedicinesPage();
 						},
 						cssClass: 'primary'
 					}
@@ -664,9 +669,10 @@ export class customAutoComplete {
 	goToCart() {
 		console.log(this.pharmacyData);
 		let data = this.pharmacyData;
+		 
 		if (
 			data.pricing !== undefined &&
-			data.pricing.length == this.tempStorage.cart.medications.drugs.length
+			data.pricing.length == this.tempStorage.cart.medications.drugs.length || data.pricing.length == this.tempStorage.cart.recentSearch.drugs.length
 		) {
 			this.viewCtrl.dismiss(data);
 		} else {

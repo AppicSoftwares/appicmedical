@@ -62,9 +62,9 @@
           <span class="mbsc-ic mbsc-ic-loop2"></span>
         </div>
         <div >
-          <div class="pharmacy-cont" padding *ngIf="medications.length > 0">
+          <div class="pharmacy-cont" padding *ngIf="RecentSearch.length > 0">
             <div class="pharmacy shadow" padding margin-bottom
-              *ngFor="let medication of medications; let in = index; let isOdd=odd; let isEven=even; let isLast=last"
+              *ngFor="let medication of RecentSearch; let in = index; let isOdd=odd; let isEven=even; let isLast=last"
               [class.odd]="isEven" [class.even]="isOdd" [class.last]="isLast" [class.first]="isFirst">
               <ion-row>
                 <ion-col col-10 no-padding>
@@ -150,6 +150,19 @@
         </div> -->
 
         <div *ngIf="drugSelected.BN">
+          
+
+            
+
+              <div class="flex-item flex-colum">
+            <div class="flex-item flex-row align-center">
+              <!-- <mbsc-checkbox  outline float-right
+              class="colorblue borderblue pickbutton" icon="checkmark"></mbsc-checkbox> -->
+              <input type="checkbox" name="medicabinet" class="chkBox"> &nbsp;
+               <label class="text-uppercase text-titlefaf"> save in MediCabinet</label>
+            </div>
+          </div>
+         
           <div class="flex-item flex-colum">
             <div class="flex-item flex-row align-center config">
               <label class="text-uppercase text-titlefaf">configuration prescription</label>

@@ -238,7 +238,8 @@
 			<mbsc-listview [options]="lvSettings">
 				<mbsc-listview-item class="font1-2rem priceSetting" *ngFor="let price of pharmacySelected.pricing"
 					(click)="MedsPrice.instance.hide();">
-					
+					<ion-icon name="close" class="colorblue crossbtn" (click)="MedsPrice.instance.hide();"></ion-icon>
+					<br/>
 					<div class="mbsc-grid" no-padding>
 						<div class="mbsc-row youSave">
 							<div class="mbsc-col-12" text-center>

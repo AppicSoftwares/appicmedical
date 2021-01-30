@@ -606,4 +606,23 @@ page-lowest-price {
   color: #ffffff;
   background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
 }
+.colorblue{
+  color: #00d6ba !important;
+  border: groove !important;
+}
+.borderblue{
+border-color: hsl(150, 8%, 5%) !important;
+}
+.pickbutton{
+  padding: 2px;
+  margin-right: 5px;
+  button{
+    padding: 2px !important;
+    margin: 0 !important;
+  }
+}
+.chkBox{
+  width: 31px;
+    height: 20px;
+}
 }

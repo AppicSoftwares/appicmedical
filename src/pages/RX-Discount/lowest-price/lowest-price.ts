@@ -77,6 +77,7 @@ export class LowestPricePage {
     quantityData: any = { index: [], value: [] };
     packageData: any = { index: [], value: [] };
     medications: any;
+    RecentSearch:any;
     medicationsList = true;
     isConfirm = false;
     searchName = true;
@@ -173,7 +174,7 @@ export class LowestPricePage {
     medqty: any;
     pricelength: any;
     qty: any;
-    RecentSearch=[];
+   
 
 
 
@@ -537,8 +538,8 @@ export class LowestPricePage {
     }
     removeMedication(index) {
            
-        // let removedObj = this.RecentSearch.splice(index, 1);
-        let removedObj = this.medications.splice(index, 1);
+        let removedObj = this.RecentSearch.splice(index, 1);
+        // let removedObj = this.medications.splice(index, 1);
        // let removedObj = this.medications.filter(index, 1)
          
          console.log(removedObj);
@@ -1113,11 +1114,12 @@ export class LowestPricePage {
 
         // if (this.currentLocation !== '') {
             this.searchDataForm.patchValue({ term: "" });
-
+ 
             this.medications.push(this.drugSelected);
                this.RecentSearch.push(this.drugSelected);
             this.tempStorage.cart.medications.drugs = this.medications;
-             
+            this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
+            
             //this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
          //   this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
             this.showAddDrugFab = true;
@@ -1141,7 +1143,7 @@ export class LowestPricePage {
     doneAllTablet(){
         
         this.searchDataForm.patchValue({ term: "" });
-          
+        
         // this.drugSelected.QtySelected.qty = this.qty;
         if(this.drugSelected && Object.keys(this.drugSelected).length){ 
         this.medications.push(this.drugSelected);
@@ -1150,7 +1152,11 @@ export class LowestPricePage {
         
            
         this.tempStorage.cart.medications.drugs = this.medications;
+        this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
+        
         this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
+        this.tempStorage.cart.recentSearch.byNdc[this.drugSelected.NDC] = this.drugSelected;
+        
         this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
         //this.getCart();
 
@@ -1179,8 +1185,8 @@ export class LowestPricePage {
                 return false;
             }
         }
-         
-        const modal = this.modalCtrl.create(customAutoComplete, { ismodel: true, myLocationObj: this.myLocationObj, template: "pharmacy_price_list", placeHolder: "Search Pharmacy", templateBasedData: this.medications });
+        // const modal = this.modalCtrl.create(customAutoComplete, { ismodel: true, myLocationObj: this.myLocationObj, template: "pharmacy_price_list", placeHolder: "Search Pharmacy", templateBasedData: this.RecentSearch });
+       const modal = this.modalCtrl.create(customAutoComplete, { ismodel: true, myLocationObj: this.myLocationObj, template: "pharmacy_price_list", placeHolder: "Search Pharmacy", templateBasedData: this.medications });
         modal.onDidDismiss(data => {
             // console.log(data);
             // console.log(this.tempStorage.cart);
@@ -1198,6 +1204,9 @@ export class LowestPricePage {
                 }
                 //filterObj.user_id = this.user_id;
                 this.deliveryService.mobiToast("Setting your pharmacy, Please wait ...", "success").then((result) => {
+
+                });
+                this.deliveryService.mobiToast("You already have items in your cart from different pharmacy, if you add items from different pharmacy your cart will be replaced.", "success").then((result) => {
 
                 });
                 this.deliveryService.commonUsecase(filterObj).then((result: any) => {

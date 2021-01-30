@@ -36,6 +36,7 @@ import moment from "moment";
 import { FileUploadProvider } from "../../../providers/file-upload/file-upload";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 // import { FCM } from '@ionic-native/fcm/ngx';
 // import { Market } from '@ionic-native/market/ngx';
 /**
@@ -116,6 +117,7 @@ export class HomePage {
   AppVersion: any;
   ApiAppVersion: any;
   mobileType: string;
+  name1: any;
   constructor(
     public deliveryService: DeliveryServiceProvider,
     private app: App,
@@ -129,6 +131,7 @@ export class HomePage {
     private androidplatform: Platform,
     private fileUpload: FileUploadProvider,
     private http: HttpClient,
+    private inappbrowser:InAppBrowser,
     // private fcm: FCM,
     // private market: Market
   ) {
@@ -137,7 +140,9 @@ export class HomePage {
   
     console.log(this.userloggedin);
     this.patientData = JSON.parse(localStorage.getItem('patientData'));
-    this.name =this.patientData.profileData.name;
+   
+    //this.name =this.patientData.profileData.name;
+    this.getProfileInfo();
     // if(this.name == "" || this.name == undefined){
     //   this.navCtrl.push(PatientProfilePage);
     // }
@@ -219,8 +224,15 @@ export class HomePage {
    this.getCart();
     console.log("test");
     console.log(this.patientData.profileData.name);
-     this.name = this.patientData.profileData.name ? this.patientData.profileData.name :  localStorage.getItem('name');
-  }
+    
+     this.name1 = this.patientData.profileData.name ? this.patientData.profileData.name :  localStorage.getItem('name');
+      if(this.name1 == null ||  this.name1 == undefined){
+        this.name ="";
+      }
+      else{
+        this.name =this.name1;
+      }
+    }
 
   cartcount() {
     this.cartOrders = this.deliveryService.cartOrders();
@@ -445,9 +457,10 @@ export class HomePage {
         if (resultData.data !== undefined) {
           //this.zone.run(() => {
             this.profileInfo = resultData.data;
+             
             if(resultData.data.firstName !== undefined){
               localStorage.setItem('name',resultData.data.firstName);
-              this.name= this.profileInfo.firstName;
+              //this.name= this.profileInfo.firstName;
             }
              else{
               this.name= '';
@@ -552,4 +565,7 @@ getApiVersion(){
    
   });
 }
+openCovidUrl() {
+  this.inappbrowser.create("https://www.cdc.gov/vaccines/covid-19/index.html",'_blank','location=no,toolbar=yes');
+}  
 }

@@ -79,6 +79,7 @@ export class CheckoutPage {
 		}
 	};
 	deliverySlots: any = [];
+	TotalCartValue: string;
 	// to be removed
 	constructor(
 		private tempStorage: TempStorageProvider,
@@ -564,7 +565,15 @@ export class CheckoutPage {
 
 	cartcount() {
 		//return Object.keys(this.tempStorage.cart.drugs).length;
-		return this.tempStorage.cart.medications.drugs.length;
+
+		this.cartOrders = this.deliveryService.cartOrders();
+        if(this.cartOrders.cartPharmacy.pricing == undefined){
+          return  this.TotalCartValue ='0';
+          }
+          else{
+           return this.TotalCartValue= this.cartOrders.cartPharmacy.pricing.length;
+          }
+	//	return this.tempStorage.cart.medications.drugs.length;
 	}
 
 	goto(action: any) {

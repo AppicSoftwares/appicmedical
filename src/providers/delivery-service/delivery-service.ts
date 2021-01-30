@@ -812,8 +812,10 @@ export class DeliveryServiceProvider {
     /* let cartDrugs             : any = JSON.parse(localStorage.getItem('cartdrugs'));
         let cartDrugsKey          : any = JSON.parse(localStorage.getItem('cartdrugskey'));
         let cartPharmacy          : any = JSON.parse(localStorage.getItem('cartpharmacy')); */
+        
     let cartDrugs: any = this.tempStorage.cart.drugs; // not needed
     let cartDrugsKey: any = this.tempStorage.cart.keys; // not needed
+    
     let cartPharmacy: any = this.tempStorage.cart.pharmacy; // has price and pharma info
     let pharmacy_id: any = this.tempStorage.cart.pharmacy_id; // has price and pharma info
     let medications: any = this.tempStorage.cart.medications; // has price and pharma info has 2 obj drugs, byNdc

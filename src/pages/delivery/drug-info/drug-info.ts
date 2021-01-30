@@ -188,16 +188,16 @@ export class DrugInfoPage {
            
         this.addingInProgress = true;
         this.cartOrders= this.deliveryService.cartOrders();
- 
+
         console.log("Card orders"+JSON.stringify(this.cartOrders));
         if(this.cartOrders.cartPharmacy !== undefined && this.cartOrders.cartPharmacy.pricing !== undefined && this.cartOrders.cartPharmacy.pricing.length > 0 && this.cartOrders.medications !== undefined && this.cartOrders.medications !== undefined ){
 
             // split drugs by otpc and rx 
             // loop through medications
           //  let medicationsArray = Object.keys(this.cartOrders.medications).map(key => this.cartOrders.medications[key]);
-          
+         
             this.cartOrders.cartPharmacy.pricing.map(medicationsPrice=>{
-
+                 
                 
               //if(this.cartOrders.otcdrugs.length !== 0){ 
                  

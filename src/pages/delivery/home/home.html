@@ -169,7 +169,9 @@
         <img class="radius-img" src="{{userImageURL+user_id+loadUserImageParam}}" onError="this.src='assets/imgs/person.png'"/>
       </button>
     </ion-buttons>
-    <ion-title>Hello {{name +"!"}}</ion-title>
+    <ion-title>Hello!
+       <!-- {{name +"!"}} -->
+      </ion-title>
     <ion-buttons right>
       <button ion-button icon-only tappable (click)="goto('druginfo')">
         <ion-icon name="md-cart" ></ion-icon>
@@ -219,10 +221,10 @@
         <div class="theme-bg flex-item flex-column white-color p-4 pr-3rem box-shadow-normal ">
           <div class="center flex-item flex-row top_mar111">
             <label class="title-text">
-              Welcome to your Primary care Concierge</label>
+              Welcome to your Virtual Health</label>
           </div>
           <div class="center flex-item flex-row">
-            <label class="title-text">save cost, time, health</label>
+            <label class="title-text">Companion</label>
           </div>
           <div class="flex-item flex-row white-bg col-12 align-center search-container"  text-center >
             <!-- <ion-input type="text" placeholder="Search For Lowest Price" class="txt" style="color: black;"></ion-input> -->
@@ -231,6 +233,14 @@
               Search For Lowest Price On Meds
             </button>
           </div>
+        
+        </div>
+        <div class="flex-item flex-row white-bg col-12 align-center search-container"  text-center >
+          <!-- <ion-input type="text" placeholder="Search For Lowest Price" class="txt" style="color: black;"></ion-input> -->
+          <button ion-button class="search-btn covidBtn" no-margin icon-only color="white" tappable (click)="openCovidUrl()">
+          
+            COVID-19 Vaccine Registration
+          </button>
         </div>
       </ion-col>
     </ion-row>

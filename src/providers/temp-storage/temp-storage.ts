@@ -43,6 +43,7 @@ export class TempStorageProvider {
 			membership: { status: "nonmember", price: 0, plan: "" },
 			membershipdata: {},
 			medications: { drugs: [], byNdc: {} },
+			recentSearch: { drugs: [], byNdc: {} },
 			activities: [],
 			deliveryInfo: {
 				address: {
@@ -78,6 +79,7 @@ export class TempStorageProvider {
 		this.cart.keys = [];
 		this.cart.pharmacy = null;
 		this.cart.medications = { drugs: [], byNdc: {} };
+		this.cart.recentSearch = { drugs: [], byNdc: {} };
 		this.cart.total = 0;
 		this.cart.membership = 0;
 		this.cart.remoteId = "";
