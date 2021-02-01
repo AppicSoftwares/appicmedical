@@ -93,5 +93,14 @@ page-orders-list {
 		margin-bottom: 82px;
 	
 	}
-
+	.remove-drug-cont, .remove-membership-cont {
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		align-items: flex-end;
+		float: right;
+		position: relative;
+		left: 46px;
+    top: -36px;
+	}
 }

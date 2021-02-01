@@ -14,10 +14,116 @@
 </ion-header>
 
 <ion-content no-padding>
-	
-	<mbsc-form class="md-schedule">
+	<mbsc-form class="md-schedule" >
 		<div>
-			<mbsc-segmented-group [(ngModel)]="filters.range" (change)="onChange()">
+			<mbsc-segmented-group [(ngModel)]="filters1.range" (change)="OrderHistoryData()">
+				<mbsc-segmented value="MediCabinet" >MediCabinet</mbsc-segmented>
+				<mbsc-segmented value="RecentSearch">Recent Search</mbsc-segmented>
+				<mbsc-segmented value="OrderHistory" >Order History</mbsc-segmented>
+			</mbsc-segmented-group>
+
+			
+	
+		
+	
+		<!--	<mbsc-switch [(ngModel)]="filters.calls" (change)="onChange()">Show calls</mbsc-switch>
+			<mbsc-switch [(ngModel)]="filters.meetings" (change)="onChange()">Show meetings</mbsc-switch>-->
+		</div>
+		<mbsc-form-group no-margin *ngIf="MediCabinetData">
+			<!--<mbsc-form-group-title>My Schedule</mbsc-form-group-title>-->
+			<div class="mbsc-empty" *ngIf="MediCabinetlocal.length == 0 && !showspinner">
+				<h3>No Order Found !!!</h3>
+			</div>
+			<div *ngIf="showspinner" class="mbsc-lv-loading mbsc-show-lv-loading" ><span class="mbsc-ic mbsc-ic-loop2"></span></div>
+			<mbsc-listview [options]="listviewSettings" class="order-list" >
+				<mbsc-listview-item *ngFor="let item of MediCabinetlocal" >
+					<ion-col col-8 no-padding>
+						<div class="name">
+							{{item.BN || item.AN}}
+							&nbsp;{{item.Strength}}&nbsp;{{item.DosageForm}}
+						</div>
+					  <!--  <div class="sub" >
+							<i>{{item.QtySelected.qty}}&nbsp;{{item.PackageUnit}}&nbsp;{{item.PackageDesc}}</i>
+						</div>-->
+						<div class="quantity">
+						  <span class="count">
+							<i>{{item.QtySelected.qty}}&nbsp;{{item.PackageUnit}}&nbsp;{{item.PackageDesc}}</i>
+							</span>
+							&nbsp;
+							<span class="pill pill-default  "
+								*ngIf="item.DrugType == 'B'" float-right text-center>Brand</span>
+							<span class="pill pill-default "
+								*ngIf="item.DrugType == 'G'" float-right text-center>Generic</span>
+								
+						</div>
+					</ion-col>
+					<ion-col col-3 no-padding class="price-cont">
+						<div class="price">
+							<!-- ${{otcdrug.price | number : '1.2-2'}} -->
+							<!-- otcdrug.unc ||  -->
+						</div>
+					</ion-col>	
+					<ion-col col-1 no-padding>
+						<div class="remove-drug-cont">
+							<ion-icon class="remove-drug" color="danger" name="trash" (click)="removeDrug(item, in)"></ion-icon>
+						</div>
+						
+						
+		
+					</ion-col>	
+				</mbsc-listview-item>
+			</mbsc-listview>
+			
+		</mbsc-form-group>
+
+		<!-- Recent Search List -->
+		<mbsc-form-group no-margin *ngIf="RecentSearchData">
+			
+			<div class="mbsc-empty" *ngIf="RecentSearchlocal.length == 0 && !showspinner">
+				<h3>No Order Found !!!</h3>
+			</div>
+			<div *ngIf="showspinner" class="mbsc-lv-loading mbsc-show-lv-loading" ><span class="mbsc-ic mbsc-ic-loop2"></span></div>
+			<mbsc-listview [options]="listviewSettings" class="order-list" >
+				<mbsc-listview-item *ngFor="let item of RecentSearchlocal" >
+					<ion-col col-8 no-padding>
+						<div class="name">
+							{{item.BN || item.AN}}
+							&nbsp;{{item.Strength}}&nbsp;{{item.DosageForm}}
+						</div>
+					  <!--  <div class="sub" >
+							<i>{{item.QtySelected.qty}}&nbsp;{{item.PackageUnit}}&nbsp;{{item.PackageDesc}}</i>
+						</div>-->
+						<div class="quantity">
+						  <span class="count">
+							<i>{{item.QtySelected.qty}}&nbsp;{{item.PackageUnit}}&nbsp;{{item.PackageDesc}}</i>
+							</span>
+							&nbsp;
+							<span class="pill pill-default  "
+								*ngIf="item.DrugType == 'B'" float-right text-center>Brand</span>
+							<span class="pill pill-default "
+								*ngIf="item.DrugType == 'G'" float-right text-center>Generic</span>
+								
+						</div>
+					</ion-col>
+					<ion-col col-3 no-padding class="price-cont">
+						<div class="price">
+							<!-- ${{otcdrug.price | number : '1.2-2'}} -->
+							<!-- otcdrug.unc ||  -->
+						</div>
+					</ion-col>	
+					
+				</mbsc-listview-item>
+			</mbsc-listview>
+			
+		</mbsc-form-group>
+	</mbsc-form>
+<!-- End -->
+
+	<mbsc-form class="md-schedule" *ngIf="OrderHistory">
+		<div>
+		
+
+			<mbsc-segmented-group [(ngModel)]="filters.range" (change)="onChange()" >
 				<mbsc-segmented value="today">Today</mbsc-segmented>
 				<mbsc-segmented value="week">Past 7 Days</mbsc-segmented>
 				<mbsc-segmented value="custom" (click)="mbscRange.instance.show()">Custom</mbsc-segmented>
@@ -34,7 +140,7 @@
 				<h3>No Order Found !!!</h3>
 			</div>
 			<div *ngIf="showspinner" class="mbsc-lv-loading mbsc-show-lv-loading" ><span class="mbsc-ic mbsc-ic-loop2"></span></div>
-			<mbsc-listview [options]="listviewSettings" class="order-list">
+			<mbsc-listview [options]="listviewSettings2" class="order-list">
 				<mbsc-listview-item *ngFor="let item of filteredData" (click)="showOrderView(item)">
 					<div text-right>
 						{{ item.order_status }}
