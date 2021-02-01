@@ -185,46 +185,17 @@
 </ion-header>
 
 <ion-content class="home-body bg-white">
- <ion-slides pager="true" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
-    <ion-slide>
-      <div class="sample">
-        <img src="assets/onboardingscreen/banner1.svg" class="">
-      </div>
-    </ion-slide>
-    
-    <ion-slide>
-     
-      <div>
-        <img src="assets/onboardingscreen/banner2.svg" class="diag">
-      </div>
-      
-    </ion-slide>
-    
-    <ion-slide>
-      <div>
-        <img src="assets/onboardingscreen/banner3.svg" class="diag">
-      </div>
-  
-    </ion-slide>
-    <ion-slide>
-      <div>
-        <img src="assets/onboardingscreen/banner4.svg" class="diag">
-      </div>
-  
-    </ion-slide>
-    
-    
-    </ion-slides> 
+ 
   <ion-grid no-padding>
     <ion-row>
       <ion-col no-padding col-12 >
         <div class="theme-bg flex-item flex-column white-color p-4 pr-3rem box-shadow-normal ">
           <div class="center flex-item flex-row top_mar111">
             <label class="title-text">
-              Welcome to your Virtual Health</label>
+              Welcome to your Virtual Health Companion</label>
           </div>
           <div class="center flex-item flex-row">
-            <label class="title-text">Companion</label>
+            <label class="title-text"></label>
           </div>
           <div class="flex-item flex-row white-bg col-12 align-center search-container"  text-center >
             <!-- <ion-input type="text" placeholder="Search For Lowest Price" class="txt" style="color: black;"></ion-input> -->
@@ -233,16 +204,45 @@
               Search For Lowest Price On Meds
             </button>
           </div>
+          <div class="col-12 align-center custom-class"  text-center >
+            <!-- <ion-input type="text" placeholder="Search For Lowest Price" class="txt" style="color: black;"></ion-input> -->
+            <button ion-button class="covidBtn" no-margin icon-only color="white" tappable (click)="openCovidUrl()">
+              COVID-19 Vaccine Registration
+            </button>
+          </div>
+        </div>
         
-        </div>
-        <div class="flex-item flex-row white-bg col-12 align-center search-container"  text-center >
-          <!-- <ion-input type="text" placeholder="Search For Lowest Price" class="txt" style="color: black;"></ion-input> -->
-          <button ion-button class="search-btn covidBtn" no-margin icon-only color="white" tappable (click)="openCovidUrl()">
-          
-            COVID-19 Vaccine Registration
-          </button>
-        </div>
       </ion-col>
+      <ion-slides pager="true" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()" class="so">
+        <ion-slide>
+          <div class="sample">
+            <img src="assets/onboardingscreen/banner1.svg" class="">
+          </div>
+        </ion-slide>
+        
+        <ion-slide>
+         
+          <div>
+            <img src="assets/onboardingscreen/banner2.svg" class="diag">
+          </div>
+          
+        </ion-slide>
+        
+        <ion-slide>
+          <div>
+            <img src="assets/onboardingscreen/banner3.svg" class="diag">
+          </div>
+      
+        </ion-slide>
+        <ion-slide>
+          <div>
+            <img src="assets/onboardingscreen/banner4.svg" class="diag">
+          </div>
+      
+        </ion-slide>
+        
+        
+        </ion-slides> 
     </ion-row>
     <ion-row>
       <ion-col col-12>
