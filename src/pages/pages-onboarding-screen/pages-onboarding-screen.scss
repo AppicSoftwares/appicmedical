@@ -115,6 +115,34 @@ page-pages-onboarding-screen {
       position: relative;
       top: 26px;
   }
+  .diag4{
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background-size: cover !important;
+    left: 0;
+    position:absolute;
+  }
+
+  .button1{
+    position: absolute;
+    width: 100%;
+    top:70%;
+
+  }
+  .button-inner {
+    display: table-header-group;
+   
+}
+.button-md-pink {
+  color: #fff;
+  background-color: #f42072;
+  padding: 13px 40px !important;
+  border-radius: 20px;
+  height: 43px;
+}
+
+
 }
 
 
