@@ -5,12 +5,13 @@ import { TempStorageProvider } from '../../../providers/temp-storage/temp-storag
 import { DrugInfoPage } from "../../delivery/drug-info/drug-info";
 import { MembershipPlanPage } from '../../membership/membership-plan/membership-plan';
 import { customAutoComplete } from '../../../components/auto-complete/auto-complete';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { mobiscroll, MbscPopupOptions, MbscSelectOptions, MbscListviewOptions } from '../../../lib/mobiscroll-package';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AppSettings } from '../../../app/settings';
 import { Keyboard } from '@ionic-native/keyboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
+declare var $:any;
 //import * as moment from 'moment';
 
 /**
@@ -174,6 +175,9 @@ export class LowestPricePage {
     medqty: any;
     pricelength: any;
     qty: any;
+  
+    medicabinetArray=[];
+    medicabinetDataForm: FormGroup;
    
 
 
@@ -203,6 +207,9 @@ export class LowestPricePage {
             term: ["", Validators.required],
             gpi10s: [""],
         });
+        this.medicabinetDataForm =this.formBuilder.group({
+            medicabinet:[false]
+        })
         this.filterDataForm = this.formBuilder.group({
             gpi10s: [""],
             gpi12: [""],
@@ -538,16 +545,17 @@ export class LowestPricePage {
     }
     removeMedication(index) {
            
-        let removedObj = this.RecentSearch.splice(index, 1);
-        // let removedObj = this.medications.splice(index, 1);
+        // let removedObj = this.RecentSearch.splice(index, 1);
+        let removedObj = this.medications.splice(index, 1);
        // let removedObj = this.medications.filter(index, 1)
          
          console.log(removedObj);
         // console.log(removedObj[0].NDC);
-        // this.tempStorage.cart.medications.drugs = this.medications;
-        // this.tempStorage.cart.medications.byNdc[removedObj[0].NDC] = null;
-        // delete this.tempStorage.cart.medications.byNdc[removedObj[0].NDC];
-        // this.getCart();
+        this.tempStorage.cart.medications.drugs = this.medications;
+        this.tempStorage.cart.medications.byNdc[removedObj[0].NDC] = null;
+        delete this.tempStorage.cart.medications.byNdc[removedObj[0].NDC];
+        this.tempStorage.setRecentSearchData(this.medications);
+         //this.getCart();
     }
 
     updateAC(item) {
@@ -1108,18 +1116,36 @@ export class LowestPricePage {
         this.showAddDrugFab = false;
     }
 
+    saveInMedicabinet(){
+          
+         const chkValue = this.medicabinetDataForm.value;
+        if(chkValue.medicabinet == false){ //here false = true
+            this.medicabinetArray.push(this.drugSelected);
+           this.tempStorage.setMedicabinetData(this.medicabinetArray);
+        }
+        else{
+            if(this.medicabinetArray.length != 0){
+                this.medicabinetArray.pop();
+                this.tempStorage.setMedicabinetData(this.medicabinetArray);
+            }
+            
+        }
+    }
+
     checked() {
         console.log('checked');
-       
+       this.medicabinetDataForm.controls['medicabinet'].setValue(false);
 
         // if (this.currentLocation !== '') {
             this.searchDataForm.patchValue({ term: "" });
  
             this.medications.push(this.drugSelected);
-               this.RecentSearch.push(this.drugSelected);
+             
+            //    this.RecentSearch.push(this.drugSelected);
             this.tempStorage.cart.medications.drugs = this.medications;
-            this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
-            
+            // this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
+             
+            this.RecentSearch=this.medications;
             //this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
          //   this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
             this.showAddDrugFab = true;
@@ -1141,21 +1167,24 @@ export class LowestPricePage {
        
     }
     doneAllTablet(){
-        
+        this.medicabinetDataForm.controls['medicabinet'].setValue(false);
         this.searchDataForm.patchValue({ term: "" });
-        
+         
         // this.drugSelected.QtySelected.qty = this.qty;
         if(this.drugSelected && Object.keys(this.drugSelected).length){ 
         this.medications.push(this.drugSelected);
-        this.RecentSearch.push(this.drugSelected);
+        this.RecentSearch=this.medications;
+        // this.RecentSearch.push(this.drugSelected);
         }
-        
+        //store recent data
+        this.tempStorage.setRecentSearchData(this.medications);
            
         this.tempStorage.cart.medications.drugs = this.medications;
-        this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
-        
+        this.RecentSearch=this.medications;
+        // this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
+         
         this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
-        this.tempStorage.cart.recentSearch.byNdc[this.drugSelected.NDC] = this.drugSelected;
+        // this.tempStorage.cart.recentSearch.byNdc[this.drugSelected.NDC] = this.drugSelected;
         
         this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
         //this.getCart();

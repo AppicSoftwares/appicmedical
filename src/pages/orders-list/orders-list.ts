@@ -39,14 +39,31 @@ export class OrdersListPage {
             new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6)
         ]
     }
-
+    filters1:any={
+        range: 'MediCabinet',
+        
+    };
    
     listviewSettings: MbscListviewOptions = {
         enhance: true,
         swipe: false,
         striped: true
     };
-	
+    listviewSettings1: MbscListviewOptions = {
+        enhance: true,
+        swipe: false,
+        striped: true
+    };
+    listviewSettings2: MbscListviewOptions = {
+        enhance: true,
+        swipe: false,
+        striped: true
+    };
+	OrderHistory:boolean=false;
+    MediCabinetData: boolean=true;
+    RecentSearchData: boolean;
+    MediCabinetlocal: any;
+    RecentSearchlocal: any;
 	constructor(private androidplatform:Platform,public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private deliveryService: DeliveryServiceProvider, private tempStorage: TempStorageProvider) {
 		this.user_id =  this.tempStorage.authsession.userdata.user_id;
 		this.showspinner = false;
@@ -57,7 +74,7 @@ export class OrdersListPage {
         };
         this.filteredData = [];
 
-		 
+		 this.getLocalStorageData();
 
         
        // this.filter();
@@ -186,5 +203,37 @@ export class OrdersListPage {
 	console.log('ionViewDidLoad OrderStatusPage');
     }
     
+    OrderHistoryData(){
+          
+        this.getLocalStorageData();
+       const data= this.filters1.range;
+       if(data == 'MediCabinet' ){
+        this.MediCabinetData=true;
+        this.OrderHistory=false;
+        this.RecentSearchData=false;
+       }
+       else if(data == 'RecentSearch'){
+        this.MediCabinetData=false;
+        this.OrderHistory=false;
+        this.RecentSearchData=true;
+       }
+       else if(data == 'OrderHistory'){
+        this.MediCabinetData=false;
+        this.OrderHistory=true;
+        this.RecentSearchData=false;
+       }
+    }
 
+    getLocalStorageData(){
+          
+        this.MediCabinetlocal = this.tempStorage.getMedicabinetData();
+        this.RecentSearchlocal = this.tempStorage.getRecentSearchData();
+    }
+    removeDrug(item1,i){
+          
+        this.MediCabinetlocal = this.MediCabinetlocal.filter(item => item.NDC !== item1.NDC);
+          
+       this.tempStorage.setMedicabinetData(this.MediCabinetlocal);
+      
+    }
 }

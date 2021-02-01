@@ -123,5 +123,28 @@ export class TempStorageProvider {
 		return status;
 	}
 
+//localstorage 
+setMedicabinetData(data){
+    localStorage.setItem('medicabinetData',JSON.stringify(data));
+  }
+ getMedicabinetData(){
+  if(localStorage.getItem('medicabinetData')){ 
+    return JSON.parse(localStorage.getItem('medicabinetData'));
+    }
+    else{
+      return [];
+    }
+  }
 
+  setRecentSearchData(data){
+    localStorage.setItem('RecentSearchData',JSON.stringify(data));
+  }
+ getRecentSearchData(){
+  if(localStorage.getItem('RecentSearchData')){ 
+    return JSON.parse(localStorage.getItem('RecentSearchData'));
+    }
+    else{
+      return [];
+    }
+  }
 }
