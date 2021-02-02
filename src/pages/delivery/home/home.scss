@@ -39,12 +39,13 @@ ion-slides.so.slides.slides-md.slides-1 {
 
   .home-body {
     .title-text {
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       font-weight: 400;
       line-height: 1.4;
       margin-bottom: 0.5rem;
       position: relative;
       top: 10px;
+      text-align: center;
      
     }
 
@@ -560,7 +561,7 @@ ion-slides {
   background: -webkit-linear-gradient(top, #01d7bb 0%,#03ccb2 50%,#019884 100%) !important;
   border-bottom: 0.5px solid #FFF;
   margin-top: 20px;
-  min-height: 180px;
+  min-height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -590,6 +591,9 @@ ion-slides {
   position: absolute !important ;
   bottom: -3px !important;
   z-index: 1090;
+}
+.self{
+  margin: 10px 0px;
 }
 
 }

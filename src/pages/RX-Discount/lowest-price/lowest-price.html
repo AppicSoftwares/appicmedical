@@ -153,17 +153,7 @@
           
 
             
-<form [formGroup]="medicabinetDataForm">
-              <div class="flex-item flex-colum">
 
-            <div class="flex-item flex-row align-center">
-              <!-- <mbsc-checkbox  outline float-right
-              class="colorblue borderblue pickbutton" icon="checkmark"></mbsc-checkbox> -->
-              <input type="checkbox" name="medicabinet" formControlName="medicabinet"  class="chkBox"   tappable (click)="saveInMedicabinet()"> &nbsp;
-               <label class="text-uppercase text-titlefaf"> save in MediCabinet</label>
-            </div>
-          </div>
-         </form>
           <div class="flex-item flex-colum">
             <div class="flex-item flex-row align-center config">
               <label class="text-uppercase text-titlefaf">configuration prescription</label>
@@ -213,6 +203,17 @@
                   </ion-option>
                 </ion-select>
               </ion-item>
+              <form [formGroup]="medicabinetDataForm" class="working-form">
+                <div class="flex-item flex-colum self-2">
+  
+                  <div class="flex-item flex-row align-center">
+                    <!-- <mbsc-checkbox  outline float-right
+                    class="colorblue borderblue pickbutton" icon="checkmark"></mbsc-checkbox> -->
+                    <input type="checkbox" name="medicabinet" formControlName="medicabinet"  class="chkBox"   tappable (click)="saveInMedicabinet()"> &nbsp;
+                     <label class="text-uppercase text-titlefaf"> save in MediCabinet</label>
+                  </div>
+            </div>
+         </form>
             </div>
           </div>
         </div>
