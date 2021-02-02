@@ -4,7 +4,7 @@ page-home {
   @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
   .toolbar-md-themeColor .toolbar-background-md {
     background: -webkit-linear-gradient(top, #01d7bb 0%, #03ccb2 50%, #019884 100%) !important;
-    /* border-bottom: 0.5px solid #FFF; */
+        /* border-bottom: 0.5px solid #FFF; */
     border: none !important;
 }
 .toolbar-title {
@@ -591,6 +591,5 @@ ion-slides {
   bottom: -3px !important;
   z-index: 1090;
 }
-
 }
 

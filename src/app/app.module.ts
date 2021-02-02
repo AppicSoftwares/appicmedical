@@ -87,6 +87,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { PagesOnboardingScreenPage } from '../pages/pages-onboarding-screen/pages-onboarding-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { AddFamilyPage } from '../pages/family-members/add-family/add-family';
 const pages=[
   TabPage,
   MyApp,
@@ -141,8 +142,9 @@ const pages=[
   HealthInfoPopupPage,
   RxDeliveryPopupPage,
   DraiPopupPage,
-  PagesOnboardingScreenPage
-  // EverytimePasswordPage
+  PagesOnboardingScreenPage,
+  EverytimePasswordPage,
+  AddFamilyPage
 
 ]
 

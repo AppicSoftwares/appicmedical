@@ -225,7 +225,7 @@ export class OrdersListPage {
     }
 
     getLocalStorageData(){
-          
+        this.showspinner = false;
         this.MediCabinetlocal = this.tempStorage.getMedicabinetData();
         this.RecentSearchlocal = this.tempStorage.getRecentSearchData();
     }
