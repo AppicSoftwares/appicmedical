@@ -67,9 +67,6 @@
 						<div class="remove-drug-cont">
 							<ion-icon class="remove-drug" color="danger" name="trash" (click)="removeDrug(item, in)"></ion-icon>
 						</div>
-						
-						
-		
 					</ion-col>	
 				</mbsc-listview-item>
 			</mbsc-listview>
@@ -111,7 +108,11 @@
 							<!-- otcdrug.unc ||  -->
 						</div>
 					</ion-col>	
-					
+					<ion-col col-1 no-padding>
+						<div class="remove-drug-cont">
+							<ion-icon class="remove-drug" color="danger" name="trash" (click)="removeRecentSearch(item, in)"></ion-icon>
+						</div>
+					</ion-col>	
 				</mbsc-listview-item>
 			</mbsc-listview>
 			

@@ -554,7 +554,7 @@ export class LowestPricePage {
         this.tempStorage.cart.medications.drugs = this.medications;
         this.tempStorage.cart.medications.byNdc[removedObj[0].NDC] = null;
         delete this.tempStorage.cart.medications.byNdc[removedObj[0].NDC];
-        this.tempStorage.setRecentSearchData(this.medications);
+        
          //this.getCart();
     }
 
@@ -1235,9 +1235,7 @@ export class LowestPricePage {
                 this.deliveryService.mobiToast("Setting your pharmacy, Please wait ...", "success").then((result) => {
 
                 });
-                this.deliveryService.mobiToast("You already have items in your cart from different pharmacy, if you add items from different pharmacy your cart will be replaced.", "success").then((result) => {
-
-                });
+                
                 this.deliveryService.commonUsecase(filterObj).then((result: any) => {
 
                     if (result.data !== undefined) {
