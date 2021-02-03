@@ -41,7 +41,7 @@ export class OrdersListPage {
     }
     filters1:any={
         range: 'MediCabinet',
-        
+       
     };
    
     listviewSettings: MbscListviewOptions = {
@@ -226,6 +226,7 @@ export class OrdersListPage {
 
     getLocalStorageData(){
         this.showspinner = false;
+        
         this.MediCabinetlocal = this.tempStorage.getMedicabinetData();
         this.RecentSearchlocal = this.tempStorage.getRecentSearchData();
     }
@@ -239,6 +240,6 @@ export class OrdersListPage {
     removeRecentSearch(item1,i){
         this.RecentSearchlocal = this.RecentSearchlocal.filter(item => item.NDC !== item1.NDC);
           
-        this.tempStorage.setMedicabinetData(this.RecentSearchlocal);  
+        this.tempStorage.setRecentSearchData(this.RecentSearchlocal);  
     }
 }
