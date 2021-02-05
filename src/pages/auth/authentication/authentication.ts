@@ -12,7 +12,7 @@ import { OtpVerificationPage } from "../otp-verification/otp-verification";
 import { UtilsProvider } from "../../../providers/utils/utils";
 
 
-@IonicPage()
+
 @Component({
   selector: "page-authentication",
   templateUrl: "authentication.html",

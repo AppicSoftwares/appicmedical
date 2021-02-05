@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, ViewController } from 'ionic-angular';
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-health-info-popup',
   templateUrl: 'health-info-popup.html',

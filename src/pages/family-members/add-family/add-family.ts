@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-add-family',
   templateUrl: 'add-family.html',

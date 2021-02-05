@@ -12,7 +12,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { ApiCallProvider } from "../../../providers/api-call/api-call";
 import { DeliveryServiceProvider } from "../../../providers/delivery-service/delivery-service";
 
-@IonicPage()
+
 @Component({
   selector: "page-invite-family-popup",
   templateUrl: "invite-family-popup.html",

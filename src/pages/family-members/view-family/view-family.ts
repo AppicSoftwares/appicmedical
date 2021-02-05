@@ -11,7 +11,7 @@ import { DeliveryServiceProvider } from "../../../providers/delivery-service/del
 import { FileUploadProvider } from "../../../providers/file-upload/file-upload";
 import { TempStorageProvider } from "../../../providers/temp-storage/temp-storage";
 
-@IonicPage()
+
 @Component({
   selector: "page-view-family",
   templateUrl: "view-family.html",

@@ -9,7 +9,6 @@ import { PricePopupPage } from '../price-popup/price-popup';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-order-by',
   templateUrl: 'order-by.html',

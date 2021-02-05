@@ -30,3 +30,6 @@ APP_ENV={ENV} ionic cordova build {OS}
 
 // mykey store password
 password - 123456
+
+//mobiscroll in css
+@import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
