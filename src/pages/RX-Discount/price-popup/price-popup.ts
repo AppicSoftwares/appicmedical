@@ -9,7 +9,7 @@ import { DeliveredPage } from '../../delivery/delivered/delivered';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-price-popup',
   templateUrl: 'price-popup.html',

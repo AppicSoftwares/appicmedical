@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Platform, ViewController } from 'i
 import { LowestPricePage } from '../RX-Discount/lowest-price/lowest-price';
 import { DeliveredPage } from '../delivery/delivered/delivered';
 
-@IonicPage()
+
 @Component({
   selector: 'page-rx-delivery-popup',
   templateUrl: 'rx-delivery-popup.html',

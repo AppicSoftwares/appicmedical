@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { RxDiscountPage } from '../RX-Discount/rx-discount/rx-discount';
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-discount-card',
   templateUrl: 'discount-card.html',

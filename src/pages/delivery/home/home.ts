@@ -552,7 +552,7 @@ getApiVersion(){
  
   if(res.status == 200){
     this.ApiAppVersion = res.app_version;
-    this.AppVersion = '1.3';
+    this.AppVersion = '1.5';
     if(this.ApiAppVersion != this.AppVersion){
       this.updateVersion.instance.show();
      // this.market.open('com.medipocket.newpatient.app');

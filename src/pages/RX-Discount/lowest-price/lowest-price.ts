@@ -178,6 +178,7 @@ export class LowestPricePage {
   
     medicabinetArray=[];
     medicabinetDataForm: FormGroup;
+    RecentSearchArray=[];
    
 
 
@@ -185,6 +186,8 @@ export class LowestPricePage {
     constructor(private androidplatform: Platform,private changeDetector: ChangeDetectorRef, public modalCtrl: ModalController, private keyboard: Keyboard, 
         public tempStorage: TempStorageProvider, private geolocation: Geolocation, private formBuilder: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public deliveryService: DeliveryServiceProvider,
         public socialSharing: SocialSharing) {
+this.medicabinetArray =this.tempStorage.getMedicabinetData();
+this.RecentSearchArray=this.tempStorage.getRecentSearchData();
             this.currentLocation="";
         this.pharmacies = [];
         this.filterSearch = { first: false, second: false, third: false };
@@ -378,10 +381,13 @@ export class LowestPricePage {
                      }
                      
                  }*/
+                  
                 this.drugSelected = { ...this.predictions[0] };
                  
                 this.drugSelected.QtySelected = { ...this.predictions[0].QtyPrediction[0] };
                 // this.drugSelectedIndex = 0;
+                this.RecentSearchArray.push(this.drugSelected);
+                this.tempStorage.setRecentSearchData(this.RecentSearchArray);
             }
             this.addingInProgress = false;
             // this.filterDataForm.patchValue({strength: 0});
@@ -561,7 +567,8 @@ export class LowestPricePage {
     updateAC(item) {
         console.log(item);
         console.log(this.drugSelected);
-         
+      
+
         this.medicationsList = false;
         this.searchName = false;
         this.customField = false;
@@ -579,6 +586,8 @@ export class LowestPricePage {
         //console.log(GPI10s);
          
         this.drugSelected = { QtyPrediction: [{}] };
+
+        
         this.trigger_gpi14(GPI10s);
 
         /*this.filterSearch.first              = true;
@@ -1121,6 +1130,7 @@ export class LowestPricePage {
          const chkValue = this.medicabinetDataForm.value;
         if(chkValue.medicabinet == false){ //here false = true
             this.medicabinetArray.push(this.drugSelected);
+             
            this.tempStorage.setMedicabinetData(this.medicabinetArray);
         }
         else{
@@ -1176,8 +1186,9 @@ export class LowestPricePage {
         this.RecentSearch=this.medications;
         // this.RecentSearch.push(this.drugSelected);
         }
+         
         //store recent data
-        this.tempStorage.setRecentSearchData(this.medications);
+        // this.tempStorage.setRecentSearchData(this.medications);
            
         this.tempStorage.cart.medications.drugs = this.medications;
         this.RecentSearch=this.medications;

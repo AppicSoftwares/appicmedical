@@ -9,7 +9,7 @@ import { AuthenticationPage } from "../auth/authentication/authentication";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: "page-welcome",
   templateUrl: "welcome.html",

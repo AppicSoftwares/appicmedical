@@ -9,7 +9,7 @@ import { WelcomePage } from '../welcome/welcome';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-pages-onboarding-screen',
   templateUrl: 'pages-onboarding-screen.html', 

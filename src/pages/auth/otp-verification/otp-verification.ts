@@ -8,7 +8,7 @@ import { CreatePasswordPage } from "../create-password/create-password";
 import { UtilsProvider } from "../../../providers/utils/utils";
 import { TempStorageProvider } from "../../../providers/temp-storage/temp-storage";
 
-@IonicPage()
+
 @Component({
   selector: "page-otp-verification",
   templateUrl: "otp-verification.html",

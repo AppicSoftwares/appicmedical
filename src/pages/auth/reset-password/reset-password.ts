@@ -14,7 +14,7 @@ import { UtilsProvider } from "../../../providers/utils/utils";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: "page-reset-password",
   templateUrl: "reset-password.html",
