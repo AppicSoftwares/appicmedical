@@ -189,10 +189,10 @@
   <ion-grid no-padding>
     <ion-row>
       <ion-col no-padding col-12 >
-        <div class="theme-bg flex-item flex-column white-color p-4 pr-3rem box-shadow-normal ">
+        <div class="flex-item flex-column white-color p-4 pr-3rem  ">
           <div class="center flex-item flex-row top_mar111 self">
             <label class="title-text">
-              Welcome to your Virtual Health Companion</label>
+              Welcome to Your Virtual Health Companion</label>
           </div>
           <div class="center flex-item flex-row">
             <label class="title-text"></label>
@@ -213,34 +213,7 @@
         </div>
         
       </ion-col>
-      <ion-slides pager="true" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()" class="so">
-        <ion-slide>
-          <div class="sample">
-            <img src="assets/onboardingscreen/banner1.svg" class="">
-          </div>
-        </ion-slide>
-        
-        <ion-slide>
-         
-          <div>
-            <img src="assets/onboardingscreen/banner2.svg" class="diag">
-          </div>
-          
-        </ion-slide>
-        
-        <ion-slide>
-          <div>
-            <img src="assets/onboardingscreen/banner3.svg" class="diag">
-          </div>
-      
-        </ion-slide>
-        <ion-slide>
-          <div>
-            <img src="assets/onboardingscreen/banner4.svg" class="diag">
-          </div>
-        </ion-slide>
-        
-        </ion-slides> 
+     
     </ion-row>
     <ion-row>
       <ion-col col-12>
@@ -283,6 +256,34 @@
         </div>
       </ion-col>
     </ion-row>
+    <ion-slides pager="true" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()" class="so">
+      <ion-slide>
+        <div class="sample">
+          <img src="assets/onboardingscreen/banner1.svg" class="">
+        </div>
+      </ion-slide>
+      
+      <ion-slide>
+       
+        <div>
+          <img src="assets/onboardingscreen/banner2.svg" class="diag">
+        </div>
+        
+      </ion-slide>
+      
+      <ion-slide>
+        <div>
+          <img src="assets/onboardingscreen/banner3.svg" class="diag">
+        </div>
+    
+      </ion-slide>
+      <ion-slide>
+        <div>
+          <img src="assets/onboardingscreen/banner4.svg" class="diag">
+        </div>
+      </ion-slide>
+      
+      </ion-slides> 
     <mbsc-popup [options]="updateVersionSettings" #updateVersion="mobiscroll" >
   
       <ion-row>
