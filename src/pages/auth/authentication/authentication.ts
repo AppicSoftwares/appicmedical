@@ -10,6 +10,7 @@ import { TempStorageProvider } from "../../../providers/temp-storage/temp-storag
 import * as moment from "moment";
 import { OtpVerificationPage } from "../otp-verification/otp-verification";
 import { UtilsProvider } from "../../../providers/utils/utils";
+import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
 
 
 
@@ -45,7 +46,8 @@ export class AuthenticationPage {
     private tempStorage: TempStorageProvider,
     public events: Events,
     private util: UtilsProvider,
-    private androidplatform:Platform
+    private androidplatform:Platform,
+    private fb: Facebook
   ) { }
   ionViewWillLeave(){
     let backAction = this.androidplatform.registerBackButtonAction(() => {
@@ -375,4 +377,23 @@ export class AuthenticationPage {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
+  loginWithFacebook() {
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+        .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+        .catch(e => console.log('Error logging into Facebook', e));
+}
+
+loginWithGoogle() {
+    this.loginProvider.googleLogin().then(data => {
+        console.log(data);
+        if (data) {
+            if (data.token) {
+                localStorage.setItem('authData', data.token);
+                localStorage.setItem('loginFrom', "cordovaGoogle");
+            } console.log(data);
+        }
+    }).catch(error => {
+      console.log(error);
+    });
+}
 }
