@@ -11,6 +11,7 @@ import * as moment from "moment";
 import { OtpVerificationPage } from "../otp-verification/otp-verification";
 import { UtilsProvider } from "../../../providers/utils/utils";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
+import { HomePage } from "../../delivery/home/home";
 
 
 
@@ -378,18 +379,29 @@ export class AuthenticationPage {
     return re.test(email);
   }
   loginWithFacebook() {
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-        .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-        .catch(e => console.log('Error logging into Facebook', e));
+    this.fb.login(["public_profile",'user_friends', 'email']).then(response => {
+      console.log("fb_success", JSON.stringify(response));
+       
+      this.navCtrl.setRoot(HomePage);
+    }).catch((error) => {
+      console.log("fb_error", error);
+     
+    });
+    // this.fb.login(['public_profile', 'user_friends', 'email'])
+    //     .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+    //     .catch(e => console.log('Error logging into Facebook', e));
 }
 
 loginWithGoogle() {
+   
     this.loginProvider.googleLogin().then(data => {
         console.log(data);
         if (data) {
+           
             if (data.token) {
                 localStorage.setItem('authData', data.token);
                 localStorage.setItem('loginFrom', "cordovaGoogle");
+                this.navCtrl.setRoot(HomePage);
             } console.log(data);
         }
     }).catch(error => {

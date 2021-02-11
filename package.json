@@ -95,7 +95,8 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-geolocation": {
-        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you",
+        "GPS_REQUIRED": "true"
       },
       "cordova-plugin-file": {},
       "cordova-plugin-file-transfer": {},
@@ -110,9 +111,9 @@
         "PLAY_SERVICES_VERSION": "11.8.0"
       },
       "cordova-plugin-facebook4": {
-        "APP_ID": "480579209376169",
-        "APP_NAME": "mediPocket",
-        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "APP_ID": "256584246038293",
+        "APP_NAME": "Medipocket",
+        "FACEBOOK_HYBRID_APP_EVENTS": "true",
         "FACEBOOK_ANDROID_SDK_VERSION": "5.0.2"
       },
       "cordova-plugin-touch-id": {

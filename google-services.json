@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "187624007494",
+    "project_id": "medipocket-e12ee",
+    "storage_bucket": "medipocket-e12ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187624007494:android:819a5f6b08f5e75f7f2747",
+        "android_client_info": {
+          "package_name": "com.medipocket.newpatient.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187624007494-art01544uoqjj962duojgm2dctt8v948.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5_xcP8Em6YoaQIGMS1ibw0FDYln1Qeac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187624007494-art01544uoqjj962duojgm2dctt8v948.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "187624007494-lhdjh4m87e8bm4ibj5cglfqsut0fogfp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "medipocket.patient"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
