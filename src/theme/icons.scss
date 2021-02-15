@@ -8,19 +8,19 @@ ion-icon {
        height: 1em;
     }
     &[class*="tab-tree"] {
-       mask-image: url('/assets/imgs/tabs-icons/tree.svg');
+       mask-image: url('../assets/imgs/tabs-icons/tree.svg');
     }
     &[class*="tab-capsule"] {
-        mask-image: url('/assets/imgs/tabs-icons/capsule.svg');
+        mask-image: url('../assets/imgs/tabs-icons/capsule.svg');
      }
      &[class*="tab-notification"] {
-        mask-image: url('/assets/imgs/tabs-icons/notification.svg');
+        mask-image: url('../assets/imgs/tabs-icons/notification.svg');
      }
      &[class*="tab-more"] {
-        mask-image: url('/assets/imgs/tabs-icons/more.svg');
+        mask-image: url('../assets/imgs/tabs-icons/more.svg');
      }
      &[class*="tab-home"] {
-        mask-image: url('/assets/imgs/tabs-icons/home.svg');
+        mask-image: url('../assets/imgs/tabs-icons/home.svg');
      }
     
  }

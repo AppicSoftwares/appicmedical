@@ -8,8 +8,8 @@ page-tab {
       box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2);
     }
     ion-icon[class*="tab-notification"] {
-      -webkit-mask-image: url("/assets/imgs/tabs-icons/note.svg");
-      mask-image: url("/assets/imgs/tabs-icons/note.svg");
+      -webkit-mask-image: url("../assets/imgs/tabs-icons/note.svg");
+      mask-image: url("../assets/imgs/tabs-icons/note.svg");
     }
 
     .tab-button {

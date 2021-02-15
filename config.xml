@@ -111,9 +111,9 @@
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
     <plugin name="cordova-plugin-facebook4" spec="^5.0.0">
-        <variable name="APP_ID" value="480579209376169" />
-        <variable name="APP_NAME" value="medipocket" />
-        <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
+        <variable name="APP_ID" value="256584246038293" />
+        <variable name="APP_NAME" value="Medipocket" />
+        <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="true" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.0.2" />
     </plugin>
     <plugin name="cordova-plugin-touch-id" spec="^3.4.0" />

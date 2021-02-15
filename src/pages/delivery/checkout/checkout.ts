@@ -544,7 +544,7 @@ export class CheckoutPage {
 			}
 
 			orderData.orderCreated = moment().format('X');
-
+debugger;
 			this.deliveryService
 				.createOrder(orderData, this.tempStorage.cart.remoteId)
 				.then(result => {

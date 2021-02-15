@@ -279,7 +279,7 @@ export class ProfilePage {
      
     this.userId = this.loggedData && this.loggedData._id
     console.log('17 userId:', this.userId);
-    this.getcountries();
+    // this.getcountries();
      //upload image
      this.fileUpload.getDownloadImageSubject().subscribe(data =>{
       this.loadUserImageParam = '?random='+Math.random();
@@ -420,81 +420,7 @@ export class ProfilePage {
     this.popOver.present();
 
   }
-getcontApi(){
-  
-  var headers={
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhc2tAdW5pdmVyc2FsLXR1dG9yaWFsLmNvbSIsImFwaV90b2tlbiI6IlQ2VlBOUmZXbkxFbmdsMHd2djctZ1d2Y09KRHFPSkptc3ZoNkNOdGo5a3p1Z1RSYkhvdXVET1NXeTdzYmJzdG5taDAifSwiZXhwIjoxNjA2Mjk4NTMyfQ.wiLsebtYgubF6ILJHvbnGCjYH749Xel1jhGeiqeu_Ng",
-    "Accept": "application/json"
-    
-  };
-   
-  return this.http.get("https://www.universal-tutorial.com/api/countries/",{
-    headers:headers
-  });
-}
-getstateApi(state){
-  
-  var headers={
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhc2tAdW5pdmVyc2FsLXR1dG9yaWFsLmNvbSIsImFwaV90b2tlbiI6IlQ2VlBOUmZXbkxFbmdsMHd2djctZ1d2Y09KRHFPSkptc3ZoNkNOdGo5a3p1Z1RSYkhvdXVET1NXeTdzYmJzdG5taDAifSwiZXhwIjoxNjA2Mjk4NTMyfQ.wiLsebtYgubF6ILJHvbnGCjYH749Xel1jhGeiqeu_Ng",
-    "Accept": "application/json"
-    
-  };
-   
-  return this.http.get("https://www.universal-tutorial.com/api/states/"+state,{
-    headers:headers
-  });
-}
-getcityApi(city){
-  
-  var headers={
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhc2tAdW5pdmVyc2FsLXR1dG9yaWFsLmNvbSIsImFwaV90b2tlbiI6IlQ2VlBOUmZXbkxFbmdsMHd2djctZ1d2Y09KRHFPSkptc3ZoNkNOdGo5a3p1Z1RSYkhvdXVET1NXeTdzYmJzdG5taDAifSwiZXhwIjoxNjA2Mjk4NTMyfQ.wiLsebtYgubF6ILJHvbnGCjYH749Xel1jhGeiqeu_Ng",
-    "Accept": "application/json"
-    
-  };
-   
-  return this.http.get("https://www.universal-tutorial.com/api/cities/"+city,{
-    headers:headers
-  });
-}
-getcountries(){
-   
-  this.getcontApi().subscribe(res => {
-    
-        
-          this.cont = res;
-        
-          
-        }, error => {
-          console.error('Error in fetching home offer : ' + error);
-          
-        });
-}
-getstates(){
-   
-  this.getstateApi('United States').subscribe(res => {
-    
-        
-          this.states = res;
-        
-          
-        }, error => {
-          console.error('Error in fetching home offer : ' + error);
-          
-        });
-}
-getCities(){
-   
-  this.getcityApi('californiya').subscribe(res => {
-    
-        
-          this.states = res;
-        
-          
-        }, error => {
-          console.error('Error in fetching home offer : ' + error);
-          
-        });
-}
+
 skipstep(){
   this.navCtrl.push(AuthenticationPage);
 }
