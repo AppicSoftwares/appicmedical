@@ -78,4 +78,41 @@ page-authentication {
 .social-icon {
     text-align: center;
 }
+.socialRowDroid {
+  display: flex;
+  grid-gap: 10px;
+  padding: 0px 20px;
+  margin-top: 30px;
+  position: absolute;
+  bottom: 15px;
+  transition: opacity 0.5s ease;
+  // opacity: 0;
+  width: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  top: -9px;
+}
+.socialRowDroid .socialLogin {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 10px;
+  background-color: white;
+  border: 1px solid var(--P-LightGreyStroke);
+  padding: 10px;
+  color: var(--P-GreyTextOnWhite);
+  border-radius: 30px;
+  grid-gap: 10px;
+  margin-left: 20px;
+  border: 1px solid #a3a3a37d;
+}
+.socialRowDroid .socialLogin img {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
 }
