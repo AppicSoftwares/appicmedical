@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.medipocket.newpatient.app" version="1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.medipocket.newpatient.app" version="1.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MediPocket</name>
     <description>Your medical concierge.</description>
     <author email="jaydeep@epsilon-technology.com" href="http://epsilon-tecnology.com/">Epsilon-Technology Ionic Framework Team</author>
@@ -111,7 +111,7 @@
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
     <plugin name="cordova-plugin-facebook4" spec="^5.0.0">
-        <variable name="APP_ID" value="256584246038293" />
+        <variable name="APP_ID" value="719097908971202" />
         <variable name="APP_NAME" value="Medipocket" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="true" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.0.2" />

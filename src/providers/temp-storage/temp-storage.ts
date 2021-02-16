@@ -21,6 +21,7 @@ export class TempStorageProvider {
 	}
 
 	setAuthSession(userdata: any = null) {
+		 
 		this.authsession = { userdata: userdata }
 	}
 	setAdminConfig(adminConfig: any = null) {

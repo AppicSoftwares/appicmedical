@@ -112,7 +112,12 @@ export class DrugInfoPage {
     };
 
 	constructor(private androidplatform: Platform,public tempStorage: TempStorageProvider, public modalCtrl: ModalController, private sanitization: DomSanitizer, public navCtrl: NavController, public navParams: NavParams, private deliveryService: DeliveryServiceProvider) {
-        this.user_id =  this.tempStorage.authsession.userdata.user_id;
+        if(localStorage.getItem('socialLogin') == 'true'){
+            this.user_id =  localStorage.getItem('userId');
+          }
+      else{
+        this.user_id = this.tempStorage.authsession.userdata.user_id;
+      }
         this.submitted = false;
         this.addingInProgress = false;
         

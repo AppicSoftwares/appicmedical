@@ -32,7 +32,12 @@ export class ViewFamilyPage {
     private fileUpload: FileUploadProvider,
     public tempStorage: TempStorageProvider,
   ) {
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     //upload image
     this.fileUpload.getDownloadImageSubject().subscribe(data =>{
       this.loadUserImageParam = '?random='+Math.random();
@@ -43,7 +48,12 @@ export class ViewFamilyPage {
 
   ionViewDidEnter() {
     this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     console.log("test");
     this.patientData = JSON.parse(localStorage.getItem('patientData'));
     this.name = this.patientData.profileData.name ? this.patientData.profileData.name :  localStorage.getItem('name');

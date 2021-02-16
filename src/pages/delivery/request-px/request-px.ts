@@ -45,7 +45,12 @@ export class RequestPxPage {
 
 
 	constructor(private androidplatform: Platform,public deliveryService: DeliveryServiceProvider, public tempStorage: TempStorageProvider, private formBuilder: FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
-        this.user_id =  this.tempStorage.authsession.userdata.user_id;
+        if(localStorage.getItem('socialLogin') == 'true'){
+            this.user_id =  localStorage.getItem('userId');
+          }
+      else{
+        this.user_id = this.tempStorage.authsession.userdata.user_id;
+      }
         this.cartDrugs                                 = this.tempStorage.cart.drugs;
         this.cartDrugsKey                              = this.tempStorage.cart.keys;
         this.cartPharmacy                              = this.tempStorage.cart.pharmacy;

@@ -41,6 +41,12 @@ export class PinSetupComponent implements OnInit {
     public tempStorage: TempStorageProvider,
     private androidplatform: Platform
   ){
+     
+    let sociallogin= localStorage.getItem('socialLogin');
+    if(sociallogin == 'true'){
+      this.navCtrl.setRoot(TabPage); 
+     
+     }
     this.spinner = false;
     this._showLockScreen   = true;
     this.passcode          = navParams.data.code;

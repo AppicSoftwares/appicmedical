@@ -146,7 +146,12 @@ export class HomePage {
     // if(this.name == "" || this.name == undefined){
     //   this.navCtrl.push(PatientProfilePage);
     // }
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     
     console.log('patientData',this.patientData)
     this.tempStorage.setCartMembership();
@@ -156,7 +161,12 @@ export class HomePage {
       console.log("random"+ this.loadUserImageParam);
     });
     this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     //this.tempStorage.setProfileMembership();
     /*  this.deliveryService.getMememberShip(this.tempStorage.authsession.userdata.user_id).then((result) => {
           let resultData                           : any;
@@ -192,7 +202,12 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     console.log("ionViewDidLoad HomePage");
     this.content.resize();
   }
@@ -216,11 +231,21 @@ export class HomePage {
   }
   ionViewWillEnter() {
     this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
 }
   ionViewDidEnter() {
     this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
    this.getCart();
     console.log("test");
     console.log(this.patientData.profileData.name);
@@ -552,7 +577,7 @@ getApiVersion(){
  
   if(res.status == 200){
     this.ApiAppVersion = res.app_version;
-    this.AppVersion = '1.5';
+    this.AppVersion = '1.7';
     if(this.ApiAppVersion != this.AppVersion){
       this.updateVersion.instance.show();
      // this.market.open('com.medipocket.newpatient.app');

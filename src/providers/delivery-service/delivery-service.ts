@@ -1077,7 +1077,31 @@ export class DeliveryServiceProvider {
         );
     });
   }
-
+  async facebookLogin(params) {
+    let options = new RequestOptions({ headers: this.http_headers });
+    this.listdata = {};
+    return await new Promise((resolve) => {
+      this.http
+        .post(this.httpurl + "fb_login/", params, options)
+        .map((res) => res.json())
+        .subscribe(
+          (data) => {
+            let resultData: any;
+            resultData = data;
+            if (resultData.status == "error") {
+            } else {
+            }
+            resolve(resultData);
+          },
+          (error) => {
+            if (error.status == "error") {
+            }
+            resolve(error._body);
+            //console.log(error);// Error getting the data
+          }
+        );
+    });
+  }
   async registerGetOTP(params) {
     let options = new RequestOptions({ headers: this.http_headers });
     this.listdata = {};

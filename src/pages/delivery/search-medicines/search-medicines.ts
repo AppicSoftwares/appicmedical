@@ -194,7 +194,12 @@ export class SearchMedicinesPage {
     this.pharmacies = [];
     this.filterSearch = { first: false, second: false, third: false };
     this.gpi12Data = { index: [], value: [] };
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     this.drugSelected = { QtyPrediction: [{}] };
     this.drugSelectedIndex = 0;
     this.medications = [];

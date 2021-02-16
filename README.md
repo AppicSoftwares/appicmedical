@@ -33,3 +33,8 @@ password - 123456
 
 //mobiscroll in css
 @import '../../lib/mobiscroll/css/mobiscroll.angular.min.css';
+
+
+//key hashes
+
+ga0RGNYHvNM5d0SLGQfpQWAPGJ8=

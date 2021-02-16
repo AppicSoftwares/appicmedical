@@ -34,7 +34,12 @@ export class FileUploadProvider {
   private downloaduserImage = new Subject<any>();
   constructor(  private util: UtilsProvider,public loadingController: LoadingController,public http: Http, public tempStorage: TempStorageProvider, public platform: Platform, private base64: Base64, private sanitization: DomSanitizer, private actionSheetCtrl: ActionSheetController, private camera: Camera, private transfer: FileTransfer, private file: File, private alertCtrl: AlertController, private toastCtrl: ToastController) {
     //  console.log('server Url', this.serverUrl);
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}   
   }
 
 

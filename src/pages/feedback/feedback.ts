@@ -34,7 +34,12 @@ export class FeedbackPage {
     }
     orderDetail: any;
     constructor(private androidplatform: Platform,public menuCtrl: MenuController, public navCtrl: NavController, public navParams: NavParams, private deliveryService: DeliveryServiceProvider, private tempStorage: TempStorageProvider) {
-		this.user_id =  this.tempStorage.authsession.userdata.user_id;
+		if(localStorage.getItem('socialLogin') == 'true'){
+            this.user_id =  localStorage.getItem('userId');
+          }
+      else{
+        this.user_id = this.tempStorage.authsession.userdata.user_id;
+      }
         this.progressing = false;
 		 
         if (this.navParams.get('orderDetail') !== undefined) {

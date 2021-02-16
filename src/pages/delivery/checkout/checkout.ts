@@ -93,7 +93,15 @@ export class CheckoutPage {
 		private alertCtrl: AlertController,
 		private androidplatform: Platform
 	) {
-		this.user_id = this.tempStorage.authsession.userdata.user_id;
+		
+		if(localStorage.getItem('socialLogin') == 'true'){
+			this.user_id =  localStorage.getItem('userId');
+		  }
+	  
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
+	   
 		if (this.navParams.get('trigger')) {
 			this.checkouttrigger = this.navParams.get('trigger');
 		}
@@ -544,7 +552,7 @@ export class CheckoutPage {
 			}
 
 			orderData.orderCreated = moment().format('X');
-debugger;
+ 
 			this.deliveryService
 				.createOrder(orderData, this.tempStorage.cart.remoteId)
 				.then(result => {

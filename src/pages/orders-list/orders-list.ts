@@ -65,7 +65,13 @@ export class OrdersListPage {
     MediCabinetlocal: any;
     RecentSearchlocal: any;
 	constructor(private androidplatform:Platform,public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private deliveryService: DeliveryServiceProvider, private tempStorage: TempStorageProvider) {
-		this.user_id =  this.tempStorage.authsession.userdata.user_id;
+		if(localStorage.getItem('socialLogin') == 'true'){
+            this.user_id =  localStorage.getItem('userId');
+          }
+      else{
+        this.user_id = this.tempStorage.authsession.userdata.user_id;
+      } 
+        // this.user_id =  this.tempStorage.authsession.userdata.user_id;
 		this.showspinner = false;
 		this.notify 					= {
 			ordered: {time: moment().format('MMM DD, YYYY HH:mm'), message: "Your order has been placed"},

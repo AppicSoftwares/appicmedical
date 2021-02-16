@@ -348,7 +348,7 @@ export class PatientProfilePage {
       name: [""],
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
-      email: ["", Validators.required],
+      email: [""],
       dob: ["", Validators.required],
       gender: ["", Validators.required],
       address: ["", Validators.required],
@@ -373,7 +373,12 @@ export class PatientProfilePage {
     this.editUploadedInsuranceCard = [];
     console.log(this.tempStorage.authsession);
      
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     this.profileInfo = {};
     this.profileInfo.avatar = {};
     
@@ -414,7 +419,12 @@ export class PatientProfilePage {
       console.log("random"+ this.loadUserImageParam);
     });
     this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-    this.user_id = this.tempStorage.authsession.userdata.user_id;
+    if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
   }
 
   protected uploadAvatharFn(postData) {
@@ -474,11 +484,21 @@ export class PatientProfilePage {
   }
  ionViewWillEnter(){
   this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-   this.user_id = this.tempStorage.authsession.userdata.user_id;
+   if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
  }
   ionViewDidLoad() {
      this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-     this.user_id = this.tempStorage.authsession.userdata.user_id;
+     if(localStorage.getItem('socialLogin') == 'true'){
+      this.user_id =  localStorage.getItem('userId');
+    }
+else{
+  this.user_id = this.tempStorage.authsession.userdata.user_id;
+}  
     console.log(this.profileInfo);
     console.log("ionViewDidLoad MembershipSignupPage");
   }

@@ -56,6 +56,7 @@ export class MyApp {
         private fcm: FCM,
     ) {
          let userid = localStorage.getItem('userId');
+         let sociallogin= localStorage.getItem('socialLogin');
        this.UserIdCopy = userid;
        
         this.config.set('backButtonIcon', 'ios-arrow-back');
@@ -85,11 +86,18 @@ export class MyApp {
             //  this.rootPage = WelcomePage;
             this.rootPage = PagesOnboardingScreenPage; 
           } else {
+               
+           if(sociallogin == 'true'){
+            this.rootPage = TabPage; 
+           
+           }
+           else{ 
               if (this.localpasscode === null) {
                   this.rootPage = PinSetupComponent;
               } else {
                   this.rootPage = PinComponent;
               }
+            }
           }
         // set our app's pages
         this.pages = [

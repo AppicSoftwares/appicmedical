@@ -12,6 +12,8 @@ import { OtpVerificationPage } from "../otp-verification/otp-verification";
 import { UtilsProvider } from "../../../providers/utils/utils";
 import { Facebook, FacebookLoginResponse } from "@ionic-native/facebook";
 import { HomePage } from "../../delivery/home/home";
+import { TabPage } from "../../tab/tab";
+import { PinSetupComponent } from "../../pinsetup/pinsetup";
 
 
 
@@ -39,6 +41,7 @@ export class AuthenticationPage {
   terms: any = true;
   loading = false;
   submitted: boolean;
+  sociallogin: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -189,7 +192,8 @@ export class AuthenticationPage {
           console.log(resultData.user_id);
           localStorage.setItem("userId", resultData.user_id);
           localStorage.setItem("patientData", JSON.stringify(resultData));
-           
+          this.sociallogin = 'false';
+          localStorage.setItem("socialLogin", this.sociallogin);
           
           let userData: any;
           setTimeout(() => {
@@ -381,8 +385,62 @@ export class AuthenticationPage {
   loginWithFacebook() {
     this.fb.login(["public_profile",'user_friends', 'email']).then(response => {
       console.log("fb_success", JSON.stringify(response));
+          
+      this.fb.api("/me?fields=name,gender,birthday,email", []).then((user) => {
+                    
+        // Get the connected user details
+        console.log("=== USER INFOS ===" + user );
+        var gender    = user.gender;
+        var birthday  = user.birthday;
+        var name      = user.name;
+        var email     = user.email;
+        var id        =  user.id;
+        console.log("=== USER INFOS ===");
+        console.log("Gender : " + gender);
+        console.log("Birthday : " + birthday);
+        console.log("Name : " + name);
+        console.log("Email : " + email);
+        console.log("id : " + id);
+        const data ={};
+        data['fullname'] =name;
+       data['password'] ="";
+       data['phone'] ="";
+        data['email'] =email;
+        data['unique_id'] =id;
+        data['type '] ="fb";
+        
+        this.sociallogin = 'true';
+        let postData={};
+        postData['facebookId'] = response.authResponse.accessToken;
+        postData['user_type'] = "patient"
+        
+        this.auth.facebookLogin(postData).then(
+          (result) => {
+             
+            console.log("fb login result" + result);
+            localStorage.setItem("socialLogin", this.sociallogin);
+            localStorage.setItem("userId", response.authResponse.userID);
+            
+            this.tempStorage.setAuthSession(response.authResponse);
+            
+            this.events.publish("user:loggedin", response.authResponse, Date.now());
+            this.navCtrl.push(TabPage);
+          }
+          ,
+        (error) => {
+          
+          console.log(error);
+        }
+      ).catch(error => {
        
-      this.navCtrl.setRoot(HomePage);
+  
+        console.log('Error initialization is', error);
+      });
+        // => Open user session and redirect to the next page
+
+    });
+      
+     
     }).catch((error) => {
       console.log("fb_error", error);
      

@@ -286,7 +286,12 @@ export class ProfilePage {
      console.log("random"+ this.loadUserImageParam);
    });
    this.userImageURL ="https://medipocket-upload-file.s3.amazonaws.com/";
-  // this.user_id = this.tempStorage.authsession.userdata.user_id;
+//    if(localStorage.getItem('socialLogin') == 'true'){
+//       this.user_id =  localStorage.getItem('userId');
+//     }
+// else{
+//   this.user_id = this.tempStorage.authsession.userdata.user_id;
+// }  
   }
 
   getProfile() {
