@@ -61,8 +61,13 @@ export class HomePage {
         text: "Update",
         
         handler: (event, inst) => {
-             
-          window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
+          if(this.androidplatform.is('android')){
+            window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
+          }
+          else if(this.androidplatform.is('ios')){
+            window.open("https://apps.apple.com/us/app/medipocket-rx-saving-on-demand/id1468232750","_system")
+          }
+          
           /*if (youWantoCloseIt) {
 						inst.hide();
 					} else {
