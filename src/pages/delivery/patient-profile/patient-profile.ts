@@ -328,6 +328,7 @@ export class PatientProfilePage {
   userImageURL:any ="https://medipocket-upload-file.s3.amazonaws.com/";
   loadUserImageParam:string='';
   gender1: string;
+  user_email: any;
   constructor(
     public modalCtrl: ModalController,
     private changeDetector: ChangeDetectorRef,
@@ -372,7 +373,7 @@ export class PatientProfilePage {
     this.uploadedInsuranceCard = [];
     this.editUploadedInsuranceCard = [];
     console.log(this.tempStorage.authsession);
-     
+    this.user_email =  this.tempStorage.authsession.userdata.profileData.email;
     if(localStorage.getItem('socialLogin') == 'true'){
       this.user_id =  localStorage.getItem('userId');
     }
@@ -761,9 +762,11 @@ else{
     this.tempData = { country: null, state: null, city: null };
     this.showSpinner = true;
     this.uploadedInsuranceCard = [];
+    
     this.deliveryService
-      .profileInfo(AppSettings.usertype, this.user_id)
+      .profileInfo(AppSettings.usertype, this.user_email)
       .then((result) => {
+        
         this.util.dismissLoading();
         console.log('result of profile is', result);
 
