@@ -103,7 +103,8 @@ export class PinSetupComponent implements OnInit {
         this.enteredPasscodeConfirm = '';
         this.doLogin(this.sessionData);
         setTimeout(() => {
-          this.navCtrl.setRoot(TabPage);
+          
+          this.navCtrl.push(TabPage);
         }, 1000);
       } else {
         this.enteredPasscode = '';

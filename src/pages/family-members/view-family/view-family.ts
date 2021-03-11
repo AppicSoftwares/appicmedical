@@ -11,7 +11,8 @@ import { DeliveryServiceProvider } from "../../../providers/delivery-service/del
 import { FileUploadProvider } from "../../../providers/file-upload/file-upload";
 import { TempStorageProvider } from "../../../providers/temp-storage/temp-storage";
 
-
+import { Observable, Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 @Component({
   selector: "page-view-family",
   templateUrl: "view-family.html",
@@ -31,6 +32,7 @@ export class ViewFamilyPage {
     private androidplatform: Platform,
     private fileUpload: FileUploadProvider,
     public tempStorage: TempStorageProvider,
+    private http: HttpClient,
   ) {
     if(localStorage.getItem('socialLogin') == 'true'){
       this.user_id =  localStorage.getItem('userId');
@@ -63,7 +65,35 @@ else{
       this.navCtrl.pop();
     });
   }
-  getFamily() {
+  getfamilyApi(id): Observable<any>{
+    return this.http.get('http://13.234.88.229/tb/global/raxiona/'+id);
+    
+  }
+  getFamily(){
+   
+     
+  // if(localStorage.getItem('updatePopup') != 'true'){ 
+  
+    this.getfamilyApi(this.user_id).subscribe(res => {
+        
+      if (res.status == 0) {
+        // const data = JSON.parse(res.body)
+           
+        
+      }else{
+         
+        this.memberList = res;
+         
+        console.log("memberList is", this.memberList);
+      }
+  
+  }, error => {
+      console.error('Error in fetching home offer : ' + error);
+     
+    });
+  // }
+  }
+  getFamily1() {
     const url = "get-family-request";
     const data = {
       

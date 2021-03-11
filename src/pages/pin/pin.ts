@@ -67,11 +67,12 @@ export class PinComponent implements OnInit {
 		if (this.enteredPasscode.length >= 3) {
 			if (this.enteredPasscode === this.finalDigit) {
 				this.doLogin(this.sessionData);
-				setTimeout(() => {
-					 
-					 this.navCtrl.setRoot(TabPage);
-					//this.navCtrl.setRoot(HomePage);
-				}, 1000);
+				this.navCtrl.push(TabPage);
+				// setTimeout(() => {
+				
+				// 	 this.navCtrl.setRoot(TabPage);
+				// 	//this.navCtrl.setRoot(HomePage);
+				// }, 1000);
 			} else {
 				this.passcodeWrong = true;
 				setTimeout(() => {

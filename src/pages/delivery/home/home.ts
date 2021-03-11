@@ -34,7 +34,7 @@ import { PagesOnboardingScreenPage } from "../../pages-onboarding-screen/pages-o
 import { AppSettings } from "../../../app/settings";
 import moment from "moment";
 import { FileUploadProvider } from "../../../providers/file-upload/file-upload";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 // import { FCM } from '@ionic-native/fcm/ngx';
@@ -65,7 +65,7 @@ export class HomePage {
             window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
           }
           else if(this.androidplatform.is('ios')){
-            window.open("https://apps.apple.com/us/app/medipocket-rx-saving-on-demand/id1468232750","_system")
+            window.open("https://apps.apple.com/us/app/medipocket-rx-saving-on-demand/id1468232750")
           }
           
           /*if (youWantoCloseIt) {
@@ -141,7 +141,7 @@ export class HomePage {
     // private market: Market
   ) {
      this.getApiVersion();
-    
+    // this.getApiVersion1();
   
     console.log(this.userloggedin);
     this.patientData = JSON.parse(localStorage.getItem('patientData'));
@@ -324,9 +324,14 @@ else{
   }
 
   shareMpCard() {
+    let subject="I think you’ll like MediPocket";
+    let appleUrl ="http://bit.ly/MediPocket-iOS";
+    let playurl ="http://bit.ly/MediPocket-Android";
     let msg =
-      "Show this with your prescription at the pharmacy counter and receive the instant savings.";
-    let shareImageUrl = {
+      "I use MediPocket to save money on my prescriptions and I thought you'd like to save as well! If you're on your phone, you can download the FREE MediPocket app here: \n Apple Store: " +appleUrl+ "\n Google Play Store: " +playurl + "\n Website: ";
+      msg.replace("\n", "<br>");
+      
+      let shareImageUrl = {
       family: "https://mymedipocket.com/qa/img/pharmacy-savings-card-front.png",
       pet:
         "https://mymedipocket.com/qa/img/pharmacy-savings-card-front-pet.png",
@@ -334,6 +339,7 @@ else{
     //console.log(this.httpurl +"assets/pdf/" +this.PoDetail.po_ref +".pdf");
     this.socialSharing
       .shareWithOptions({
+        subject:subject,
         message: msg,
         url: "https://mymedipocket.com/",
         files: [shareImageUrl[this.toWhom]],
@@ -577,6 +583,8 @@ getApiVersion(){
    else if(this.androidplatform.is('ios')){
     this.mobileType = 'ios';
    }
+   
+// if(localStorage.getItem('updatePopup') != 'true'){ 
 
   this.ApiForForceVersion(this.mobileType).subscribe(res => {
  
@@ -584,18 +592,22 @@ getApiVersion(){
     this.ApiAppVersion = res.app_version;
     this.AppVersion = '1.7';
     if(this.ApiAppVersion != this.AppVersion){
+      localStorage.setItem('updatePopup','true');
       this.updateVersion.instance.show();
      // this.market.open('com.medipocket.newpatient.app');
     //  window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
     }
   }
-  
+
 }, error => {
     console.error('Error in fetching home offer : ' + error);
    
   });
+// }
 }
 openCovidUrl() {
   this.inappbrowser.create("https://www.cdc.gov/vaccines/covid-19/index.html",'_blank','location=no,toolbar=yes');
-}  
+} 
+
+
 }
