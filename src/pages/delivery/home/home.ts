@@ -590,7 +590,7 @@ getApiVersion(){
  
   if(res.status == 200){
     this.ApiAppVersion = res.app_version;
-    this.AppVersion = '1.7';
+    this.AppVersion = '1.8';
     if(this.ApiAppVersion != this.AppVersion){
       localStorage.setItem('updatePopup','true');
       this.updateVersion.instance.show();
