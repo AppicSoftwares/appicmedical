@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PagesOnboardingScreenComponent } from './pages-onboarding-screen/pages-onboarding-screen';
+
 @NgModule({
-	declarations: [PagesOnboardingScreenComponent],
+	declarations: [PagesOnboardingScreenComponent,
+   ],
 	imports: [],
-	exports: [PagesOnboardingScreenComponent]
+	exports: [PagesOnboardingScreenComponent,
+   ]
 })
 export class ComponentsModule {}

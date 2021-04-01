@@ -88,6 +88,8 @@ import { PagesOnboardingScreenPage } from '../pages/pages-onboarding-screen/page
 import { HttpClientModule } from '@angular/common/http';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { AddFamilyPage } from '../pages/family-members/add-family/add-family';
+import {EditInviteFamilyPopupPage} from '../pages/family-members/edit-invite-family-popup/edit-invite-family-popup';
+import { from } from 'rxjs/observable/from';
 const pages=[
   TabPage,
   MyApp,
@@ -144,7 +146,8 @@ const pages=[
   DraiPopupPage,
   PagesOnboardingScreenPage,
   EverytimePasswordPage,
-  AddFamilyPage
+  AddFamilyPage,
+  EditInviteFamilyPopupPage
 
 ]
 

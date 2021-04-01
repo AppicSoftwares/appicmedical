@@ -13,6 +13,7 @@ import { TempStorageProvider } from "../../../providers/temp-storage/temp-storag
 
 import { Observable, Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { EditInviteFamilyPopupPage } from "../edit-invite-family-popup/edit-invite-family-popup";
 @Component({
   selector: "page-view-family",
   templateUrl: "view-family.html",
@@ -123,6 +124,14 @@ else{
   inviteFamily() {
     const popOver = this.popOverCtrl.create(
       InviteFamilyPopupPage,
+      {},
+      { cssClass: "invite-family-popup" }
+    );
+    popOver.present();
+  }
+  editinviteFamily() {
+    const popOver = this.popOverCtrl.create(
+      EditInviteFamilyPopupPage,
       {},
       { cssClass: "invite-family-popup" }
     );

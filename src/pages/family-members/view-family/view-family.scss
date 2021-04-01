@@ -26,6 +26,9 @@ page-view-family {
     .round-img {
       border-radius: 50%;
       border: 1px solid #00d6ba;
+      height: 107px;
+      width: 107px;
+      background-color: lightgray;
     }
 
     .line-container {
@@ -93,6 +96,11 @@ page-view-family {
     margin-right: 2rem;
     border: 2px solid white !important;
     object-fit: cover;
+  }
+  .edit_dlt{
+    margin-left: -37px;
+    margin-top: 7px;
+    font-size: 21px;
   }
 }
 

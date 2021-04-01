@@ -16,11 +16,19 @@ import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
 
+/**
+ * Generated class for the EditInviteFamilyPopupPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
-  selector: "page-invite-family-popup",
-  templateUrl: "invite-family-popup.html",
+  selector: 'page-edit-invite-family-popup',
+  templateUrl: 'edit-invite-family-popup.html',
 })
-export class InviteFamilyPopupPage {
+export class EditInviteFamilyPopupPage {
   formGroup: FormGroup;
   
   constructor(
@@ -53,7 +61,7 @@ export class InviteFamilyPopupPage {
     }
     onSend(){
       const popOver = this.popOverCtrl.create(
-        InviteFamilyPopupPage,
+        EditInviteFamilyPopupPage,
         {},
         { cssClass: "invite-family-popup" }
       );

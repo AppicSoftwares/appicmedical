@@ -61,18 +61,15 @@ export class HomePage {
         text: "Update",
         
         handler: (event, inst) => {
-          if(this.androidplatform.is('android')){
-            window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
-          }
-          else if(this.androidplatform.is('ios')){
-            window.open("https://apps.apple.com/us/app/medipocket-rx-saving-on-demand/id1468232750")
-          }
+          this.inappbrowser.create("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app",'_system','location=no,hardwareback=no,toolbar=no,closebuttoncaption=my btn');
+          // if(this.androidplatform.is('android')){
+          //   window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
+          // }
+          // else if(this.androidplatform.is('ios')){
+          //   window.open("https://apps.apple.com/us/app/medipocket-rx-saving-on-demand/id1468232750")
+          // }
           
-          /*if (youWantoCloseIt) {
-						inst.hide();
-					} else {
-						// do other things
-					}*/
+         
         },
       },
     ],

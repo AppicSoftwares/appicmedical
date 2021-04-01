@@ -9,7 +9,7 @@
       
       <ion-col [formGroup]="formGroup" no-padding col-12 class="mb-2-big">
         <div class="flex-item flex-row items-start mb-4-big">
-        <label class="title">Invite your family member by email</label>
+        <label class="title">Edit Invite your family member </label>
         </div>
         <ion-item class="input-container" no-lines>
           <ion-label>First Name</ion-label>
@@ -17,7 +17,7 @@
         </ion-item>
         <ion-item class="input-container" no-lines>
           <ion-label>Email</ion-label>
-          <ion-input type="email" formControlName="email" placeholder="Enter email ID"></ion-input>
+          <ion-input type="email" formControlName="email" placeholder="Enter email ID" disabled></ion-input>
         </ion-item>
         <ion-item class="input-container" no-lines>
           <ion-label>Family member relation to you</ion-label>
@@ -32,7 +32,7 @@
             <button ion-button block clear class="btn" color="gray" (click)="onCancel()">cancel</button>
           </div>
           <div class="flex-item col-6">
-            <button ion-button block clear class="btn" color="pink" [disabled]="!formGroup.valid" (click)="onSend()">send</button>
+            <button ion-button block clear class="btn" color="pink" [disabled]="!formGroup.valid" (click)="onSend()">Update</button>
           </div>
         </div>
       </ion-col>

@@ -29,17 +29,17 @@ export class RxDiscountPage {
     let msg =
       "Show this with your prescription at the pharmacy counter and receive the instant savings.";
     let shareImageUrl = {
-      family: "https://mymedipocket.com/qa/img/pharmacy-savings-card-front.png",
+      family: "http://mymedipocket.com/assets/save-80.jpg",
       pet:
-        "https://mymedipocket.com/qa/img/pharmacy-savings-card-front-pet.png",
+        "assets/imgs/banner-img.png",
     };
+     
     //console.log(this.httpurl +"assets/pdf/" +this.PoDetail.po_ref +".pdf");
     this.socialSharing
       .shareWithOptions({
         message: msg,
         url: "https://mymedipocket.com/",
-        files: [shareImageUrl[toWhom]],
-        /////data/user/0/techbee.otpc/753025443.pdf"
+        files:['http://mymedipocket.com/assets/save-80.jpg'],
         chooserTitle: "MediPocket Pharmacy Discount Card",
       })
       .then((result) => {
