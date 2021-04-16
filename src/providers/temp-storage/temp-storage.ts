@@ -13,6 +13,7 @@ export class TempStorageProvider {
 	authsession: any;
 	Adminconfig: any;
 	constructor(public http: Http) {
+		
 		this.uploadrx = [];
 		this.authsession = { userdata: null };
 		this.Adminconfig = {};
@@ -67,6 +68,7 @@ export class TempStorageProvider {
 				timeSlot: ""
 			}
 		};
+	
 		this.uploadrx = [];
 
 	}
@@ -143,6 +145,18 @@ setMedicabinetData(data){
  getRecentSearchData(){
   if(localStorage.getItem('RecentSearchData')){ 
     return JSON.parse(localStorage.getItem('RecentSearchData'));
+    }
+    else{
+      return [];
+    }
+  }
+
+  setprescriptionImage(data){
+    localStorage.setItem('prescriptionImage',JSON.stringify(data));
+  }
+ getprescriptionImage(){
+  if(localStorage.getItem('prescriptionImage')){ 
+    return JSON.parse(localStorage.getItem('prescriptionImage'));
     }
     else{
       return [];

@@ -110,6 +110,7 @@ export class DrugInfoPage {
             }*/
         ]
     };
+    prescriptionImage: any;
 
 	constructor(private androidplatform: Platform,public tempStorage: TempStorageProvider, public modalCtrl: ModalController, private sanitization: DomSanitizer, public navCtrl: NavController, public navParams: NavParams, private deliveryService: DeliveryServiceProvider) {
         if(localStorage.getItem('socialLogin') == 'true'){
@@ -122,6 +123,8 @@ export class DrugInfoPage {
         this.addingInProgress = false;
         
         this.uploadedRXimages                         = [];
+         
+        // this.uploadedRXimages = this.tempStorage.uploadrx;
         this.rxPickUpLocation                           = {};
         this.setuploadRX();
         this.getCart();
@@ -455,14 +458,30 @@ export class DrugInfoPage {
                 this.tempStorage.uploadrx = [];
 
             }
+             
             console.log(getImages);
-            for(var i = 0; i <= getImages.length -1; i++) {
+            // for(var i = 0; i <= getImages.length -1; i++) {
+            //     let item = {
+            //         originalpath: getImages[i].originalpath,
+            //         path: this.sanitization.bypassSecurityTrustStyle("url(" + getImages[i].originalpath + ")")
+            //     }
+              
+            //      this.uploadedRXimages.push(item);
+                
+            // }
+           
+               this.prescriptionImage =   this.tempStorage.getprescriptionImage();
+               for(var i = 0; i <= this.prescriptionImage.length -1; i++) {
                 let item = {
-                    originalpath: getImages[i].originalpath,
-                    path: this.sanitization.bypassSecurityTrustStyle("url(" + getImages[i].originalpath + ")")
+                    originalpath: this.prescriptionImage[i].originalpath,
+                    path: this.sanitization.bypassSecurityTrustStyle("url(" + this.prescriptionImage[i].originalpath + ")")
                 }
+               
                 this.uploadedRXimages.push(item);
+                
             }
+              
+                
           //  console.log(this.uploadedRXimages);       
     }
 
@@ -471,6 +490,8 @@ export class DrugInfoPage {
             if (value) {
                 this.uploadedRXimages.splice(index, 1);
                 this.tempStorage.uploadrx         = this.uploadedRXimages;
+                this.tempStorage.setprescriptionImage('');
+                //localStorage.setItem('prescriptionImage','');
             }
         });
     }
@@ -521,6 +542,9 @@ export class DrugInfoPage {
                     this.tempStorage.cart.pharmacy.pricing.splice(pharCurrIndex, 1);
                     this.tempStorage.cart.medications.byNdc[cartsingle.ndc] = null;
                     delete  this.tempStorage.cart.medications.byNdc[cartsingle.ndc];
+                    
+                   // this.tempStorage.uploadrx.splice(currIndex,1);      
+                    //this.tempStorage.setprescriptionImage(''); 
                     //this.tempStorage.cart.keys.splice(currIndex, 1);
 
                 }

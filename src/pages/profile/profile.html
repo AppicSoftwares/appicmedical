@@ -97,7 +97,7 @@
         <ion-item class="input-container input-container-general" no-lines>
           <ion-label>Phone</ion-label>
           <ion-icon class="icon" name="md-call" item-start></ion-icon>
-          <ion-input type="tel" formControlName="phone"></ion-input>
+          <ion-input type="tel" formControlName="phone" ></ion-input>
         </ion-item>
         <div class="flex-item flex-row pt-5">
           <button ion-button block class="default-btn" [disabled]="basic.invalid" (tap)="onGenderNext()">
@@ -114,7 +114,7 @@
           <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
        
-        <mbsc-form-group class="mobi-form">
+        <mbsc-form-group class="mobi-form" inset>
           <ion-row>
             <ion-col col-12 no-padding class="posRelative name-cont">
               <div class="mb-2-big posRelative">
@@ -163,7 +163,7 @@
             <ion-item class="input-container" no-lines>
               <ion-label>ZIP Code</ion-label>
               <ion-input
-                type="text"
+                type="tel"
                 placeholder="ZIP Code"
                 formControlName="zip_code"
               ></ion-input>
@@ -191,7 +191,7 @@
 						<ion-row class="mb-2-big">
 							<ion-col col-8 no-padding>
 								<ion-item no-padding class="custom-item">
-									<ion-input type="text" placeholder="Height" formControlName="height"></ion-input>
+									<ion-input type="tel" placeholder="Height" formControlName="height"></ion-input>
 								</ion-item>
 							</ion-col>
 							<ion-col col-4 no-padding class="dd-color">
@@ -214,7 +214,7 @@
 						<ion-row class="mb-2-big">
 							<ion-col col-8 no-padding>
 								<ion-item no-padding class="custom-item">
-									<ion-input type="text" placeholder="Weight" formControlName="weight"></ion-input>
+									<ion-input type="tel" placeholder="Weight" formControlName="weight"></ion-input>
 								</ion-item>
 							</ion-col>
 							<ion-col col-4 no-padding class="dd-color">

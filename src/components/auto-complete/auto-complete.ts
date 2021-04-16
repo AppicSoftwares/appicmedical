@@ -111,6 +111,7 @@ export class customAutoComplete {
 				//console.log(this.loadPharmacyFromGroup);
 				inst.showLoading();
 				//  inst.sortable = true;
+				 
 				this.loadPharmacyFromGroup(
 					inst,
 					this.pharmPriceData[event.index].Summary.PharmacyGroup
@@ -120,6 +121,7 @@ export class customAutoComplete {
 				
 				 console.log( this.tempStorage.cart.recentSearch.drugs);
 				console.log(this.tempStorage.cart.medications.byNdc);
+				 
 				this.pharmacySelected = this.pharmPriceData[event.index];
 			} else {
 				// console.log("child element, index: " + event.index);
@@ -382,6 +384,7 @@ export class customAutoComplete {
 		let paramsMeds = [];
 		this.pharmGroupPriceData = [];
 		//  console.log(this.tempStorage.cart.medications);
+		 
 		for (let i = 0; i < this.templateBasedData.length; i++) {
 			paramsMeds.push({
 				ndc: this.templateBasedData[i].NDC,
@@ -409,7 +412,7 @@ export class customAutoComplete {
 			params.lat = this.myLocationObj.latitude;
 			params.lng = this.myLocationObj.longitude;
 		}
-
+ 
 		this.deliveryService.rxapi_price(params).then((result: any) => {
 			if (result.pharmData !== undefined && result.pharmData.length > 0) {
 				 

@@ -43,10 +43,10 @@
        
           <div class="member-container">
             <img class="round-img" src="{{userImageURL+member.user._id+loadUserImageParam}}" onError="this.src='assets/imgs/default-user-icon.jpeg'" />
-          <div class="edit_dlt">
+          <!-- <div class="edit_dlt">
             <ion-icon class="remove-drug" color="danger" name="trash" ></ion-icon>
             <ion-icon class="remove-drug" color="primary" name="create" (click)="editinviteFamily()"></ion-icon>
-            </div>
+            </div> -->
             <label class="font-15 font-bold mt-3" *ngIf="!member.user.name">{{member.user.firstName }} {{member.user.lastName }}</label>
             <label class="font-15 font-bold mt-3" *ngIf="member.user.name">{{member.user.name }}</label>
             <label class="font-15  mt-3" *ngIf="member.user.name">{{member.user.relation }}</label>

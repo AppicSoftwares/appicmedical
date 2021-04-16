@@ -182,6 +182,10 @@ export class PatientProfilePage {
   countrySettings: MbscSelectOptions = {
     data: this.countryData,
     filter: true,
+   
+    responsive: this.getResposiveSetting(),
+    multiline: 2,
+    height: 50,
     onSet: (ev, inst) => {
       console.log(typeof inst);
       console.log(inst);
@@ -220,6 +224,16 @@ export class PatientProfilePage {
       }, 200);
     },
   };
+  getResposiveSetting() {
+    return {
+        small: {
+            display: 'bubble'
+        },
+        medium: {
+            touchUi: false
+        }
+    };
+}
   stateSettings: MbscSelectOptions = {
     data: this.stateData,
     filter: true,

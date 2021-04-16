@@ -212,7 +212,7 @@
 	<div class="cart-empty" *ngIf="!cartOrders.cartvalue">
 		Your Cart is empty
 	</div>
-	<div *ngIf="uploadedRXimages.length > 0">
+	<div *ngIf="uploadedRXimages.length > 0 && cartOrders.rxdrugs.length">
 		<ion-row>
 			<ion-col col-12 no-padding padding-top>
 				Pickup Slot *:
@@ -234,7 +234,7 @@
 			</ion-col>
 		</ion-row>
 	</div>
-	<div class="images-wrapper" margin-top *ngIf="uploadedRXimages.length">
+	<div class="images-wrapper" margin-top *ngIf="uploadedRXimages.length && cartOrders.rxdrugs.length" >
 		<ion-row>
 			<ion-col col-12 no-padding padding-top>
 				<h6 text-center>Uploaded RX</h6>

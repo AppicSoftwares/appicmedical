@@ -547,6 +547,7 @@ else{
     addToMedications() {
         this.medications.push(this.drugSelected);
         this.tempStorage.cart.medications.drugs = this.medications;
+         
         this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
         this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
         this.showAddDrugFab = true;
@@ -1161,8 +1162,8 @@ else{
             // this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
              
             this.RecentSearch=this.medications;
-            //this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
-         //   this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
+            this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
+          this.drugSelected = { QtyPrediction: [{}], QtySelected: {} };
             this.showAddDrugFab = true;
             this.searchName = true;
             this.medicationsList = true;
@@ -1198,7 +1199,7 @@ else{
         this.tempStorage.cart.medications.drugs = this.medications;
         this.RecentSearch=this.medications;
         // this.tempStorage.cart.recentSearch.drugs = this.RecentSearch;
-         
+          
         this.tempStorage.cart.medications.byNdc[this.drugSelected.NDC] = this.drugSelected;
         // this.tempStorage.cart.recentSearch.byNdc[this.drugSelected.NDC] = this.drugSelected;
         
