@@ -292,27 +292,43 @@ export class MultiImageUpload {
             this.uploadingProgress[targetPath] = 0;
   
             if (window['cordova']) {
-                  
-                let options = {
-                    fileKey: "files[]",
-                    fileName: targetPath,
-                    chunkedMode: false,
-                    mimeType: "multipart/form-data",
+
+                let win: any = window;
+                targetPath = win.Ionic.WebView.convertFileSrc(targetPath); 
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', targetPath, true);
+                xhr.responseType = 'blob';
+                xhr.onload = (e) => {
+                    if (xhr['status'] != 200) {
+                        this.util.showToast("Your browser doesn't support blob API");
+                        console.error(e, xhr);
+                        askRetry();
+                    } else {
+                        const blob = xhr['response'];
+                        let formData: FormData = new FormData(),
+                            xhr2: XMLHttpRequest = new XMLHttpRequest();
+                        formData.append('files[]', blob);
+                        this.uploadingHandler[targetPath] = xhr2;
+
+                        xhr2.onreadystatechange = () => {
+                            if (xhr2.readyState === 4) {
+                                if (xhr2.status === 200)
+                                    resolve(JSON.parse(xhr2.response));
+                                else
+                                    askRetry();
+                            }
+                        };
+
+                        xhr2.upload.onprogress = (event) => {
+                            this.uploadingProgress[targetPath] = Math.round(event.loaded * 100 / event.total);
+                        };
+
+                        xhr2.open('POST', this.serverUrl, true);
+                        xhr2.send(formData);
+                    }
                 };
-
-                const fileTransfer : FileTransferObject = this.transfer.create();
-                this.uploadingHandler[targetPath] = fileTransfer;
-
-                fileTransfer.upload(targetPath, this.serverUrl, options).then(data => {
-                    resolve(JSON.parse(data.response));
-                }, error => {
-                    console.log(error);
-                    askRetry();
-                });
-
-                fileTransfer.onProgress(event2 => {
-                    this.uploadingProgress[targetPath] = Math.round(event2.loaded * 100 / event2.total);
-                });
+                xhr.send();
+              
             } else {
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', targetPath, true);
