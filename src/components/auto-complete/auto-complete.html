@@ -99,7 +99,7 @@
 							src="assets/imgs/pharmacy.svg" style="width:30px" />
 						<div class="mbsc-grid" no-padding>
 							<div class="mbsc-row" padding-bottom>
-								<div class="mbsc-col-8" no-padding padding-left>
+								<div class="mbsc-col-8" no-padding padding-left (click)="MedsPrice.instance.show();">
 									{{(priceData.Summary.PharmacyGroup=="OTHER")?"Local":priceData.name}}&nbsp;({{priceData.Summary.PharmacyCount}})
 									
 									<!--   <mbsc-button outline float-right class="colorblue borderblue pickbutton" ></mbsc-button>-->
@@ -108,8 +108,8 @@
 									COUPON
 								</div>
 							</div>
-							<div class="mbsc-row">
-								<div class="mbsc-col-4" no-padding padding-left>
+							<div class="mbsc-row" (click)="MedsPrice.instance.show();">
+								<div class="mbsc-col-4" no-padding padding-left (click)="MedsPrice.instance.show();">
 									<ion-icon name="pin" class="colorblue">&nbsp;</ion-icon>
 									{{priceData.Summary.MinDistance | number : '1.2-2'}}mi
 								</div>
@@ -139,7 +139,7 @@
 
 									<div class="mbsc-row" padding-bottom>
 
-										<div class="mbsc-col-7 pharmacy_name" (click)="MedsPrice.instance.show();" no-padding padding-left>
+										<div class="mbsc-col-7 pharmacy_name" (click)="choosePharmacy(pharmacy)" no-padding padding-left>
 											<b>{{pharmacy.name}} ({{pharmacy.pricing.length}})</b>
 										</div>
 										<!-- <div class="coupon mbsc-col-3" (click)="MedsPrice.instance.show();" no-padding padding-left>
@@ -153,7 +153,7 @@
 
 										</div>
 									</div>
-									<div class="mbsc-row" padding-bottom (click)="MedsPrice.instance.show();">
+									<div class="mbsc-row" padding-bottom (click)="choosePharmacy(pharmacy)">
 										<div class="mbsc-col-12 pharmacy_address" no-padding padding-left>
 											<ion-icon name="map" class="colorblue">&nbsp;</ion-icon>
 											{{pharmacy.street1}}&nbsp;
@@ -164,7 +164,7 @@
 
 										</div>
 									</div>
-									<div class="mbsc-row" (click)="MedsPrice.instance.show();">
+									<div class="mbsc-row" (click)="choosePharmacy(pharmacy)">
 										<div class="mbsc-col-4 pharmacy_distance" no-padding padding-left>
 											<ion-icon name="pin" class="colorblue">&nbsp;</ion-icon>{{pharmacy.distance | number : '1.2-2'}}mi
 										</div>
@@ -236,9 +236,9 @@
 
 		<mbsc-popup [options]="MedsPriceSettings" #MedsPrice="mobiscroll">
 			<mbsc-listview [options]="lvSettings">
-				<mbsc-listview-item class="font1-2rem priceSetting" *ngFor="let price of pharmacySelected.pricing"
+				<mbsc-listview-item class="font1-2rem priceSetting" *ngFor="let price of pharmacySelected.pricing; let i=index"
 					(click)="MedsPrice.instance.hide();">
-					<ion-icon name="close" class="colorblue crossbtn" (click)="MedsPrice.instance.hide();"></ion-icon>
+					<ion-icon name="close" class="colorblue crossbtn" (click)="MedsPrice.instance.hide();" ></ion-icon>
 					<br/>
 					<div class="mbsc-grid" no-padding>
 						<div class="mbsc-row youSave">

@@ -176,6 +176,9 @@ export class ProfilePage {
   countrySettings: MbscSelectOptions = {
     data: this.countryData,
     filter: true,
+    responsive: this.getResposiveSetting(),
+    multiline: 2,
+    height: 50,
     onSet: (ev, inst) => {
       console.log(typeof inst);
       console.log(inst);
@@ -218,6 +221,9 @@ export class ProfilePage {
     data: this.stateData,
     filter: true,
     disabled: true,
+    responsive: this.getResposiveSetting(),
+    multiline: 2,
+    height: 50,
     onSet: (ev, inst) => {
       console.log(ev);
       console.log(inst);
@@ -252,6 +258,10 @@ export class ProfilePage {
     data: this.cityData,
     disabled: true,
     filter: true,
+    responsive: this.getResposiveSetting(),
+    multiline: 2,
+    height: 50,
+    scrollLock:true,
     onSet: (ev, inst) => {
       console.log(ev);
       console.log(inst);
@@ -293,7 +303,16 @@ export class ProfilePage {
 //   this.user_id = this.tempStorage.authsession.userdata.user_id;
 // }  
   }
-
+  getResposiveSetting() {
+    return {
+        small: {
+            display: 'bubble'
+        },
+        medium: {
+            touchUi: false
+        }
+    };
+}
   getProfile() {
     this.deliveryService
       .profileInfo(AppSettings.usertype, this.userId)
@@ -428,5 +447,12 @@ export class ProfilePage {
 
 skipstep(){
   this.navCtrl.push(AuthenticationPage);
+}
+numberOnly(event): boolean {
+  const charCode = (event.which) ? event.which : event.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
 }
 }

@@ -22,6 +22,7 @@ export class UploadRxPage {
 	@ViewChild(MultiImageUpload) multiImageUpload: MultiImageUpload;
     protected uploadFinished = false;
     uploadedRXimages             : any;
+    prescriptionImage: any;
 	constructor(private androidplatform: Platform,public tempStorage: TempStorageProvider, public modalCtrl: ModalController, private deliveryService: DeliveryServiceProvider, public navCtrl: NavController, private sanitization: DomSanitizer, public navParams: NavParams, private alertCtrl: AlertController, private toastCtrl: ToastController) {
         
         this.setuploadRX();
@@ -60,14 +61,17 @@ export class UploadRxPage {
 
 
                 for(var i = 0; i <= images.length -1; i++) {
-                      
+                    
                     let item = {
-                        
                         originalpath: images[i].files[0].thumbnailUrl,
                         path: this.sanitization.bypassSecurityTrustStyle("url(" + images[i].files[0].thumbnailUrl + ")")
                     }
+                   
                     this.uploadedRXimages.push(item);
                 }
+                this.tempStorage.setprescriptionImage(this.uploadedRXimages);
+                //localStorage.setItem('prescriptionImage',JSON.stringify(this.uploadedRXimages));
+           
                 this.tempStorage.uploadrx                      = this.uploadedRXimages;
             });
             
@@ -84,18 +88,39 @@ export class UploadRxPage {
     }
 
     setuploadRX() {
-        console.log(this.multiImageUpload);
         this.uploadedRXimages                         = [];
         let getImages                               : any = [];
-        getImages                         = this.tempStorage.uploadrx;
-        for(var i = 0; i <= getImages.length -1; i++) {
-            let item = {
-                originalpath: getImages[i].originalpath,
-                path: this.sanitization.bypassSecurityTrustStyle("url(" + getImages[i].originalpath + ")")
+            getImages                         = this.tempStorage.uploadrx;
+            if(getImages === undefined){
+                getImages = [];
+                this.tempStorage.uploadrx = [];
+
             }
-            this.uploadedRXimages.push(item);
-        }
-        console.log(this.uploadedRXimages);
+             
+            console.log(getImages);
+            // for(var i = 0; i <= getImages.length -1; i++) {
+            //     let item = {
+            //         originalpath: getImages[i].originalpath,
+            //         path: this.sanitization.bypassSecurityTrustStyle("url(" + getImages[i].originalpath + ")")
+            //     }
+              
+            //      this.uploadedRXimages.push(item);
+                
+            // }
+           
+               this.prescriptionImage =   this.tempStorage.getprescriptionImage();
+               for(var i = 0; i <= this.prescriptionImage.length -1; i++) {
+                let item = {
+                    originalpath: this.prescriptionImage[i].originalpath,
+                    path: this.sanitization.bypassSecurityTrustStyle("url(" + this.prescriptionImage[i].originalpath + ")")
+                }
+               
+                this.uploadedRXimages.push(item);
+                
+            }
+              
+                
+          //  console.log(this.uploadedRXimages);       
     }
 
     removeImage(image: any, index: any) {
@@ -103,6 +128,7 @@ export class UploadRxPage {
             if (value) {
                 this.uploadedRXimages.splice(index, 1);
                 this.tempStorage.uploadrx = this.uploadedRXimages;
+                this.tempStorage.setprescriptionImage('');
             }
         });
     }

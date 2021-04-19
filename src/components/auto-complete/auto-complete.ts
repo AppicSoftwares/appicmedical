@@ -78,7 +78,7 @@ export class customAutoComplete {
 		anchor: '#showVariations',
 		buttons: [],
 		cssClass: 'MedsPriceSettings mbsc-no-padding md-vertical-list',
-		
+		scrollLock:false,
 	};
 
 	lvSettings: MbscListviewOptions = {
@@ -111,6 +111,7 @@ export class customAutoComplete {
 				//console.log(this.loadPharmacyFromGroup);
 				inst.showLoading();
 				//  inst.sortable = true;
+				 
 				this.loadPharmacyFromGroup(
 					inst,
 					this.pharmPriceData[event.index].Summary.PharmacyGroup
@@ -120,11 +121,14 @@ export class customAutoComplete {
 				
 				 console.log( this.tempStorage.cart.recentSearch.drugs);
 				console.log(this.tempStorage.cart.medications.byNdc);
+				 
 				this.pharmacySelected = this.pharmPriceData[event.index];
+				this.savePharmacyData = this.pharmPriceData[event.index];
 			} else {
 				// console.log("child element, index: " + event.index);
 			 
 				this.pharmacySelected = { ...this.pharmGroupPriceData[event.index] };
+				this.savePharmacyData = { ...this.pharmGroupPriceData[event.index] };
 				console.log(this.pharmacySelected)
 			}
          
@@ -132,6 +136,7 @@ export class customAutoComplete {
 		},
 		
 	};
+	savePharmacyData: any;
 
 	constructor(
 		public tempStorage: TempStorageProvider,
@@ -382,6 +387,7 @@ export class customAutoComplete {
 		let paramsMeds = [];
 		this.pharmGroupPriceData = [];
 		//  console.log(this.tempStorage.cart.medications);
+		 
 		for (let i = 0; i < this.templateBasedData.length; i++) {
 			paramsMeds.push({
 				ndc: this.templateBasedData[i].NDC,
@@ -409,7 +415,7 @@ export class customAutoComplete {
 			params.lat = this.myLocationObj.latitude;
 			params.lng = this.myLocationObj.longitude;
 		}
-
+ 
 		this.deliveryService.rxapi_price(params).then((result: any) => {
 			if (result.pharmData !== undefined && result.pharmData.length > 0) {
 				 
@@ -766,5 +772,17 @@ export class customAutoComplete {
 			
 		// });
 		// modal.present();	
+	}
+	removePopup(price,i){
+	
+		
+		this.pharmacySelected.pricing.forEach(element => {
+			
+			if(element.ndc == price.ndc){
+				
+				this.pharmacySelected.pricing = this.pharmacySelected.pricing.splice(i,1);
+			}
+			
+		});
 	}
 }

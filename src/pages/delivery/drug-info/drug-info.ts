@@ -110,6 +110,7 @@ export class DrugInfoPage {
             }*/
         ]
     };
+    prescriptionImage: any;
 
 	constructor(private androidplatform: Platform,public tempStorage: TempStorageProvider, public modalCtrl: ModalController, private sanitization: DomSanitizer, public navCtrl: NavController, public navParams: NavParams, private deliveryService: DeliveryServiceProvider) {
         if(localStorage.getItem('socialLogin') == 'true'){
@@ -122,6 +123,8 @@ export class DrugInfoPage {
         this.addingInProgress = false;
         
         this.uploadedRXimages                         = [];
+         
+        // this.uploadedRXimages = this.tempStorage.uploadrx;
         this.rxPickUpLocation                           = {};
         this.setuploadRX();
         this.getCart();
@@ -455,14 +458,45 @@ export class DrugInfoPage {
                 this.tempStorage.uploadrx = [];
 
             }
+             
             console.log(getImages);
-            for(var i = 0; i <= getImages.length -1; i++) {
-                let item = {
-                    originalpath: getImages[i].originalpath,
-                    path: this.sanitization.bypassSecurityTrustStyle("url(" + getImages[i].originalpath + ")")
+            // for(var i = 0; i <= getImages.length -1; i++) {
+            //     let item = {
+            //         originalpath: getImages[i].originalpath,
+            //         path: this.sanitization.bypassSecurityTrustStyle("url(" + getImages[i].originalpath + ")")
+            //     }
+              
+            //      this.uploadedRXimages.push(item);
+                
+            // }
+             this.tempStorage.getprescriptionObservable().subscribe(data =>{
+                  
+                this.prescriptionImage =   data;
+                if(data == ""){
+                    this.uploadedRXimages.length = 0;
                 }
+                for(var i = 0; i <= this.prescriptionImage.length -1; i++) {
+                 let item = {
+                     originalpath: this.prescriptionImage[i].originalpath,
+                     path: this.sanitization.bypassSecurityTrustStyle("url(" + this.prescriptionImage[i].originalpath + ")")
+                 }
+                
+                 this.uploadedRXimages.push(item);
+                 
+             }
+             });
+               this.prescriptionImage =   this.tempStorage.getprescriptionImage();
+               for(var i = 0; i <= this.prescriptionImage.length -1; i++) {
+                let item = {
+                    originalpath: this.prescriptionImage[i].originalpath,
+                    path: this.sanitization.bypassSecurityTrustStyle("url(" + this.prescriptionImage[i].originalpath + ")")
+                }
+               
                 this.uploadedRXimages.push(item);
+                
             }
+              
+                
           //  console.log(this.uploadedRXimages);       
     }
 
@@ -471,6 +505,8 @@ export class DrugInfoPage {
             if (value) {
                 this.uploadedRXimages.splice(index, 1);
                 this.tempStorage.uploadrx         = this.uploadedRXimages;
+                this.tempStorage.setprescriptionImage('');
+                //localStorage.setItem('prescriptionImage','');
             }
         });
     }
@@ -486,16 +522,28 @@ export class DrugInfoPage {
     }
 
     removeDrug(cartsingle: any, index: any) {
+        if(cartsingle == 'rxdrug'){
+             
+            this.tempStorage.setprescriptionImage('');
+            this.uploadedRXimages.length =0;
+        }
         console.log(cartsingle);
         console.log(this.cartOrders);
         console.log(this.tempStorage.cart);
-       
+        
 
         let mediName = this.cartOrders.medications[cartsingle.ndc].BN || this.cartOrders.medications[cartsingle.ndc].AN
         let alertmsg : any = "Are you sure to remove " + mediName + "?";
         this.deliveryService.mobiconfirm(alertmsg).then(value => {
             if (value) {
- 
+                 
+                if(this.cartOrders.medications[cartsingle.ndc].OTC == false){
+                     
+                   // this.tempStorage.uploadrx.splice(currIndex,1);  
+                   // this.uploadedRXimages.splice(currIndex, 1);    
+                     this.tempStorage.setprescriptionImage(''); 
+                     this.tempStorage.setprescriptionObservable('');
+                }
                 // should be rmeoved from temp storage this.tempStorage.cart medications.byNdc, medications.drugs, pharmacy.pricing
                 let currIndex = -1;
                 for(var i = 0; i < this.tempStorage.cart.medications.drugs.length; i++ ){
@@ -521,6 +569,9 @@ export class DrugInfoPage {
                     this.tempStorage.cart.pharmacy.pricing.splice(pharCurrIndex, 1);
                     this.tempStorage.cart.medications.byNdc[cartsingle.ndc] = null;
                     delete  this.tempStorage.cart.medications.byNdc[cartsingle.ndc];
+                      
+                   
+                   
                     //this.tempStorage.cart.keys.splice(currIndex, 1);
 
                 }

@@ -51,7 +51,7 @@ export class PinSetupComponent implements OnInit {
     this._showLockScreen   = true;
     this.passcode          = navParams.data.code;
     this.passcodeLabel     = navParams.data.passcodeLabel || 'Set Pin Number';
-    this.passcodeLabel2     = navParams.data.passcodeLabel2 || 'Confirm Pin Number';
+    this.passcodeLabel2     = navParams.data.passcodeLabel2 || 'Enter/Confirm PIN';
     this.finalDigit = '123';
 
     this.confirmSetup = false;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AppSettings } from '../../app/settings';
+import { Subject } from 'rxjs';
 
 
 @Injectable()
@@ -12,7 +13,9 @@ export class TempStorageProvider {
 	user_id: any = AppSettings.userid;
 	authsession: any;
 	Adminconfig: any;
+	prescriptionSubject1= new Subject<any>();
 	constructor(public http: Http) {
+		
 		this.uploadrx = [];
 		this.authsession = { userdata: null };
 		this.Adminconfig = {};
@@ -67,6 +70,7 @@ export class TempStorageProvider {
 				timeSlot: ""
 			}
 		};
+	
 		this.uploadrx = [];
 
 	}
@@ -148,4 +152,23 @@ setMedicabinetData(data){
       return [];
     }
   }
+
+  setprescriptionImage(data){
+    localStorage.setItem('prescriptionImage',JSON.stringify(data));
+  }
+ getprescriptionImage(){
+  if(localStorage.getItem('prescriptionImage')){ 
+    return JSON.parse(localStorage.getItem('prescriptionImage'));
+    }
+    else{
+      return [];
+    }
+  }
+
+  setprescriptionObservable(data:any){
+    this.prescriptionSubject1.next(data);
+    }
+    getprescriptionObservable(){
+      return this.prescriptionSubject1;
+    }
 }
