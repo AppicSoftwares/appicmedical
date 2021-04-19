@@ -86,7 +86,7 @@ export class MultiImageUpload {
             input.onchange = () => {
                 let blob = window.URL.createObjectURL(input.files[0]);
                 this.imagesBase64.push(blob);
-                this.images.push(blob);
+                this.images.push(blob); 
                 this.util.trustImages();
             }
         } else {
