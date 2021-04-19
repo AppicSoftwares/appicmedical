@@ -182,10 +182,10 @@ export class PatientProfilePage {
   countrySettings: MbscSelectOptions = {
     data: this.countryData,
     filter: true,
-   
     responsive: this.getResposiveSetting(),
     multiline: 2,
     height: 50,
+    
     onSet: (ev, inst) => {
       console.log(typeof inst);
       console.log(inst);
@@ -238,6 +238,9 @@ export class PatientProfilePage {
     data: this.stateData,
     filter: true,
     disabled: true,
+    responsive: this.getResposiveSetting(),
+    multiline: 2,
+    height: 50,
     onSet: (ev, inst) => {
       console.log(ev);
       console.log(inst);
@@ -272,6 +275,9 @@ export class PatientProfilePage {
     data: this.cityData,
     disabled: true,
     filter: true,
+    responsive: this.getResposiveSetting(),
+    multiline: 2,
+    height: 50,
     onSet: (ev, inst) => {
       console.log(ev);
       console.log(inst);

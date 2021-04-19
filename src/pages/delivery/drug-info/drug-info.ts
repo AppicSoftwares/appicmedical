@@ -469,7 +469,22 @@ export class DrugInfoPage {
             //      this.uploadedRXimages.push(item);
                 
             // }
-           
+             this.tempStorage.getprescriptionObservable().subscribe(data =>{
+                  
+                this.prescriptionImage =   data;
+                if(data == ""){
+                    this.uploadedRXimages.length = 0;
+                }
+                for(var i = 0; i <= this.prescriptionImage.length -1; i++) {
+                 let item = {
+                     originalpath: this.prescriptionImage[i].originalpath,
+                     path: this.sanitization.bypassSecurityTrustStyle("url(" + this.prescriptionImage[i].originalpath + ")")
+                 }
+                
+                 this.uploadedRXimages.push(item);
+                 
+             }
+             });
                this.prescriptionImage =   this.tempStorage.getprescriptionImage();
                for(var i = 0; i <= this.prescriptionImage.length -1; i++) {
                 let item = {
@@ -507,16 +522,28 @@ export class DrugInfoPage {
     }
 
     removeDrug(cartsingle: any, index: any) {
+        if(cartsingle == 'rxdrug'){
+             
+            this.tempStorage.setprescriptionImage('');
+            this.uploadedRXimages.length =0;
+        }
         console.log(cartsingle);
         console.log(this.cartOrders);
         console.log(this.tempStorage.cart);
-       
+        
 
         let mediName = this.cartOrders.medications[cartsingle.ndc].BN || this.cartOrders.medications[cartsingle.ndc].AN
         let alertmsg : any = "Are you sure to remove " + mediName + "?";
         this.deliveryService.mobiconfirm(alertmsg).then(value => {
             if (value) {
- 
+                 
+                if(this.cartOrders.medications[cartsingle.ndc].OTC == false){
+                     
+                   // this.tempStorage.uploadrx.splice(currIndex,1);  
+                   // this.uploadedRXimages.splice(currIndex, 1);    
+                     this.tempStorage.setprescriptionImage(''); 
+                     this.tempStorage.setprescriptionObservable('');
+                }
                 // should be rmeoved from temp storage this.tempStorage.cart medications.byNdc, medications.drugs, pharmacy.pricing
                 let currIndex = -1;
                 for(var i = 0; i < this.tempStorage.cart.medications.drugs.length; i++ ){
@@ -542,9 +569,9 @@ export class DrugInfoPage {
                     this.tempStorage.cart.pharmacy.pricing.splice(pharCurrIndex, 1);
                     this.tempStorage.cart.medications.byNdc[cartsingle.ndc] = null;
                     delete  this.tempStorage.cart.medications.byNdc[cartsingle.ndc];
-                    
-                   // this.tempStorage.uploadrx.splice(currIndex,1);      
-                    //this.tempStorage.setprescriptionImage(''); 
+                      
+                   
+                   
                     //this.tempStorage.cart.keys.splice(currIndex, 1);
 
                 }
