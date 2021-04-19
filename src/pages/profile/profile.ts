@@ -273,6 +273,7 @@ export class ProfilePage {
   loadUserImageParam: string="";
   userImageURL: string;
   user_id: any;
+  user_email: any;
  
  
   constructor(public navCtrl: NavController,
@@ -286,9 +287,10 @@ export class ProfilePage {
     private http:HttpClient,
   ) {
     this.loggedData = this.navParams.get('loggedData');
-     
+       
     this.userId = this.loggedData && this.loggedData._id
     console.log('17 userId:', this.userId);
+    this.user_email =  this.loggedData.to;
     // this.getcountries();
      //upload image
      this.fileUpload.getDownloadImageSubject().subscribe(data =>{
@@ -315,7 +317,7 @@ export class ProfilePage {
 }
   getProfile() {
     this.deliveryService
-      .profileInfo(AppSettings.usertype, this.userId)
+      .profileInfo(AppSettings.usertype, this.user_email )
       .then((result) => {
         console.log(result);
       }).catch(err => {
