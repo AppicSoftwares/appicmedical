@@ -291,8 +291,9 @@ export class MultiImageUpload {
             this.uploadingProgress[targetPath] = 0;
 
             if (window['cordova']) {
+
                 let win: any = window;
-                targetPath = win.Ionic.WebView.convertFileSrc(targetPath);
+                targetPath = win.Ionic.WebView.convertFileSrc(targetPath); 
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', targetPath, true);
                 xhr.responseType = 'blob';
