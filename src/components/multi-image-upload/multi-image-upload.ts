@@ -16,7 +16,7 @@ import { AppSettings } from '../../app/settings';
 
 export class MultiImageUpload {
      public serverUrl = "http://jquery-file-upload.appspot.com/";
-   // public serverUrl = AppSettings.nodeserverurl + "imageupload/";
+//   public serverUrl = AppSettings.nodeserverurl + "imageupload/";
 
     public isUploading = false;
     public uploadingProgress = {};
@@ -39,6 +39,7 @@ export class MultiImageUpload {
         return new Promise((resolve, reject) => {
             this.isUploading = true;
             Promise.all(this.images.map(image => {
+                  
                 return this.uploadImage(image);
             }))
                 .then(resolve)
@@ -289,8 +290,9 @@ export class MultiImageUpload {
     private uploadImage(targetPath) {
         return new Promise((resolve, reject) => {
             this.uploadingProgress[targetPath] = 0;
-
+  
             if (window['cordova']) {
+                  
                 let options = {
                     fileKey: "files[]",
                     fileName: targetPath,
@@ -303,7 +305,8 @@ export class MultiImageUpload {
 
                 fileTransfer.upload(targetPath, this.serverUrl, options).then(data => {
                     resolve(JSON.parse(data.response));
-                }).catch(() => {
+                }, error => {
+                    console.log(error);
                     askRetry();
                 });
 

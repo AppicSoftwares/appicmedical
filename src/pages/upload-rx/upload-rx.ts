@@ -40,13 +40,15 @@ export class UploadRxPage {
         this.setuploadRX();
         
     }
-	protected submit() {
+	public submit() {
+          
         if (this.multiImageUpload.images.length == 0) {
             this.deliveryService.mobiToast("Please select at least 1 photo", "danger");
             return;
         }
 
         this.multiImageUpload.uploadImages().then((images) => {
+              
             this.deliveryService.mobiToast("Uploaded successfully.", 'success').then((result) => {
                 this.uploadFinished                           = false;
                 this.multiImageUpload.isUploading             = false;
@@ -58,9 +60,11 @@ export class UploadRxPage {
 
 
                 for(var i = 0; i <= images.length -1; i++) {
+                      
                     let item = {
-                        originalpath: images[i].file.path,
-                        path: this.sanitization.bypassSecurityTrustStyle("url(" + images[i].file.path + ")")
+                        
+                        originalpath: images[i].files[0].thumbnailUrl,
+                        path: this.sanitization.bypassSecurityTrustStyle("url(" + images[i].files[0].thumbnailUrl + ")")
                     }
                     this.uploadedRXimages.push(item);
                 }
