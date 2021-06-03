@@ -558,7 +558,9 @@ export class DeliveryServiceProvider {
       postData: {},
       method: "GET",
     };
+   
     return await new Promise((resolve) => {
+        
       // this.http.post(this.httpurl + 'getdrugs', {term: term}, options)
       this.subscription["ajaxdrugs"] = this.http
         .post(this.httpurl + "rx-api", postData, options)

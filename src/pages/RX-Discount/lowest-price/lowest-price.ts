@@ -718,6 +718,7 @@ else{
                         this.autocomplete[indexMatched]['brand_text'] = ((this.autocomplete[indexMatched]['AN'].length > 0) ? ((item.DrugTypes == "B") ? "Brand for " + this.autocomplete[indexMatched]['AN'].join(",") : "Gneric for " + this.autocomplete[indexMatched]['AN'].join(",")) : "")
 
                     } else {
+                        
                         this.searchOptionData[item.slug] = obj;
                         this.autocomplete.push(obj);
                     }

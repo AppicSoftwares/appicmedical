@@ -278,5 +278,11 @@ page-patient-profile {
     border: 3px solid white;
     object-fit: cover;
   }
-}
 
+  .location_dd{
+    padding: 12px;
+    max-width: 100% !important;
+    background-color: white !important;
+    // color: #afafaf !important;
+  }
+}

@@ -25,11 +25,26 @@
   <ion-footer>
     <ion-row>
       <ion-col col-12 text-center padding>
-        Version 1.8
+        Version 2.1
       </ion-col>
     </ion-row>
   </ion-footer>
 
 </ion-menu>
+<mbsc-popup [options]="updateVersionSettings" #updateVersion="mobiscroll" >
+  
+  <ion-row>
+    <ion-col col-12 no-padding>
+     <h3>New Update Available</h3>
+     
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    We have released some cool new features. Please update your app to the newest version.  
 
+    <br>
+    If you have any questions, please email help@mymedipocket.com
+  </ion-row>
+
+</mbsc-popup> 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

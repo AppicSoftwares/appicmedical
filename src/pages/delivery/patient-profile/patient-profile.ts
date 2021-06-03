@@ -29,6 +29,8 @@ import { DiscountCardPage } from "../../discount-card/discount-card";
 import { UtilsProvider } from "../../../providers/utils/utils";
 import { FileUploadProvider } from "../../../providers/file-upload/file-upload";
 import { ApiCallProvider } from "../../../providers/api-call/api-call";
+import { Observable } from "rxjs";
+import { HttpHeaders, HttpClient } from "@angular/common/http";
 
 /**
  * Generated class for the MembershipSignupPage page.
@@ -59,7 +61,10 @@ export class PatientProfilePage {
   cartOrders: any;
   profileUpdate: any;
   profileSpecSettings: MbscPopupOptions;
-
+  auth_token: any;
+  CityData1: any;
+  stateData1: any;
+  countryData1: any;
   user_id: any;
   profileInfo: any;
   displayMode: boolean = true;
@@ -149,7 +154,9 @@ export class PatientProfilePage {
       ret = [];
 
     if (data) {
+        
       for (i = 0; i < result.data.length; i++) {
+          
         item = data[i];
         ret.push({
           value: item._id,
@@ -174,11 +181,14 @@ export class PatientProfilePage {
   };
 
   cityData: any = {
+    
     url: this.httpurl + "public-collections/mp_cities/0/",
     dataType: "json",
     remoteFilter: true,
     processResponse: this.processResponse,
   };
+ 
+
   countrySettings: MbscSelectOptions = {
     data: this.countryData,
     filter: true,
@@ -190,7 +200,7 @@ export class PatientProfilePage {
       console.log(typeof inst);
       console.log(inst);
       console.log(ev);
-      this.profileFormData.patchValue({ countryname: ev.valueText });
+      // this.profileFormData.patchValue({ countryname: ev.valueText });
       if (typeof inst !== "boolean") {
         this.tempData.state = null;
         this.tempData.city = null;
@@ -224,6 +234,7 @@ export class PatientProfilePage {
       }, 200);
     },
   };
+ 
   getResposiveSetting() {
     return {
         small: {
@@ -339,6 +350,11 @@ export class PatientProfilePage {
       };
     },
   };
+ 
+  custmcountryData=[{
+    'country_name':'United States'
+  }]
+
   showSpinner: any;
 
   uploadedInsuranceCard: any;
@@ -363,8 +379,14 @@ export class PatientProfilePage {
     private util: UtilsProvider,
     private fileUpload: FileUploadProvider,
     private api:ApiCallProvider,
-    private androidplatform: Platform
+    private androidplatform: Platform,
+    private http:HttpClient
   ) {
+    this.AccessTokenLocation().subscribe(res=>{
+        
+  this.auth_token = res.auth_token;
+  this.getCountries();
+     });
     this.profileFormData = this.formBuilder.group({
       name: [""],
       firstName: ["", Validators.required],
@@ -375,10 +397,12 @@ export class PatientProfilePage {
       address: ["", Validators.required],
       city: [""],
       cityname: [""],
-      state: ["", Validators.required],
+      // state: ["", Validators.required],
+      state: [""],
       statename: [""],
       zip_code: ["", Validators.required],
-      country: ["", Validators.required],
+      country: [""],
+      // country: ["", Validators.required],
       countryname: [""],
       phone: ["", Validators.required],
       height: ["", Validators.required],
@@ -496,6 +520,7 @@ else{
         this.singleImageUpload.abort();
       }
     });
+
   }
  
   ionViewWillLeave(){
@@ -538,16 +563,16 @@ else{
         );
       } else {
         this.profileFormData.patchValue({
-          country: this.profileInfo.country,
+          country: this.profileInfo.countryname,
           countryname: this.profileInfo.countryname,
-          state: this.profileInfo.state,
+          state: this.profileInfo.statename,
           statename: this.profileInfo.statename,
-          city: this.profileInfo.city,
+          city: this.profileInfo.cityname,
           cityname: this.profileInfo.cityname,
         });
-        this.tempData.country = this.profileInfo.country;
-        this.tempData.state = this.profileInfo.state;
-        this.tempData.city = this.profileInfo.city;
+        this.tempData.country = this.profileInfo.countryname;
+        this.tempData.state = this.profileInfo.statename;
+        this.tempData.city = this.profileInfo.cityname;
         this.remoteReg.instance.settings.data.url =
           this.httpurl +
           "public-collections/mp_states/" +
@@ -639,9 +664,9 @@ else{
               avatar: this.profileInfo.avatar,
             });
 
-            this.tempData.country = this.profileInfo.country;
-            this.tempData.state = this.profileInfo.state;
-            this.tempData.city = this.profileInfo.city;
+            this.tempData.country = this.profileInfo.countryname;
+            this.tempData.state = this.profileInfo.statename;
+            this.tempData.city = this.profileInfo.cityname;
 
             //	console.log(this.tempStorage.authsession);
             this.tempStorage.authsession.userdata.profileIncompelete = false;
@@ -664,6 +689,7 @@ else{
     }
     this.util.presentLoading();
     setTimeout(() => {
+        
       let postData = { ...this.profileFormData.value };
      postData.dob = moment(postData.dob).format("X");
 
@@ -797,9 +823,15 @@ else{
         if (resultData.data !== undefined) {
            
           this.zone.run(() => {
-             
+            this.AccessTokenLocation().subscribe(res=>{
+        
+              this.auth_token = res.auth_token;
+              // this.getCountries();
+              this.getState(this.profileInfo.countryname);
+              this.getCity(this.profileInfo.statename);
+                 });
             this.profileInfo = resultData.data;
-    
+             
             if(resultData.data.firstName !== undefined){
               localStorage.setItem('name',resultData.data.firstName)
             }
@@ -882,12 +914,13 @@ else{
               dob: this.profileInfo.dob,
               gender: this.profileInfo.gender,
               address: this.profileInfo.address,
-              city: this.profileInfo.city,
-              state: this.profileInfo.state,
+              city: this.profileInfo.cityname,  //cityname -city mobiscroll
+              state: this.profileInfo.statename, //statename -state mobiscroll
               zip_code: this.profileInfo.zip_code,
-              country: this.profileInfo.country,
+              country: this.profileInfo.countryname, //countryname -country mobiscroll
               countryname: this.profileInfo.countryname,
               statename: this.profileInfo.statename,
+              
               cityname: this.profileInfo.cityname,
               phone: this.profileInfo.phone,
               email: this.profileInfo.email,
@@ -898,9 +931,29 @@ else{
               blood_type: this.profileInfo.blood_type,
             });
             this.util.dismissLoading();
-            this.tempData.country = this.profileInfo.country;
-            this.tempData.state = this.profileInfo.state;
-            this.tempData.city = this.profileInfo.city;
+                   
+              if(this.profileInfo.countryname  == undefined || this.profileInfo.countryname == null){
+                this.profileFormData.controls['countryname'].setValue("");
+                // this.profileFormData.patchValue({
+                //   countryname: "",
+                //   country: ""
+                // });
+              }
+              if(this.profileInfo.statename  == undefined || this.profileInfo.statename == null){
+                this.profileFormData.patchValue({
+                 
+                statename: "",
+                });
+              }
+              if(this.profileInfo.cityname  == undefined || this.profileInfo.cityname == null){
+                this.profileFormData.patchValue({
+                   cityname: "",
+                });
+              }
+           
+            this.tempData.country = this.profileInfo.countryname; // name
+            this.tempData.state = this.profileInfo.statename;
+            this.tempData.city = this.profileInfo.cityname; 
             if (!this.displayMode) {
               this.countrySettings.onSet(
                 { valueText: this.profileFormData.value.countryname },
@@ -1060,5 +1113,81 @@ else{
       this.typeIn = false;
     }
    
+  }
+
+
+  getCountries() {
+    this.countryApi(this.auth_token).subscribe((res) => {
+      console.log(res);
+  
+      this.countryData1 = res;
+    });
+  }
+  getState(val) {
+       
+    if(val == ""){
+    this.CityData1=[];
+		this.profileFormData.controls['cityname'].setValue("");
+			  this.stateData1=[];
+        this.profileFormData.controls['statename'].setValue("");
+    }
+    // const data = event.value.country_name;
+    this.StateApi(val,this.auth_token).subscribe((res) => {
+      console.log(res);
+      this.stateData1 = res;
+    });
+  }
+  getCity(val) {
+       
+    if(val == ""){
+      this.CityData1=[];
+      this.profileFormData.controls['cityname'].setValue("");
+    }
+   
+    // const data = event.value.state_name;
+    this.CityApi(val,this.auth_token).subscribe((res) => {
+      console.log(res);
+      this.CityData1 = res;
+    });
+  }
+
+
+  AccessTokenLocation(): Observable<any> {
+    let headers = new HttpHeaders({
+      "Accept": "application/json",
+      "api-token":"cJPhtp6EexcB23qp40XO_eqoEMUB8KkmGXmy9Qqk_nccd-v_f4Hk47RpB09ekYlkqPU",
+      "user-email":"rahulkinger.appic@gmail.com"
+    });
+  let options = { headers: headers };
+   
+    return this.http.get('https://www.universal-tutorial.com/api/getaccesstoken',options);
+  }
+  countryApi(auth_token): Observable<any> {
+         
+    let headers = new HttpHeaders({
+      "Authorization": "Bearer "+auth_token,
+      "Accept": "application/json"
+    });
+  let options = { headers: headers };
+   
+    return this.http.get('https://www.universal-tutorial.com/api/countries/',options);
+  }
+  StateApi(data,auth_token): Observable<any> {
+    let headers = new HttpHeaders({
+      "Authorization": "Bearer "+auth_token,
+      "Accept": "application/json"
+    });
+  let options = { headers: headers };
+   
+    return this.http.get('https://www.universal-tutorial.com/api/states/'+data,options);
+  }
+  CityApi(data,auth_token): Observable<any> {
+    let headers = new HttpHeaders({
+      "Authorization": "Bearer "+auth_token,
+      "Accept": "application/json"
+    });
+  let options = { headers: headers };
+   
+    return this.http.get('https://www.universal-tutorial.com/api/cities/'+data,options);
   }
 }

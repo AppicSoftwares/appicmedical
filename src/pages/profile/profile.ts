@@ -18,7 +18,8 @@ import {
 } from "../../lib/mobiscroll-package";
 import * as moment from "moment";
 import { FileUploadProvider } from "../../providers/file-upload/file-upload";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
 @Component({
   selector: "page-profile",
   templateUrl: "profile.html",
@@ -274,6 +275,10 @@ export class ProfilePage {
   userImageURL: string;
   user_id: any;
   user_email: any;
+  auth_token: any;
+  countryData1: any;
+  stateData1: any;
+  CityData1: any;
  
  
   constructor(public navCtrl: NavController,
@@ -286,6 +291,12 @@ export class ProfilePage {
     private androidplatform: Platform,
     private http:HttpClient,
   ) {
+    
+      this.AccessTokenLocation().subscribe(res=>{
+       
+    this.auth_token = res.auth_token;
+    this.getCountries();
+       });
     this.loggedData = this.navParams.get('loggedData');
        
     this.userId = this.loggedData && this.loggedData._id
@@ -387,7 +398,11 @@ export class ProfilePage {
           this.uploadedAvatar = [];
           this.uploadedAvatar.push(item);
         }
-
+           
+        this.general.value.countryname = this.general.value.country;
+        this.general.value.statename = this.general.value.state;
+        this.general.value.cityname = this.general.value.city;
+  
         postData.avatar = this.uploadedAvatar[0];
         const objs = {
           ...this.name.value,
@@ -431,6 +446,11 @@ export class ProfilePage {
       })
   }
   onSubmit() {
+       
+    this.general.value.countryname = this.general.value.country;
+    this.general.value.statename = this.general.value.state;
+    this.general.value.cityname = this.general.value.city;
+  
     const objs = {
       ...this.name.value,
       ...this.basic.value,
@@ -456,5 +476,67 @@ numberOnly(event): boolean {
     return false;
   }
   return true;
+}
+getCountries() {
+  this.countryApi(this.auth_token).subscribe((res) => {
+    console.log(res);
+  
+    this.countryData1 = res;
+  });
+}
+getState(val) {
+     
+  // const data = event.value.country_name;
+  this.StateApi(val,this.auth_token).subscribe((res) => {
+    console.log(res);
+    this.stateData1 = res;
+  });
+}
+getCity(val) {
+  // const data = event.value.state_name;
+  this.CityApi(val,this.auth_token).subscribe((res) => {
+    console.log(res);
+    this.CityData1 = res;
+  });
+}
+
+
+AccessTokenLocation(): Observable<any> {
+  let headers = new HttpHeaders({
+    "Accept": "application/json",
+    "api-token":"cJPhtp6EexcB23qp40XO_eqoEMUB8KkmGXmy9Qqk_nccd-v_f4Hk47RpB09ekYlkqPU",
+    "user-email":"rahulkinger.appic@gmail.com"
+  });
+let options = { headers: headers };
+ 
+  return this.http.get('https://www.universal-tutorial.com/api/getaccesstoken',options);
+}
+countryApi(auth_token): Observable<any> {
+       
+  let headers = new HttpHeaders({
+    "Authorization": "Bearer "+auth_token,
+    "Accept": "application/json"
+  });
+let options = { headers: headers };
+ 
+  return this.http.get('https://www.universal-tutorial.com/api/countries/',options);
+}
+StateApi(data,auth_token): Observable<any> {
+  let headers = new HttpHeaders({
+    "Authorization": "Bearer "+auth_token,
+    "Accept": "application/json"
+  });
+let options = { headers: headers };
+ 
+  return this.http.get('https://www.universal-tutorial.com/api/states/'+data,options);
+}
+CityApi(data,auth_token): Observable<any> {
+  let headers = new HttpHeaders({
+    "Authorization": "Bearer "+auth_token,
+    "Accept": "application/json"
+  });
+let options = { headers: headers };
+ 
+  return this.http.get('https://www.universal-tutorial.com/api/cities/'+data,options);
 }
 }

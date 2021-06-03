@@ -124,8 +124,18 @@
                   <span class="error-hover">Required</span>
                 </span>
                 <ion-label stacked class="custom-label">Country *</ion-label>
-                <mbsc-select formControlName="country"   [options]="countrySettings" #mbscRemoteCoun="mobiscroll"
-                  placeholder="Please Select..."></mbsc-select>
+                <!-- <mbsc-select formControlName="country"   [options]="countrySettings" #mbscRemoteCoun="mobiscroll"
+                  placeholder="Please Select..."></mbsc-select> -->
+                  <!-- <select formControlName="country" class="input-container1 location_dd" (change)="getState($event.target.value)">
+                    <option value="">Select Country</option>
+                    <option value="United States">United States</option>
+                    <option value="{{country.country_name}}" *ngFor="let country of countryData1">{{country.country_name}}</option>
+                  </select>  -->
+                  <ion-select  okText="Okay" cancelText="Cancel" class="input-container1 location_dd" formControlName="country" (ionChange)="getState($event)">
+                    <ion-option value="">Select Country</ion-option>
+                    <ion-option value="United States">United States</ion-option>
+                  
+                    </ion-select>
               </div>
             </ion-col>
           </ion-row>
@@ -138,8 +148,17 @@
                   <span class="error-hover">Required</span>
                 </span>
                 <ion-label stacked class="custom-label">State *</ion-label>
-                <mbsc-select formControlName="state"  [options]="stateSettings"  #mbscRemoteReg="mobiscroll"
-                  placeholder="Please Select..."></mbsc-select>
+                <!-- <mbsc-select formControlName="state"  [options]="stateSettings"  #mbscRemoteReg="mobiscroll"
+                  placeholder="Please Select..."></mbsc-select> -->
+                  <!-- <select formControlName="state" class="input-container1 location_dd" (change)="getCity($event.target.value)">
+                    <option value="">Select State</option>
+                    <option value="{{state.state_name}}" *ngFor="let state of stateData1">{{state.state_name}}</option>
+                  </select> -->
+                  <ion-select  okText="Okay" cancelText="Cancel" class="input-container1 location_dd" formControlName="state" (ionChange)="getCity($event)">
+                    <ion-option value="">Select State</ion-option>
+                    <ion-option value="{{state.state_name}}" *ngFor="let state of stateData1">{{state.state_name}}</ion-option>
+                  
+                    </ion-select>
               </div>
             </ion-col>
           </ion-row>
@@ -152,8 +171,17 @@
                   <span class="error-hover">Required</span>
                 </span>
                 <ion-label stacked class="custom-label">City</ion-label>
-                <mbsc-select formControlName="city"  [options]="citySettings"  #mbscRemoteDiv="mobiscroll"
-                  placeholder="Please Select..." disabled></mbsc-select>
+                <!-- <mbsc-select formControlName="city"  [options]="citySettings"  #mbscRemoteDiv="mobiscroll"
+                  placeholder="Please Select..." disabled></mbsc-select> -->
+                  <!-- <select formControlName="city" class="input-container1 location_dd" >
+                    <option value="">Select City</option>
+                    <option value="{{city.city_name}}" *ngFor="let city of CityData1">{{city.city_name}}</option>
+                  </select> -->
+                  <ion-select  okText="Okay" cancelText="Cancel" class="input-container1 location_dd" formControlName="city" placeholder="Select City">
+                    <ion-option value="">Select City</ion-option>
+                    <ion-option value="{{city.city_name}}" *ngFor="let city of CityData1">{{city.city_name}}</ion-option>
+                  
+                    </ion-select>
               </div>
             </ion-col>
           </ion-row>

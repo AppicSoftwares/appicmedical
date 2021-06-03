@@ -26,6 +26,10 @@ import { PagesOnboardingScreenPage } from '../pages/pages-onboarding-screen/page
 import { RxDiscountPage } from '../pages/RX-Discount/rx-discount/rx-discount';
 
 import { FCM } from '@ionic-native/fcm/ngx';
+import { MbscPopupOptions } from '../lib/mobiscroll-package/dist/js/mobiscroll';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 @Component({
     templateUrl: 'app.html'
 })
@@ -42,6 +46,39 @@ export class MyApp {
     userloggedin: boolean = false;
     localpasscode: any;
     UserIdCopy: string;
+    ApiAppVersion: any;
+    AppVersion: string;
+    mobileType: string;
+
+    @ViewChild('updateVersion') updateVersion: any;
+  updateVersionSettings: MbscPopupOptions = {
+    display: "center",
+    buttons: [
+      {
+        text: "Update",
+        
+        handler: (event, inst) => {
+          this.inappbrowser.create("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app",'_system','location=no,hardwareback=no,toolbar=no,closebuttoncaption=my btn');
+          // if(this.androidplatform.is('android')){
+          //   window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
+          // }
+          // else if(this.androidplatform.is('ios')){
+          //   window.open("https://apps.apple.com/us/app/medipocket-rx-saving-on-demand/id1468232750")
+          // }
+          
+         
+        },
+      },
+    ],
+
+    onSet: (event, inst) => {
+      // Your custom event handler goes here
+    },
+    onClose: (event, inst) => {
+      // Your custom event handler goes here
+    },
+  };
+  
     constructor(
         public platform: Platform,
         public menu: MenuController,
@@ -54,10 +91,17 @@ export class MyApp {
         public alertCtrl: AlertController,
         private config: Config,
         private fcm: FCM,
+        private inappbrowser:InAppBrowser,
+        private http:HttpClient
     ) {
          let userid = localStorage.getItem('userId');
          let sociallogin= localStorage.getItem('socialLogin');
        this.UserIdCopy = userid;
+         
+       let popupValue = localStorage.getItem('updatePopup');
+       if(popupValue == 'false' || popupValue == undefined || popupValue == null){
+           this.getApiVersion();
+        }
        
         this.config.set('backButtonIcon', 'ios-arrow-back');
         this.initializeApp();
@@ -382,6 +426,40 @@ export class MyApp {
     //     this.fcm.unsubscribeFromTopic('enappd');
     //   }
       
+
+    ApiForForceVersion(data): Observable<any>{
+        return this.http.get('https://kstrdw6014.execute-api.us-east-1.amazonaws.com/beta/force-update?app_type='+data);
+        
+      }
+      getApiVersion(){
+         if(this.platform.is('android')){
+           this.mobileType = 'android';
+         }
+         else if(this.platform.is('ios')){
+          this.mobileType = 'ios';
+         }
+         
+      // if(localStorage.getItem('updatePopup') != 'true'){ 
+      
+        this.ApiForForceVersion(this.mobileType).subscribe(res => {
+       
+        if(res.status == 200){
+          this.ApiAppVersion = res.app_version;
+          this.AppVersion = '1.8';
+          if(this.ApiAppVersion != this.AppVersion){
+            localStorage.setItem('updatePopup','true');
+            this.updateVersion.instance.show();
+           // this.market.open('com.medipocket.newpatient.app');
+          //  window.open("https://play.google.com/store/apps/details?id=com.medipocket.newpatient.app","_system")
+          }
+        }
+      
+      }, error => {
+          console.error('Error in fetching home offer : ' + error);
+         
+        });
+      // }
+      }
 }
 
 

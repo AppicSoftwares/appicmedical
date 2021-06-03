@@ -244,4 +244,50 @@ page-profile {
     width: 80px;
     border: 3px solid white;
   }
+  .location_dd{
+    padding: 12px;
+    max-inline-size: 100% !important;
+    background-color: white !important;
+    // color: #afafaf !important;
+  }
+  
+  .input-container1 {
+    border: 2px solid #00d6ba;
+    border-radius: 6px;
+    // margin-bottom: 3rem;
+    overflow: inherit;
+    contain: none;
+
+    &-general {
+      margin-bottom: 2rem !important;
+    }
+
+    .item-inner {
+      margin-left: 0;
+    }
+
+    // &:nth-child(2) {
+    //   //   margin-bottom: 6rem;
+    //   padding-right: 0.8rem;
+    // }
+
+    .label {
+      position: absolute;
+      top: -19px;
+      left: 20px;
+      background-color: #fff;
+      color: #00d6ba;
+      padding: 0 0.75rem;
+      font-weight: 300;
+    }
+
+    .icon {
+      font-size: 2rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00d6ba;
+    }
+  }
 }
