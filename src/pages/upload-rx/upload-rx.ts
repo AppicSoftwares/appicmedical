@@ -41,13 +41,15 @@ export class UploadRxPage {
         this.setuploadRX();
         
     }
-	protected submit() {
+	public submit() {
+          
         if (this.multiImageUpload.images.length == 0) {
             this.deliveryService.mobiToast("Please select at least 1 photo", "danger");
             return;
         }
 
         this.multiImageUpload.uploadImages().then((images) => {
+              
             this.deliveryService.mobiToast("Uploaded successfully.", 'success').then((result) => {
                 this.uploadFinished                           = false;
                 this.multiImageUpload.isUploading             = false;

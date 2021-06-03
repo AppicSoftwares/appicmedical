@@ -587,7 +587,11 @@ getApiVersion(){
  
   if(res.status == 200){
     this.ApiAppVersion = res.app_version;
+<<<<<<< HEAD
     this.AppVersion = '2.1';
+=======
+    this.AppVersion = '1.9';
+>>>>>>> 603ef80ed337f4276aab38b08ac27dd64ac0b90e
     if(this.ApiAppVersion != this.AppVersion){
       localStorage.setItem('updatePopup','true');
       this.updateVersion.instance.show();
